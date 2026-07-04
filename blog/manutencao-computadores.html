@@ -312,44 +312,66 @@
             var likesKey = 'blog_likes_manutencao_computadores';
             var likedKey = 'blog_liked_manutencao_computadores';
 
-            // Real Views Engine (starts at 0 if not set)
-            var views = localStorage.getItem(viewsKey);
-            if (views === null) {
-                views = 0;
-            } else {
-                views = parseInt(views);
+            // View and Like Counters (Google Sheets tracking)
+            var baselineViews = 0;
+            var baselineLikes = 0;
+            
+            function loadMetrics() {
+                if (COMMENTS_API_URL) {
+                    $.getJSON(COMMENTS_API_URL + '?action=get_metrics&increment=true&pageId=' + viewsKey, function(data) {
+                        var totalViews = (parseInt(data.views) || 0) + baselineViews;
+                        var totalLikes = (parseInt(data.likes) || 0) + baselineLikes;
+                        $('#man-views-detail').text(totalViews);
+                        $('#man-likes-detail').text(totalLikes);
+                    }).fail(loadLocalFallback);
+                } else {
+                    loadLocalFallback();
+                }
             }
-            views += 1;
-            localStorage.setItem(viewsKey, views);
-            $('#man-views-detail').text(views);
-
-            // Likes Engine (starts at 0 if not set)
-            var likes = localStorage.getItem(likesKey);
-            if (likes === null) {
-                likes = 0;
-            } else {
-                likes = parseInt(likes);
+            
+            function loadLocalFallback() {
+                var views = parseInt(localStorage.getItem(viewsKey) || '0');
+                if (!sessionStorage.getItem(viewsKey + '_session')) {
+                    views += 1;
+                    localStorage.setItem(viewsKey, views);
+                    sessionStorage.setItem(viewsKey + '_session', 'true');
+                }
+                var likes = parseInt(localStorage.getItem(likesKey) || '0');
+                $('#man-views-detail').text(views + baselineViews);
+                $('#man-likes-detail').text(likes + baselineLikes);
             }
-            $('#man-likes-detail').text(likes);
-
+            
+            loadMetrics();
+        
+            // Like Interaction
+            $('#like-btn').click(function() {
+                if (localStorage.getItem(likedKey) === 'true') {
+                    alert('Você já curtiu este artigo!');
+                    return;
+                }
+                
+                if (COMMENTS_API_URL) {
+                    $.ajax({
+                        url: COMMENTS_API_URL + '?action=like&pageId=' + viewsKey,
+                        method: 'POST',
+                        success: function(data) {
+                            localStorage.setItem(likedKey, 'true');
+                            $('#like-btn').addClass('liked');
+                            loadMetrics();
+                        }
+                    });
+                } else {
+                    var likes = parseInt(localStorage.getItem(likesKey) || '0') + 1;
+                    localStorage.setItem(likesKey, likes);
+                    localStorage.setItem(likedKey, 'true');
+                    $('#like-btn').addClass('liked');
+                    loadMetrics();
+                }
+            });
+            
             if (localStorage.getItem(likedKey) === 'true') {
                 $('#like-btn').addClass('liked');
             }
-
-            $('#like-btn').click(function() {
-                if (localStorage.getItem(likedKey) === 'true') {
-                    likes = Math.max(0, likes - 1);
-                    localStorage.setItem(likesKey, likes);
-                    localStorage.setItem(likedKey, 'false');
-                    $(this).removeClass('liked');
-                } else {
-                    likes += 1;
-                    localStorage.setItem(likesKey, likes);
-                    localStorage.setItem(likedKey, 'true');
-                    $(this).addClass('liked');
-                }
-                $('#man-likes-detail').text(likes);
-            });
 
             // Comments Engine
 

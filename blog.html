@@ -265,41 +265,28 @@
     <script src="js/main-v1.js?v=3"></script>
     <script>
         $(document).ready(function() {
-            // Artigo 1: IA Impacto
-            var iaViewsKey = 'blog_views_ia_impacto';
-            var iaLikesKey = 'blog_likes_ia_impacto';
-            
-            var iaViews = localStorage.getItem(iaViewsKey) || 100;
-            if (!localStorage.getItem(iaViewsKey)) localStorage.setItem(iaViewsKey, 100);
-            $('#ia-views-count').text(iaViews);
-            
-            var iaLikes = localStorage.getItem(iaLikesKey) || 52;
-            if (!localStorage.getItem(iaLikesKey)) localStorage.setItem(iaLikesKey, 52);
-            $('#ia-likes-count').text(iaLikes);
+            var COMMENTS_API_URL = 'https://script.google.com/macros/s/AKfycbxjIQEv4uWt8uEXWq3_9pR_-_bm4BIKzDChL8Vo1k9YTCY5r2DUVVOqkBl3zQpYnmfbhQ/exec';
 
-            // Artigo 2: Monitoramento Ativo
-            var monViewsKey = 'blog_views_monitoramento_ativo';
-            var monLikesKey = 'blog_likes_monitoramento_ativo';
+            function loadPostMetrics(postKey, viewsEl, likesEl, baseViews, baseLikes) {
+                if (COMMENTS_API_URL) {
+                    $.getJSON(COMMENTS_API_URL + '?action=get_metrics&pageId=' + postKey, function(data) {
+                        var views = (parseInt(data.views) || 0) + baseViews;
+                        var likes = (parseInt(data.likes) || 0) + baseLikes;
+                        $(viewsEl).text(views);
+                        $(likesEl).text(likes);
+                    }).fail(function() {
+                        $(viewsEl).text(localStorage.getItem(postKey + '_views') || baseViews);
+                        $(likesEl).text(localStorage.getItem(postKey + '_likes') || baseLikes);
+                    });
+                } else {
+                    $(viewsEl).text(localStorage.getItem(postKey + '_views') || baseViews);
+                    $(likesEl).text(localStorage.getItem(postKey + '_likes') || baseLikes);
+                }
+            }
             
-            var monViews = localStorage.getItem(monViewsKey) || 100;
-            if (!localStorage.getItem(monViewsKey)) localStorage.setItem(monViewsKey, 100);
-            $('#mon-views-count').text(monViews);
-            
-            var monLikes = localStorage.getItem(monLikesKey) || 30;
-            if (!localStorage.getItem(monLikesKey)) localStorage.setItem(monLikesKey, 30);
-            $('#mon-likes-count').text(monLikes);
-
-            // Artigo 3: Manutenção de Computadores
-            var manViewsKey = 'blog_views_manutencao_computadores';
-            var manLikesKey = 'blog_likes_manutencao_computadores';
-            
-            var manViews = localStorage.getItem(manViewsKey) || 0;
-            if (!localStorage.getItem(manViewsKey)) localStorage.setItem(manViewsKey, 0);
-            $('#man-views-count').text(manViews);
-            
-            var manLikes = localStorage.getItem(manLikesKey) || 0;
-            if (!localStorage.getItem(manLikesKey)) localStorage.setItem(manLikesKey, 0);
-            $('#man-likes-count').text(manLikes);
+            loadPostMetrics('blog_views_ia_impacto', '#ia-views-count', '#ia-likes-count', 100, 52);
+            loadPostMetrics('blog_views_monitoramento_ativo', '#mon-views-count', '#mon-likes-count', 100, 30);
+            loadPostMetrics('blog_views_manutencao_computadores', '#man-views-count', '#man-likes-count', 0, 0);
 
             // -------------------------------------------------------------
             // DYNAMIC CLIENT-SIDE PAGINATION LOGIC

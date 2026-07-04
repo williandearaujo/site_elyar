@@ -1,37 +1,69 @@
-# Guia: Comentários Globais e Persistentes com Google Sheets (100% Gratuito)
+# Guia: Comentários e Métricas Globais (Visitas/Curtidas) no Google Sheets
 
-Como a **Elyar Serviços** é hospedada estaticamente no GitHub Pages, o sistema de comentários padrão armazena os dados no navegador de cada usuário (`localStorage`). Isso significa que um visitante não vê os comentários enviados por outro.
+Para que as **visualizações (visitas) e curtidas (likes)** de cada artigo do blog sejam globais e atualizadas em tempo real para todos os usuários da internet (e não salvas apenas no navegador de cada visitante individual), você pode utilizar a mesma planilha do **Google Sheets** que configurou para os comentários.
 
-Para tornar os comentários **globais e persistentes para todos os visitantes** sem gastar nada e sem anúncios (como no Disqus), você pode usar uma planilha do **Google Sheets** como banco de dados.
-
-Siga os passos simples abaixo para configurar:
+O código abaixo gerencia de forma unificada os comentários (na aba `Comentarios`) e as visitas/curtidas (na aba `Metricas` que o script criará automaticamente para você).
 
 ---
 
-## 📅 Passo 1: Criar a Planilha no Google Drive
-1. Acesse o seu [Google Drive](https://drive.google.com) e clique em **Novo > Planilhas Google**.
-2. Renomeie a planilha para um nome de sua escolha (ex: `Elyar Blog - Comentários`).
-3. Opcional: Na primeira linha, crie os cabeçalhos para organizar visualmente as colunas:
-   * **Coluna A**: `pageId`
-   * **Coluna B**: `author`
-   * **Coluna C**: `text`
-   * **Coluna D**: `date`
-
----
-
-## 💻 Passo 2: Vincular o Script do Google Apps Script
-1. Na sua planilha, clique no menu superior em **Extensões > Apps Script**.
-2. Apague qualquer código existente no editor e cole o código abaixo:
+## 💻 Passo 1: Atualizar o Código no Apps Script
+1. Abra a sua planilha `Elyar Blog - Comentários` no Google Drive.
+2. Vá em **Extensões > Apps Script**.
+3. Substitua todo o código existente no editor pelo código unificado abaixo:
 
 ```javascript
 function doGet(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  var data = sheet.getDataRange().getValues();
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var action = e.parameter.action; // "get_comments" ou "get_metrics"
   var pageId = e.parameter.pageId;
   
-  var comments = [];
+  // -------------------------------------------------------------
+  // CONTROLE DE MÉTRICAS (VISITAS & CURTIDAS)
+  // -------------------------------------------------------------
+  if (action === "get_metrics") {
+    var sheet = ss.getSheetByName("Metricas");
+    if (!sheet) {
+      sheet = ss.insertSheet("Metricas");
+      sheet.appendRow(["pageId", "views", "likes"]);
+    }
+    
+    var data = sheet.getDataRange().getValues();
+    var views = 0;
+    var likes = 0;
+    var foundIndex = -1;
+    
+    // Procura o ID do artigo na planilha
+    for (var i = 1; i < data.length; i++) {
+      if (data[i][0] === pageId) {
+        views = parseInt(data[i][1]) || 0;
+        likes = parseInt(data[i][2]) || 0;
+        foundIndex = i + 1;
+        break;
+      }
+    }
+    
+    // Se "increment=true", soma uma visita
+    if (e.parameter.increment === "true") {
+      views += 1;
+      if (foundIndex !== -1) {
+        sheet.getRange(foundIndex, 2).setValue(views);
+      } else {
+        sheet.appendRow([pageId, views, likes]);
+      }
+    }
+    
+    return ContentService.createTextOutput(JSON.stringify({ views: views, likes: likes }))
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeader('Access-Control-Allow-Origin', '*');
+  }
   
-  // Lê as linhas (pulando o cabeçalho)
+  // -------------------------------------------------------------
+  // CONTROLE DE COMENTÁRIOS (PADRÃO)
+  // -------------------------------------------------------------
+  var sheet = ss.getSheetByName("Comentarios") || ss.getSheets()[0];
+  var data = sheet.getDataRange().getValues();
+  
+  var comments = [];
   for (var i = 1; i < data.length; i++) {
     if (data[i][0] === pageId) {
       comments.push({
@@ -44,14 +76,55 @@ function doGet(e) {
   }
   
   return ContentService.createTextOutput(JSON.stringify(comments))
-    .setMimeType(ContentService.MimeType.JSON);
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader('Access-Control-Allow-Origin', '*');
 }
 
 function doPost(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  
-  // Recebe os parâmetros enviados por POST
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var action = e.parameter.action; // "add_comment" ou "like"
   var pageId = e.parameter.pageId;
+  
+  // -------------------------------------------------------------
+  // REGISTRAR CURTIDA (LIKE)
+  // -------------------------------------------------------------
+  if (action === "like") {
+    var sheet = ss.getSheetByName("Metricas");
+    if (!sheet) {
+      sheet = ss.insertSheet("Metricas");
+      sheet.appendRow(["pageId", "views", "likes"]);
+    }
+    
+    var data = sheet.getDataRange().getValues();
+    var views = 0;
+    var likes = 0;
+    var foundIndex = -1;
+    
+    for (var i = 1; i < data.length; i++) {
+      if (data[i][0] === pageId) {
+        views = parseInt(data[i][1]) || 0;
+        likes = parseInt(data[i][2]) || 0;
+        likes += 1;
+        sheet.getRange(i + 1, 3).setValue(likes);
+        foundIndex = i + 1;
+        break;
+      }
+    }
+    
+    if (foundIndex === -1) {
+      likes = 1;
+      sheet.appendRow([pageId, views, likes]);
+    }
+    
+    return ContentService.createTextOutput(JSON.stringify({ success: true, likes: likes }))
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeader('Access-Control-Allow-Origin', '*');
+  }
+  
+  // -------------------------------------------------------------
+  // REGISTRAR COMENTÁRIO (PADRÃO)
+  // -------------------------------------------------------------
+  var sheet = ss.getSheetByName("Comentarios") || ss.getSheets()[0];
   var author = e.parameter.author;
   var text = e.parameter.text;
   var date = e.parameter.date;
@@ -69,37 +142,16 @@ function doPost(e) {
 }
 ```
 
-3. Clique no ícone de disquete (💾 **Salvar projeto**) no topo do editor.
+4. Clique no disquete (💾 **Salvar projeto**).
 
 ---
 
-## 🚀 Passo 3: Publicar como Web App
-1. No canto superior direito do Apps Script, clique no botão azul **Implantar > Nova implantação**.
-2. No menu lateral da janela que abrir, clique na engrenagem ao lado de "Selecionar tipo" e escolha **Web app**.
-3. Preencha as configurações exatamente assim:
-   * **Descrição**: `API de Comentários Elyar`
-   * **Executar como**: **Você** (seu e-mail)
-   * **Quem tem acesso**: **Qualquer pessoa** *(⚠️ CRÍTICO: Se deixar "Apenas eu", o site não conseguirá salvar os comentários dos visitantes!)*
+## 🚀 Passo 2: Criar uma Nova Versão da Implantação (Muito Importante!)
+Sempre que você edita o código do Apps Script, precisa implantá-lo novamente para aplicar as mudanças públicas:
+1. No canto superior direito, clique em **Implantar > Gerenciar implantações**.
+2. Clique no ícone de **Lápis (Editar)** ao lado do Web App ativo.
+3. No campo "Versão", selecione **Nova versão** (New version).
 4. Clique no botão azul **Implantar**.
-5. O Google solicitará permissão para que o script acesse sua planilha. Clique em **Autorizar acesso**, selecione sua conta do Google, clique em **Advanced (Avançado)** e depois em **Go to Projeto sem título (unsafe)** e confirme a autorização.
-6. Copie a **URL do Web App** gerada (ela termina com `/exec`).
+5. Mantenha a mesma URL do Web App que configuramos no código do seu site!
 
----
-
-## 🔌 Passo 4: Colar a URL no código do Blog
-Com a URL copiada, basta abrir os arquivos do seu blog e colar a URL na variável `COMMENTS_API_URL` (localizada no final do arquivo de cada post):
-
-```javascript
-// Localizado no script final dos arquivos blog/ia-impacto.html, blog/monitoramento-ativo.html, etc.
-var COMMENTS_API_URL = 'SUA_URL_DO_GOOGLE_APPS_SCRIPT_AQUI';
-```
-
-### Exemplo:
-```javascript
-var COMMENTS_API_URL = 'https://script.google.com/macros/s/AKfycby..._abc123/exec';
-```
-
----
-
-## 🛡️ Moderação de Comentários
-Para moderar ou apagar algum comentário indesejado, basta abrir a planilha `Elyar Blog - Comentários` no seu Google Sheets e **excluir a linha inteira** do comentário correspondente. O site atualizará automaticamente na próxima visualização do artigo!
+Pronto! Agora o seu script gerenciará os comentários, visitas e curtidas globais automaticamente. A aba `Metricas` será criada sozinha na sua planilha na primeira visita aos artigos!

@@ -301,35 +301,66 @@
             var likesKey = 'blog_likes_monitoramento_ativo';
             var likedKey = 'blog_liked_monitoramento_ativo';
 
-            // Increment visualizador
-            var views = parseInt(localStorage.getItem(viewsKey) || 100);
-            views += 1;
-            localStorage.setItem(viewsKey, views);
-            $('#mon-views-detail').text(views);
-
-            // Likes Engine
-            var likes = parseInt(localStorage.getItem(likesKey) || 30);
-            if (!localStorage.getItem(likesKey)) localStorage.setItem(likesKey, 30);
-            $('#mon-likes-detail').text(likes);
-
+            // View and Like Counters (Google Sheets tracking)
+            var baselineViews = 100;
+            var baselineLikes = 30;
+            
+            function loadMetrics() {
+                if (COMMENTS_API_URL) {
+                    $.getJSON(COMMENTS_API_URL + '?action=get_metrics&increment=true&pageId=' + viewsKey, function(data) {
+                        var totalViews = (parseInt(data.views) || 0) + baselineViews;
+                        var totalLikes = (parseInt(data.likes) || 0) + baselineLikes;
+                        $('#mon-views-detail').text(totalViews);
+                        $('#mon-likes-detail').text(totalLikes);
+                    }).fail(loadLocalFallback);
+                } else {
+                    loadLocalFallback();
+                }
+            }
+            
+            function loadLocalFallback() {
+                var views = parseInt(localStorage.getItem(viewsKey) || '0');
+                if (!sessionStorage.getItem(viewsKey + '_session')) {
+                    views += 1;
+                    localStorage.setItem(viewsKey, views);
+                    sessionStorage.setItem(viewsKey + '_session', 'true');
+                }
+                var likes = parseInt(localStorage.getItem(likesKey) || '0');
+                $('#mon-views-detail').text(views + baselineViews);
+                $('#mon-likes-detail').text(likes + baselineLikes);
+            }
+            
+            loadMetrics();
+        
+            // Like Interaction
+            $('#like-btn').click(function() {
+                if (localStorage.getItem(likedKey) === 'true') {
+                    alert('Você já curtiu este artigo!');
+                    return;
+                }
+                
+                if (COMMENTS_API_URL) {
+                    $.ajax({
+                        url: COMMENTS_API_URL + '?action=like&pageId=' + viewsKey,
+                        method: 'POST',
+                        success: function(data) {
+                            localStorage.setItem(likedKey, 'true');
+                            $('#like-btn').addClass('liked');
+                            loadMetrics();
+                        }
+                    });
+                } else {
+                    var likes = parseInt(localStorage.getItem(likesKey) || '0') + 1;
+                    localStorage.setItem(likesKey, likes);
+                    localStorage.setItem(likedKey, 'true');
+                    $('#like-btn').addClass('liked');
+                    loadMetrics();
+                }
+            });
+            
             if (localStorage.getItem(likedKey) === 'true') {
                 $('#like-btn').addClass('liked');
             }
-
-            $('#like-btn').click(function() {
-                if (localStorage.getItem(likedKey) === 'true') {
-                    likes -= 1;
-                    localStorage.setItem(likesKey, likes);
-                    localStorage.setItem(likedKey, 'false');
-                    $(this).removeClass('liked');
-                } else {
-                    likes += 1;
-                    localStorage.setItem(likesKey, likes);
-                    localStorage.setItem(likedKey, 'true');
-                    $(this).addClass('liked');
-                }
-                $('#mon-likes-detail').text(likes);
-            });
 
             // Comments Engine
 
