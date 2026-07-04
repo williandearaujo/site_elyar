@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Solicite um diagnóstico corporativo gratuito com os especialistas em RH da Prosaterapia.">
+    <title>Contato | Prosaterapia</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Core CSS -->
+    <link href="style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/ico/favicon.ico">
+</head>
+<body>
+
+    <!-- ==========================================
+         HEADER
+         ========================================== -->
+    <header id="header" class="scrolled">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="../images/prosaterapia/media__1783127588290.png" alt="Prosaterapia Logo">
+            </a>
+            
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item"><a href="index.html">Início</a></li>
+                    <li class="nav-item"><a href="sobre.html">Quem Somos</a></li>
+                    <li class="nav-item"><a href="recrutamento.html">Recrutamento</a></li>
+                    <li class="nav-item"><a href="nr1.html">NR-1 & Saúde</a></li>
+                    <li class="nav-item"><a href="gestao-pessoas.html">Gestão de Pessoas</a></li>
+                    <li class="nav-item"><a href="lideranca.html">Liderança</a></li>
+                    <li class="nav-item"><a href="rh-terceirizado.html">RH Terceirizado</a></li>
+                    <li class="nav-item"><a href="carreira.html">Trilha Profissional</a></li>
+                    <li class="nav-item active"><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         CONTACT CONTENT
+         ========================================== -->
+    <section class="section" style="padding-top: 140px; min-height: 80vh;">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info-panel">
+                    <h3>Fale Conosco</h3>
+                    <p class="contact-subtitle">Solicite hoje mesmo o seu diagnóstico corporativo gratuito com a nossa equipe de especialistas.</p>
+                    
+                    <ul class="contact-methods">
+                        <li class="contact-method-item">
+                            <div class="contact-method-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="contact-method-text">
+                                <h4>E-mail de Contato</h4>
+                                <p>contato@prosaterapia.com</p>
+                            </div>
+                        </li>
+                        <li class="contact-method-item">
+                            <div class="contact-method-icon"><i class="fa-solid fa-globe"></i></div>
+                            <div class="contact-method-text">
+                                <h4>Site Oficial</h4>
+                                <p>prosaterapia.com.br</p>
+                            </div>
+                        </li>
+                        <li class="contact-method-item">
+                            <div class="contact-method-icon"><i class="fa-solid fa-phone"></i></div>
+                            <div class="contact-method-text">
+                                <h4>WhatsApp Direto</h4>
+                                <p>(11) 9.7737-1257</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div>
+                        <a href="https://wa.me/5511977371257?text=Olá!%20Gostaria%20de%20solicitar%20um%20diagnóstico%20personalizado%20da%20Prosaterapia." target="_blank" class="btn btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp do Especialista
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form-panel">
+                    <h4>Envie uma Mensagem</h4>
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Nome Completo</label>
+                            <input class="form-control" type="text" id="name" required placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">E-mail Corporativo</label>
+                            <input class="form-control" type="email" id="email" required placeholder="Seu e-mail">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="company">Nome da Empresa</label>
+                            <input class="form-control" type="text" id="company" required placeholder="Sua empresa">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">Como podemos ajudar?</label>
+                            <textarea class="form-control" id="message" required placeholder="Descreva brevemente sua necessidade..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-dark">Enviar Solicitação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                    <img src="../images/prosaterapia/media__1783127588290.png" alt="Prosaterapia">
+                </div>
+                <ul class="footer-socials">
+                    <li><a class="footer-social-link" href="https://www.instagram.com/prosaterapiacorp/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a class="footer-social-link" href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                    <li><a class="footer-social-link" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Prosaterapia. Todos os direitos reservados. Projeto demonstrativo desenvolvido por Elyar Serviços.</p>
+                <p>Criado por <a href="../index.html" style="color: var(--color-accent); text-decoration: underline;">Elyar Serviços</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         SCRIPTS
+         ========================================== -->
+    <script>
+        const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileNavToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Form submission mock
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            
+            alert(`Obrigado, ${name}! Recebemos a sua solicitação para a empresa "${company}". Entraremos em contato através do e-mail ${email} nas próximas horas.`);
+            
+            // Clear form
+            document.getElementById('contact-form').reset();
+        }
+    </script>
+</body>
+</html>
