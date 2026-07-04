@@ -159,8 +159,8 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     
-                    <!-- Article Banner Image -->
-                    <img src="../images/blog/blog_placeholder.png" alt="Título do Artigo Banner" class="img-responsive" style="border-radius: var(--border-radius-lg); border: 1px solid rgba(255,255,255,0.05); margin-bottom: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); width: 100%; height: auto;">
+                    <!-- Article Banner Image (Natural Fit & Compact 320px Width) -->
+                    <img src="../images/blog/blog_placeholder.png" alt="Título do Artigo Banner" class="img-responsive" style="border-radius: var(--border-radius-lg); border: 1px solid rgba(255,255,255,0.05); margin: 0 auto 30px auto; box-shadow: 0 15px 40px rgba(0,0,0,0.6); max-width: 320px; width: 100%; height: auto; display: block;">
 
                     <!-- Article Meta Header -->
                     <div style="margin-bottom: 30px;">
@@ -307,6 +307,8 @@
     <script src="../js/main-v1.js?v=2"></script>
     <script>
         $(document).ready(function() {
+            // ATENÇÃO: Troque 'TEMPLATE_ID' abaixo por um identificador exclusivo do seu novo post!
+            // Exemplo: 'projeto_bi', 'seguranca_soc', etc.
             var viewsKey = 'blog_views_TEMPLATE_ID';
             var commentsKey = 'blog_comments_TEMPLATE_ID';
             var likesKey = 'blog_likes_TEMPLATE_ID';
