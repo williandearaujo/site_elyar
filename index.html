@@ -107,7 +107,7 @@
     </section>
 
     <!-- ==========================================
-         SERVICES PREVIEW (REDESIGNED FOR 6 CORE SERVICES)
+         SERVICES PREVIEW (REDESIGNED WITH CARDS & ICONS LIKE PORTFOLIO)
          ========================================== -->
     <section class="premium-section">
         <div class="container">
@@ -117,65 +117,151 @@
             </div>
             
             <div class="services-premium-grid" style="margin-top: 50px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+                
                 <!-- Power BI -->
                 <div class="service-premium-card">
-                    <div class="service-icon-box"><i class="fa fa-line-chart"></i></div>
-                    <h3>Power BI &amp; Dashboards</h3>
-                    <p>
-                        Dashboards executivos com conexões SQL/API e análises de indicadores em tempo real para tomadas de decisão ágeis.
-                    </p>
-                    <a href="servicos-powerbi.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px;">Detalhes <i class="fa fa-arrow-right"></i></a>
+                    <div class="portfolio-img-container" style="background: linear-gradient(135deg, #1E1E24 0%, #0C0C0E 100%); height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.04); position: relative;">
+                        <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(238, 215, 15, 0.15) 0%, transparent 70%);"></div>
+                        <i class="fa fa-line-chart" style="font-size: 3.5rem; color: var(--color-accent-yellow); text-shadow: 0 0 20px rgba(238, 215, 15, 0.4); z-index: 1;"></i>
+                        <div class="portfolio-premium-overlay">
+                            <a class="view-btn" href="servicos-powerbi.html" aria-label="Ver detalhes do serviço"><i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-card-body" style="display: flex; flex-direction: column;">
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                            <div class="portfolio-card-icon-box">
+                                <i class="fa fa-line-chart"></i>
+                            </div>
+                            <div class="portfolio-card-text">
+                                <span class="portfolio-card-tag">Dados</span>
+                                <h3>Power BI &amp; Dashboards</h3>
+                                <p>Dashboards executivos com conexões SQL/API e métricas estratégicas.</p>
+                            </div>
+                        </div>
+                        <a href="servicos-powerbi.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px; border-radius: 30px;">Saiba Mais <i class="fa fa-chevron-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                    </div>
                 </div>
                 
                 <!-- Computadores -->
                 <div class="service-premium-card">
-                    <div class="service-icon-box"><i class="fa fa-laptop"></i></div>
-                    <h3>Manutenção &amp; Upgrades</h3>
-                    <p>
-                        Manutenção corretiva e preventiva de computadores e notebooks, com formatação e upgrades de SSD/RAM.
-                    </p>
-                    <a href="servicos-manutencao.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px;">Detalhes <i class="fa fa-arrow-right"></i></a>
+                    <div class="portfolio-img-container" style="background: linear-gradient(135deg, #1E1E24 0%, #0C0C0E 100%); height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.04); position: relative;">
+                        <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(238, 215, 15, 0.15) 0%, transparent 70%);"></div>
+                        <i class="fa fa-laptop" style="font-size: 3.5rem; color: var(--color-accent-yellow); text-shadow: 0 0 20px rgba(238, 215, 15, 0.4); z-index: 1;"></i>
+                        <div class="portfolio-premium-overlay">
+                            <a class="view-btn" href="servicos-manutencao.html" aria-label="Ver detalhes do serviço"><i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-card-body" style="display: flex; flex-direction: column;">
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                            <div class="portfolio-card-icon-box">
+                                <i class="fa fa-laptop"></i>
+                            </div>
+                            <div class="portfolio-card-text">
+                                <span class="portfolio-card-tag">Suporte</span>
+                                <h3>Manutenção &amp; Upgrades</h3>
+                                <p>Upgrades de hardware (SSD/RAM) e otimizações completas de sistemas.</p>
+                            </div>
+                        </div>
+                        <a href="servicos-manutencao.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px; border-radius: 30px;">Saiba Mais <i class="fa fa-chevron-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                    </div>
                 </div>
 
                 <!-- Zabbix -->
                 <div class="service-premium-card">
-                    <div class="service-icon-box"><i class="fa fa-area-chart"></i></div>
-                    <h3>Zabbix &amp; Grafana</h3>
-                    <p>
-                        Monitoramento contínuo de redes e servidores com alertas por severidade e relatórios analíticos recorrentes.
-                    </p>
-                    <a href="servicos-zabbix.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px;">Detalhes <i class="fa fa-arrow-right"></i></a>
+                    <div class="portfolio-img-container" style="background: linear-gradient(135deg, #1E1E24 0%, #0C0C0E 100%); height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.04); position: relative;">
+                        <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(238, 215, 15, 0.15) 0%, transparent 70%);"></div>
+                        <i class="fa fa-area-chart" style="font-size: 3.5rem; color: var(--color-accent-yellow); text-shadow: 0 0 20px rgba(238, 215, 15, 0.4); z-index: 1;"></i>
+                        <div class="portfolio-premium-overlay">
+                            <a class="view-btn" href="servicos-zabbix.html" aria-label="Ver detalhes do serviço"><i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-card-body" style="display: flex; flex-direction: column;">
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                            <div class="portfolio-card-icon-box">
+                                <i class="fa fa-area-chart"></i>
+                            </div>
+                            <div class="portfolio-card-text">
+                                <span class="portfolio-card-tag">Monitoramento</span>
+                                <h3>Zabbix &amp; Grafana</h3>
+                                <p>Monitoramento ativo de servidores e redes, com alertas por severidade.</p>
+                            </div>
+                        </div>
+                        <a href="servicos-zabbix.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px; border-radius: 30px;">Saiba Mais <i class="fa fa-chevron-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                    </div>
                 </div>
 
                 <!-- Wazuh -->
                 <div class="service-premium-card">
-                    <div class="service-icon-box"><i class="fa fa-shield"></i></div>
-                    <h3>Wazuh &amp; Segurança</h3>
-                    <p>
-                        SOC enxuto com SIEM ativo, monitoramento de integridade e respostas a incidentes de segurança corporativa.
-                    </p>
-                    <a href="servicos-wazuh.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px;">Detalhes <i class="fa fa-arrow-right"></i></a>
+                    <div class="portfolio-img-container" style="background: linear-gradient(135deg, #1E1E24 0%, #0C0C0E 100%); height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.04); position: relative;">
+                        <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(238, 215, 15, 0.15) 0%, transparent 70%);"></div>
+                        <i class="fa fa-shield" style="font-size: 3.5rem; color: var(--color-accent-yellow); text-shadow: 0 0 20px rgba(238, 215, 15, 0.4); z-index: 1;"></i>
+                        <div class="portfolio-premium-overlay">
+                            <a class="view-btn" href="servicos-wazuh.html" aria-label="Ver detalhes do serviço"><i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-card-body" style="display: flex; flex-direction: column;">
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                            <div class="portfolio-card-icon-box">
+                                <i class="fa fa-shield"></i>
+                            </div>
+                            <div class="portfolio-card-text">
+                                <span class="portfolio-card-tag">Segurança</span>
+                                <h3>Wazuh &amp; Segurança</h3>
+                                <p>SOC ativo com SIEM estruturado e playbooks de resposta a incidentes.</p>
+                            </div>
+                        </div>
+                        <a href="servicos-wazuh.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px; border-radius: 30px;">Saiba Mais <i class="fa fa-chevron-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                    </div>
                 </div>
 
                 <!-- GLPI -->
                 <div class="service-premium-card">
-                    <div class="service-icon-box"><i class="fa fa-ticket"></i></div>
-                    <h3>GLPI &amp; ITSM</h3>
-                    <p>
-                        Gerenciamento de chamados de suporte, definição de níveis de SLA e inventários estruturados de ativos.
-                    </p>
-                    <a href="servicos-glpi.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px;">Detalhes <i class="fa fa-arrow-right"></i></a>
+                    <div class="portfolio-img-container" style="background: linear-gradient(135deg, #1E1E24 0%, #0C0C0E 100%); height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.04); position: relative;">
+                        <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(238, 215, 15, 0.15) 0%, transparent 70%);"></div>
+                        <i class="fa fa-ticket" style="font-size: 3.5rem; color: var(--color-accent-yellow); text-shadow: 0 0 20px rgba(238, 215, 15, 0.4); z-index: 1;"></i>
+                        <div class="portfolio-premium-overlay">
+                            <a class="view-btn" href="servicos-glpi.html" aria-label="Ver detalhes do serviço"><i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-card-body" style="display: flex; flex-direction: column;">
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                            <div class="portfolio-card-icon-box">
+                                <i class="fa fa-ticket"></i>
+                            </div>
+                            <div class="portfolio-card-text">
+                                <span class="portfolio-card-tag">ITSM</span>
+                                <h3>GLPI &amp; ITSM</h3>
+                                <p>Gerenciamento de chamados técnicos de suporte e controle de SLAs.</p>
+                            </div>
+                        </div>
+                        <a href="servicos-glpi.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px; border-radius: 30px;">Saiba Mais <i class="fa fa-chevron-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                    </div>
                 </div>
 
                 <!-- Consultoria -->
                 <div class="service-premium-card">
-                    <div class="service-icon-box"><i class="fa fa-briefcase"></i></div>
-                    <h3>Consultoria de TI</h3>
-                    <p>
-                        Estratégia de tecnologia corporativa, compliance com LGPD, LGPD baseline e mapeamento de riscos.
-                    </p>
-                    <a href="servicos-consultoria.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px;">Detalhes <i class="fa fa-arrow-right"></i></a>
+                    <div class="portfolio-img-container" style="background: linear-gradient(135deg, #1E1E24 0%, #0C0C0E 100%); height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.04); position: relative;">
+                        <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(238, 215, 15, 0.15) 0%, transparent 70%);"></div>
+                        <i class="fa fa-briefcase" style="font-size: 3.5rem; color: var(--color-accent-yellow); text-shadow: 0 0 20px rgba(238, 215, 15, 0.4); z-index: 1;"></i>
+                        <div class="portfolio-premium-overlay">
+                            <a class="view-btn" href="servicos-consultoria.html" aria-label="Ver detalhes do serviço"><i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-card-body" style="display: flex; flex-direction: column;">
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                            <div class="portfolio-card-icon-box">
+                                <i class="fa fa-briefcase"></i>
+                            </div>
+                            <div class="portfolio-card-text">
+                                <span class="portfolio-card-tag">Estratégia</span>
+                                <h3>Consultoria de TI</h3>
+                                <p>Governança de tecnologia, auditorias de conformidade com a LGPD.</p>
+                            </div>
+                        </div>
+                        <a href="servicos-consultoria.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px; border-radius: 30px;">Saiba Mais <i class="fa fa-chevron-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
