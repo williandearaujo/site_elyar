@@ -25,32 +25,34 @@
     <meta property="og:image" content="https://elyar.com.br/images/logo_real.png">
     
     <style>
-        .btn-like {
+        .btn-like-premium {
             background: rgba(255, 255, 255, 0.02) !important;
-            border: 1px solid rgba(255, 255, 255, 0.06) !important;
-            padding: 8px 18px !important;
-            border-radius: 30px !important;
+            border: 1px solid rgba(238, 215, 15, 0.2) !important;
+            padding: 6px 16px !important;
+            border-radius: 20px !important;
             color: var(--color-text-body) !important;
+            font-size: 0.85rem !important;
+            font-family: 'Outfit', sans-serif !important;
             cursor: pointer !important;
             transition: var(--transition-smooth) !important;
             display: inline-flex !important;
             align-items: center !important;
-            gap: 8px !important;
+            gap: 6px !important;
             outline: none !important;
         }
-        .btn-like:hover {
+        .btn-like-premium:hover {
             color: #ff6b6b !important;
-            border-color: rgba(255, 107, 107, 0.3) !important;
+            border-color: rgba(255, 107, 107, 0.4) !important;
             background: rgba(255, 107, 107, 0.05) !important;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
-        .btn-like.liked {
+        .btn-like-premium.liked {
             color: white !important;
             background: #ff6b6b !important;
             border-color: #ff6b6b !important;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.35) !important;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3) !important;
         }
-        .btn-like.liked i {
+        .btn-like-premium.liked i {
             color: white !important;
             animation: heartBeat 0.4s ease;
         }
@@ -106,24 +108,17 @@
     <section class="premium-section" style="padding-top: 160px; min-height: 90vh; padding-bottom: 80px;">
         <div class="container">
             <!-- Back to Blog Button -->
-            <div style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="margin-bottom: 30px;">
                 <a href="blog.html" class="btn-premium-secondary" style="padding: 8px 20px; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; border-radius: 30px;">
                     <i class="fa fa-arrow-left"></i> Voltar para o Blog
                 </a>
-                
-                <!-- Curtir (Like) Button -->
-                <button id="like-btn" class="btn-like">
-                    <i class="fa fa-heart" style="color: #ff6b6b;"></i> Curtir Artigo (<span id="ia-likes-detail">52</span>)
-                </button>
             </div>
 
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     
-                    <!-- Article Banner Image -->
-                    <div style="position: relative; overflow: hidden; height: 380px; border-radius: var(--border-radius-lg); border: 1px solid rgba(255,255,255,0.05); margin-bottom: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.6);">
-                        <img src="images/blog/blog_ia.png" alt="Inteligência Artificial Banner" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
+                    <!-- Article Banner Image (Natural Fit) -->
+                    <img src="images/blog/blog_ia.png" alt="Inteligência Artificial Banner" class="img-responsive" style="border-radius: var(--border-radius-lg); border: 1px solid rgba(255,255,255,0.05); margin-bottom: 35px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); width: 100%; height: auto;">
 
                     <!-- Article Meta Header -->
                     <div style="margin-bottom: 30px;">
@@ -207,37 +202,34 @@
                         </p>
                     </div>
 
-                    <!-- Divider -->
-                    <div style="height: 1px; background: rgba(255, 255, 255, 0.08); margin-top: 50px; margin-bottom: 50px;"></div>
+                    <!-- Curtir (Like) Button Centered & Delicate at the bottom -->
+                    <div style="display: flex; justify-content: center; margin: 50px 0 20px 0;">
+                        <button id="like-btn" class="btn-like-premium">
+                            <i class="fa fa-heart" style="color: #ff6b6b;"></i> Curtir Artigo (<span id="ia-likes-detail">52</span>)
+                        </button>
+                    </div>
 
-                    <!-- ==========================================
-                         COMMENTS SECTION (LOCAL ENGINE)
-                         ========================================== -->
-                    <div id="comments-section" class="contact-premium-form" style="padding: 40px; margin-top: 40px;">
-                        <h3 style="margin-top: 0; margin-bottom: 25px; font-size: 1.8rem;"><i class="fa fa-comments" style="color: var(--color-accent-yellow); margin-right: 10px;"></i> Comentários</h3>
+                    <!-- Delicate Comments Section (No heavy forms/boxes) -->
+                    <div id="comments-section" style="margin-top: 50px; border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 40px;">
+                        <h3 style="margin-top: 0; margin-bottom: 25px; font-size: 1.5rem; font-family: 'Outfit', sans-serif; font-weight: 600; color: white;">
+                            <i class="fa fa-comments" style="color: var(--color-accent-yellow); margin-right: 8px;"></i> Comentários
+                        </h3>
                         
                         <!-- List of Comments -->
                         <div id="comments-list" style="margin-bottom: 40px;">
-                            <p style="color: var(--color-text-muted); font-style: italic;" id="no-comments">Nenhum comentário enviado ainda. Seja o primeiro a opinar!</p>
+                            <p style="color: var(--color-text-muted); font-style: italic; font-size: 0.95rem;" id="no-comments">Nenhum comentário enviado ainda. Seja o primeiro a opinar!</p>
                         </div>
 
-                        <!-- Divider -->
-                        <div style="height: 1px; background: rgba(255, 255, 255, 0.05); margin-bottom: 30px;"></div>
-
                         <!-- Add Comment Form -->
-                        <h4 style="color: white; margin-bottom: 20px; font-weight: 600;">Deixe sua Opinião</h4>
-                        <form id="comment-form">
-                            <div class="form-group-premium" style="margin-bottom: 20px;">
-                                <label for="author-name">Nome Completo</label>
-                                <input class="form-control-premium" type="text" id="author-name" required placeholder="Seu nome">
+                        <h4 style="color: white; margin-bottom: 15px; font-weight: 600; font-size: 1.1rem; font-family: 'Outfit', sans-serif;">Deixe sua Opinião</h4>
+                        <form id="comment-form" style="max-width: 600px;">
+                            <div style="margin-bottom: 12px;">
+                                <input class="form-control-premium" type="text" id="author-name" required placeholder="Seu nome" style="padding: 10px 15px; font-size: 0.9rem;">
                             </div>
-                            <div class="form-group-premium" style="margin-bottom: 20px;">
-                                <label for="comment-text">Comentário</label>
-                                <textarea class="form-control-premium" id="comment-text" required rows="5" placeholder="Escreva sua opinião..."></textarea>
+                            <div style="margin-bottom: 12px;">
+                                <textarea class="form-control-premium" id="comment-text" required rows="4" placeholder="Escreva seu comentário..." style="padding: 10px 15px; font-size: 0.9rem; resize: vertical;"></textarea>
                             </div>
-                            <div style="display: flex; gap: 10px;">
-                                <button type="submit" class="btn-premium-primary" style="border: none; padding: 12px 30px; font-size: 0.95rem;">Enviar Comentário</button>
-                            </div>
+                            <button type="submit" class="btn-premium-primary" style="border: none; padding: 10px 24px; font-size: 0.85rem;">Enviar Comentário</button>
                         </form>
                     </div>
 
@@ -359,12 +351,12 @@
                     comments.forEach(function(c) {
                         var dateStr = c.date || 'Recente';
                         var commentHtml = `
-                            <div class="comment-item-box" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 20px; border-radius: var(--border-radius-md); margin-bottom: 15px;">
+                            <div class="comment-item-box" style="border-left: 2px solid var(--color-accent-yellow); background: rgba(255,255,255,0.01); padding: 15px 20px; border-radius: 0 8px 8px 0; margin-bottom: 20px;">
                                 <div style="display: flex; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap;">
-                                    <strong style="color: var(--color-accent-yellow); font-family: 'Outfit', sans-serif;">${c.author}</strong>
-                                    <span style="font-size: 0.8rem; color: var(--color-text-muted);">${dateStr}</span>
+                                    <strong style="color: white; font-family: 'Outfit', sans-serif; font-size: 0.95rem;">${c.author}</strong>
+                                    <span style="font-size: 0.75rem; color: var(--color-text-muted);">${dateStr}</span>
                                 </div>
-                                <p style="margin: 0; color: var(--color-text-body); font-size: 0.95rem; line-height: 1.5;">${c.text}</p>
+                                <p style="margin: 0; color: var(--color-text-body); font-size: 0.9rem; line-height: 1.5;">${c.text}</p>
                             </div>
                         `;
                         list.append(commentHtml);
