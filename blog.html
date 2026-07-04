@@ -269,7 +269,7 @@
 
             function loadPostMetrics(postKey, viewsEl, likesEl, baseViews, baseLikes) {
                 if (COMMENTS_API_URL) {
-                    $.getJSON(COMMENTS_API_URL + '?action=get_metrics&pageId=' + postKey, function(data) {
+                    $.getJSON(COMMENTS_API_URL + '?action=get_metrics&pageId=' + postKey + '&cb=' + new Date().getTime(), function(data) {
                         var views = (parseInt(data.views) || 0) + baseViews;
                         var likes = (parseInt(data.likes) || 0) + baseLikes;
                         $(viewsEl).text(views);
