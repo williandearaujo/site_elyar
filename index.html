@@ -3,143 +3,181 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Elyar Serviços - Dashboards Premium e Análises Impressionantes em Power BI">
+    <meta name="description" content="Elyar Serviços - Dashboards Premium e Análises Impressionantes em Power BI que transformam tomadas de decisão.">
     <meta name="author" content="Elyar Serviços">
     <title>Elyar Serviços | Início</title>
+	
 	<!-- core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/owl.carousel.css" rel="stylesheet">
     <link href="css/owl.transitions.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->       
+    
+    <!-- Premium Stylesheet -->
+    <link href="css/elyar-premium.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/ico/favicon.ico">
-</head><!--/head-->
+</head>
 
-<body id="home" class="homepage">
+<body class="premium-theme">
 
-    <header id="header">
-        <nav id="main-menu" class="navbar navbar-default navbar-fixed-top" role="banner">
+    <!-- ==========================================
+         HEADER
+         ========================================== -->
+    <header id="header" class="premium-nav">
+        <nav class="navbar navbar-default navbar-fixed-top" role="banner" style="background: transparent; border: none;">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="border-color: rgba(255,255,255,0.1);">
                         <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                        <span class="icon-bar" style="background-color: white;"></span>
+                        <span class="icon-bar" style="background-color: white;"></span>
+                        <span class="icon-bar" style="background-color: white;"></span>
                     </button>
                     <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
                 </div>
 				
                 <div class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav nav-menu-list">
                         <li class="active"><a href="index.html">Início</a></li>
                         <li><a href="servicos.html">Serviços</a></li>
                         <li><a href="portfolio.html">Portfólio BI</a></li>
                         <li><a href="contato.html">Contato</a></li>
 						<li><a href="https://elyar.atlassian.net/servicedesk/customer/portal/1" target="_blank">Chamados</a></li>
-						<li><a href="https://wa.me/5511977371257?text=Ol%C3%A1,%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%20Elyar%20Servi%C3%A7os" target="_blank">Whats App</a></li>
+						<li><a href="https://wa.me/5511977371257?text=Ol%C3%A1,%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%20Elyar%20Servi%C3%A7os" target="_blank" style="color: var(--color-accent-cyan) !important;"><i class="fa fa-whatsapp"></i> WhatsApp</a></li>
 					</ul>
                 </div>
             </div><!--/.container-->
         </nav><!--/nav-->
-    </header><!--/header-->
+    </header>
 
-    <section id="main-slider">
-        <div class="owl-carousel">
-            <div class="item" style="background-image: url(images/slider/bg1.jpg);">
-                <div class="slider-inner">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="carousel-content">
-                                    <h2><span>Elyar Serviços</span> <br><br>Análises impressionantes</h2>
-                                    <p>Nossa página esta em construção. </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!--/.item-->
-             <div class="item" style="background-image: url(images/slider/bg2.jpg);">
-                <div class="slider-inner">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="carousel-content">
-                                    <h2><span>Elyar Serviços</span> <br><br>Análises impressionantes</h2>
-                                    <p>Nossa página esta em construção. </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!--/.item-->
-        </div><!--/.owl-carousel-->
-    </section><!--/#main-slider-->
-
-    <section id="cta" class="wow fadeIn">
+    <!-- ==========================================
+         HERO SECTION (BANNER REMAKE)
+         ========================================== -->
+    <section class="premium-hero">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-9">
-                    <h2>Dashboards Premium para sua empresa</h2>
-                    <p>A Elyar Serviços te ajuda na tomada de decisão da sua empresa desenvolvendo belos Dashboards que irão te surpreender.
+            <div class="hero-grid">
+                <div class="hero-text-content">
+                    <span class="hero-badge"><i class="fa fa-chart-line"></i> Business Intelligence & Tecnologia</span>
+                    <h1>Dashboards Premium. <span>Análises Impressionantes.</span></h1>
+                    <p class="hero-desc">
+                        Ajudamos a sua empresa na tomada de decisões estratégicas desenvolvendo dashboards modernos, analíticos e de altíssimo impacto visual em Power BI.
                     </p>
+                    <div class="hero-ctas">
+                        <a href="portfolio.html" class="btn-premium-primary">Ver Portfólio <i class="fa fa-chevron-right"></i></a>
+                        <a href="servicos.html" class="btn-premium-secondary">Nossos Serviços</a>
+                    </div>
                 </div>
-                <div class="col-sm-3 text-right">
+                
+                <div class="hero-visual-content">
+                    <img src="images/elyar_hero_dashboard.png" alt="Dashboard Mockup Premium" class="hero-dashboard-img">
                 </div>
-            </div>
-        </div>
-    </section><!--/#cta-->
-
-    <section id="cta2">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms"><span>POWER BI</span> é criativo, é decisivo.</h2>
-                <img class="img-responsive wow fadeIn" src="images/cta2/cta2-img.png" alt="" data-wow-duration="300ms" data-wow-delay="300ms"> 
             </div>
         </div>
     </section>
 
-    <footer id="footer">
+    <!-- ==========================================
+         METRICS (KPIS)
+         ========================================== -->
+    <section class="metrics-section">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-number">+150</span>
+                    <span class="metric-label">Projetos de BI</span>
+                    <span class="metric-sub">Dashboards desenvolvidos e ativos</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">99.8%</span>
+                    <span class="metric-label">Satisfação Garantida</span>
+                    <span class="metric-sub">Aprovação total por nossos clientes</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">10x</span>
+                    <span class="metric-label">Mais Veloz</span>
+                    <span class="metric-sub">Aceleração no tempo de tomada de decisões</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SERVICES PREVIEW
+         ========================================== -->
+    <section class="premium-section">
+        <div class="container">
+            <div class="premium-section-header">
+                <h2>O Que Fazemos de Melhor</h2>
+                <p>Unimos design de relatórios avançados e manutenção especializada de infraestrutura.</p>
+            </div>
+            
+            <div class="services-premium-grid">
+                <!-- Power BI -->
+                <div class="service-premium-card">
+                    <div class="service-icon-box"><i class="fa fa-line-chart"></i></div>
+                    <h3>Business Intelligence & Power BI</h3>
+                    <p>
+                        Acesse indicadores e KPIs em tempo real, integre diversas fontes de dados e tome decisões de forma ágil e segura, através de painéis responsivos e customizados.
+                    </p>
+                    <ul class="service-tags">
+                        <li>DAX Avançado</li>
+                        <li>Modelagem de Dados</li>
+                        <li>ETL & Power Query</li>
+                    </ul>
+                </div>
+                
+                <!-- Computer Support -->
+                <div class="service-premium-card">
+                    <div class="service-icon-box"><i class="fa fa-laptop"></i></div>
+                    <h3>Análise e Upgrade de Hardware</h3>
+                    <p>
+                        Suporte de TI completo para os computadores da sua empresa. Formatação, upgrades de memória/SSD e reparação para manter sua equipe focada e produtiva.
+                    </p>
+                    <ul class="service-tags">
+                        <li>Formatação</li>
+                        <li>Upgrade de Componentes</li>
+                        <li>Manutenção Preventiva</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer id="footer" class="premium-footer">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-6" style="color: var(--color-text-body);">
                     &copy; 2026 Todos os direitos reservados a Elyar Serviços.
                 </div>
                 <div class="col-sm-6">
-                    <ul class="social-icons">
+                    <ul class="social-icons" style="margin-top: 0;">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        <li><a href="#"><i class="fa fa-flickr"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
                         <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                         <li><a href="#"><i class="fa fa-github"></i></a></li>
                     </ul>
                 </div>
             </div>
         </div>
-    </footer><!--/#footer-->
+    </footer>
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/mousescroll.js"></script>
-    <script src="js/smoothscroll.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/jquery.inview.min.js"></script>
     <script src="js/wow.min.js"></script>
-    <script src="js/main.js"></script>
+    <script>
+        // Sticky Header scroll script
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>

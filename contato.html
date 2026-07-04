@@ -6,123 +6,154 @@
     <meta name="description" content="Informações de Contato - Elyar Serviços">
     <meta name="author" content="Elyar Serviços">
     <title>Contato | Elyar Serviços</title>
+	
 	<!-- core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/owl.transitions.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->       
+    
+    <!-- Premium Stylesheet -->
+    <link href="css/elyar-premium.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/ico/favicon.ico">
-</head><!--/head-->
+</head>
 
-<body id="home" class="homepage">
+<body class="premium-theme">
 
-    <header id="header">
-        <nav id="main-menu" class="navbar navbar-default navbar-fixed-top" role="banner">
+    <!-- ==========================================
+         HEADER
+         ========================================== -->
+    <header id="header" class="premium-nav scrolled">
+        <nav class="navbar navbar-default navbar-fixed-top" role="banner" style="background: transparent; border: none;">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="border-color: rgba(255,255,255,0.1);">
                         <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                        <span class="icon-bar" style="background-color: white;"></span>
+                        <span class="icon-bar" style="background-color: white;"></span>
+                        <span class="icon-bar" style="background-color: white;"></span>
                     </button>
                     <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
                 </div>
 				
                 <div class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav nav-menu-list">
                         <li><a href="index.html">Início</a></li>
                         <li><a href="servicos.html">Serviços</a></li>
                         <li><a href="portfolio.html">Portfólio BI</a></li>
                         <li class="active"><a href="contato.html">Contato</a></li>
 						<li><a href="https://elyar.atlassian.net/servicedesk/customer/portal/1" target="_blank">Chamados</a></li>
-						<li><a href="https://wa.me/5511977371257?text=Ol%C3%A1,%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%20Elyar%20Servi%C3%A7os" target="_blank">Whats App</a></li>
+						<li><a href="https://wa.me/5511977371257?text=Ol%C3%A1,%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%20Elyar%20Servi%C3%A7os" target="_blank" style="color: var(--color-accent-cyan) !important;"><i class="fa fa-whatsapp"></i> WhatsApp</a></li>
 					</ul>
                 </div>
             </div><!--/.container-->
         </nav><!--/nav-->
-    </header><!--/header-->
+    </header>
 
-    <section id="contact" style="padding-top: 80px;">
-        <div id="google-map" style="height:650px" data-latitude="-23.448638314057206" data-longitude="-46.526198773317475"></div>
-        <div class="container-wrapper" style="height:650px">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-4 col-sm-offset-8">
-					    <div class="contact-form">
-                            <h3>Informações de contato</h3>
-
-                            <address>
-                              <strong>Elyar Serviços</strong><br>
-                              Jd Paraventi<br>
-                              Guarulhos, São Paulo<br>
-                              <abbr title="Phone">Tel:</abbr> (11) 9.7737-1257
-                            </address>
-
-                            <form id="main-contact-form" name="contact-form" method="post" action="#">
-                                <div class="form-group">
-                                    <input type="text" name="name" class="form-control" placeholder="Nome completo" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="subject" class="form-control" placeholder="Assunto" required>
-                                </div>
-                                <div class="form-group">
-                                    <textarea name="message" class="form-control" rows="8" placeholder="Att, este formulário ainda não está operando favor enviar mensagem para contato@elyar.com.br" required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
-                            </form>
+    <!-- ==========================================
+         CONTACT CONTENT
+         ========================================== -->
+    <section class="premium-section" style="padding-top: 140px;">
+        <div class="container">
+            <div class="contact-premium-grid">
+                
+                <!-- Left Details -->
+                <div class="contact-details-premium">
+                    <h3>Fale Conosco</h3>
+                    <p>Estamos prontos para atender as demandas tecnológicas e de inteligência da sua organização.</p>
+                    
+                    <div class="detail-item-premium">
+                        <div class="detail-icon-premium"><i class="fa fa-map-marker"></i></div>
+                        <div class="detail-text-premium">
+                            <h4>Localização</h4>
+                            <p>Jd Paraventi - Guarulhos, São Paulo</p>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item-premium">
+                        <div class="detail-icon-premium"><i class="fa fa-envelope"></i></div>
+                        <div class="detail-text-premium">
+                            <h4>E-mail</h4>
+                            <p>contato@elyar.com.br</p>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item-premium">
+                        <div class="detail-icon-premium"><i class="fa fa-phone"></i></div>
+                        <div class="detail-text-premium">
+                            <h4>Telefone / WhatsApp</h4>
+                            <p>(11) 9.7737-1257</p>
                         </div>
                     </div>
                 </div>
+
+                <!-- Right Form -->
+                <div class="contact-premium-form">
+                    <h3>Envie uma Mensagem</h3>
+                    <form id="main-contact-form" name="contact-form" method="post" action="#">
+                        <div class="form-group-premium">
+                            <label for="name">Nome Completo</label>
+                            <input class="form-control-premium" type="text" id="name" name="name" required placeholder="Seu nome">
+                        </div>
+                        <div class="form-group-premium">
+                            <label for="email">E-mail Corporativo</label>
+                            <input class="form-control-premium" type="email" id="email" name="email" required placeholder="Seu e-mail">
+                        </div>
+                        <div class="form-group-premium">
+                            <label for="subject">Assunto</label>
+                            <input class="form-control-premium" type="text" id="subject" name="subject" required placeholder="Assunto da mensagem">
+                        </div>
+                        <div class="form-group-premium">
+                            <label for="message">Mensagem</label>
+                            <textarea class="form-control-premium" id="message" name="message" required placeholder="Att, este formulário ainda não está operando favor enviar mensagem para contato@elyar.com.br"></textarea>
+                        </div>
+                        <button type="submit" class="btn-premium-primary" style="width: 100%; justify-content: center;">Enviar Mensagem</button>
+                    </form>
+                </div>
+
             </div>
         </div>
-    </section><!--/#contact-->
+    </section>
 
-    <footer id="footer">
+    <!-- Map Section -->
+    <section style="margin-top: 80px;">
+        <div id="google-map" style="height:450px" data-latitude="-23.448638314057206" data-longitude="-46.526198773317475"></div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer id="footer" class="premium-footer">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-6" style="color: var(--color-text-body);">
                     &copy; 2026 Todos os direitos reservados a Elyar Serviços.
                 </div>
                 <div class="col-sm-6">
-                    <ul class="social-icons">
+                    <ul class="social-icons" style="margin-top: 0;">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        <li><a href="#"><i class="fa fa-flickr"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
                         <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                         <li><a href="#"><i class="fa fa-github"></i></a></li>
                     </ul>
                 </div>
             </div>
         </div>
-    </footer><!--/#footer-->
+    </footer>
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="https://maps.google.com/maps/api/js?sensor=true"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/mousescroll.js"></script>
-    <script src="js/smoothscroll.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/jquery.inview.min.js"></script>
     <script src="js/wow.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        const mobileNavToggle = document.querySelector('.navbar-toggle');
+        const navMenu = document.querySelector('.navbar-collapse');
+
+        mobileNavToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('in');
+        });
+    </script>
 </body>
 </html>

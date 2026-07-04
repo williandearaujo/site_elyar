@@ -6,185 +6,197 @@
     <meta name="description" content="Nossos Exemplos e Portfólio de Dashboards BI - Elyar Serviços">
     <meta name="author" content="Elyar Serviços">
     <title>Portfólio BI | Elyar Serviços</title>
+	
 	<!-- core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/owl.transitions.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->       
+    
+    <!-- Premium Stylesheet -->
+    <link href="css/elyar-premium.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/ico/favicon.ico">
-</head><!--/head-->
+</head>
 
-<body id="home" class="homepage">
+<body class="premium-theme">
 
-    <header id="header">
-        <nav id="main-menu" class="navbar navbar-default navbar-fixed-top" role="banner">
+    <!-- ==========================================
+         HEADER
+         ========================================== -->
+    <header id="header" class="premium-nav scrolled">
+        <nav class="navbar navbar-default navbar-fixed-top" role="banner" style="background: transparent; border: none;">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="border-color: rgba(255,255,255,0.1);">
                         <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                        <span class="icon-bar" style="background-color: white;"></span>
+                        <span class="icon-bar" style="background-color: white;"></span>
+                        <span class="icon-bar" style="background-color: white;"></span>
                     </button>
                     <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
                 </div>
 				
                 <div class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav nav-menu-list">
                         <li><a href="index.html">Início</a></li>
                         <li><a href="servicos.html">Serviços</a></li>
                         <li class="active"><a href="portfolio.html">Portfólio BI</a></li>
                         <li><a href="contato.html">Contato</a></li>
 						<li><a href="https://elyar.atlassian.net/servicedesk/customer/portal/1" target="_blank">Chamados</a></li>
-						<li><a href="https://wa.me/5511977371257?text=Ol%C3%A1,%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%20Elyar%20Servi%C3%A7os" target="_blank">Whats App</a></li>
+						<li><a href="https://wa.me/5511977371257?text=Ol%C3%A1,%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%20Elyar%20Servi%C3%A7os" target="_blank" style="color: var(--color-accent-cyan) !important;"><i class="fa fa-whatsapp"></i> WhatsApp</a></li>
 					</ul>
                 </div>
             </div><!--/.container-->
         </nav><!--/nav-->
-    </header><!--/header-->
+    </header>
 
-    <section id="portfolio" style="padding-top: 140px; min-height: 80vh;">
+    <!-- ==========================================
+         PORTFOLIO SECTION
+         ========================================== -->
+    <section class="premium-section" style="padding-top: 160px; min-height: 90vh;">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title text-center wow fadeInDown">Nossos Exemplos</h2>
-                <p class="text-center wow fadeInDown">Veja o que sua empresa pode ter:
-				<br>
-				*Obs: Todos os dados aqui apresentados são fictícios.</p>
+            <div class="premium-section-header">
+                <h2>Portfólio de Dashboards</h2>
+                <p>Navegue pelos nossos projetos demonstrativos de business intelligence desenvolvidos para diferentes áreas de negócios.</p>
             </div>
 
+            <!-- Filters -->
             <div class="text-center">
-                <ul class="portfolio-filter">
-                    <li><a class="active" href="#" data-filter="*">Todas Dashboards</a></li>
-                    <li><a href="#" data-filter=".creative">Vendas</a></li>
-                    <li><a href="#" data-filter=".logistica">Logistica</a></li>
-                    <li><a href="#" data-filter=".portfolio">Recursos Humanos</a></li>
-					<li><a href="#" data-filter=".financeiro">Financeiro</a></li>
-					<li><a href="#" data-filter=".outros">Outros</a></li>
-                </ul><!--/#portfolio-filter-->
+                <ul class="portfolio-filter filter-premium-nav">
+                    <li><a class="filter-premium-btn active" href="#" data-filter="*">Todas Dashboards</a></li>
+                    <li><a class="filter-premium-btn" href="#" data-filter=".creative">Vendas</a></li>
+                    <li><a class="filter-premium-btn" href="#" data-filter=".logistica">Logística</a></li>
+                    <li><a class="filter-premium-btn" href="#" data-filter=".portfolio">Recursos Humanos</a></li>
+					<li><a class="filter-premium-btn" href="#" data-filter=".financeiro">Financeiro</a></li>
+					<li><a class="filter-premium-btn" href="#" data-filter=".outros">Outros</a></li>
+                </ul>
             </div>
 
-            <div class="portfolio-items">
-                <div class="portfolio-item creative">
-                    <div class="portfolio-item-inner">
-                        <img class="img-responsive" src="images/portfolio/01.png" alt="">
-                        <div class="portfolio-info">
-                            <h3>Portfolio Vendas</h3>
-                            Material de exemplo
-                            <a class="preview" href="https://app.powerbi.com/view?r=eyJrIjoiNTlhMzZlMzktZDJhOS00NjY3LTlkODQtZjcwMzA2NWNiMTQxIiwidCI6ImY1NjYwNjA5LTg2MDktNGJiZi1iYjRlLTE2YjlmNWY0MWM3NyJ9" target="blank"><i class="fa fa-eye"></i></a>
+            <!-- Items Grid -->
+            <div class="portfolio-items portfolio-premium-grid">
+                
+                <!-- Vendas 1 -->
+                <div class="col-md-4 col-sm-6 portfolio-item creative portfolio-premium-item">
+                    <div class="portfolio-premium-card">
+                        <img src="images/portfolio/01.png" alt="Portfolio Vendas">
+                        <div class="portfolio-premium-overlay">
+                            <h3>Portfólio Vendas</h3>
+                            <p>Análise de faturamento, metas, representantes e comissões corporativas.</p>
+                            <a class="view-btn" href="https://app.powerbi.com/view?r=eyJrIjoiNTlhMzZlMzktZDJhOS00NjY3LTlkODQtZjcwMzA2NWNiMTQxIiwidCI6ImY1NjYwNjA5LTg2MDktNGJiZi1iYjRlLTE2YjlmNWY0MWM3NyJ9" target="_blank"><i class="fa fa-eye"></i></a>
                         </div>
                     </div>
-                </div><!--/.portfolio-item-->
+                </div>
 
-                <div class="portfolio-item portfolio">
-                    <div class="portfolio-item-inner">
-                        <img class="img-responsive" src="images/portfolio/02.png" alt="">
-                        <div class="portfolio-info">
-                            <h3>Portfolio Recursos Humanos</h3>
-                            Material de exemplo
-                            <a class="preview" href="https://app.powerbi.com/view?r=eyJrIjoiZTBjYzJlYzAtOTU4Yi00N2ZhLWIzMWQtZGUyY2QyNDU3NzZjIiwidCI6ImY1NjYwNjA5LTg2MDktNGJiZi1iYjRlLTE2YjlmNWY0MWM3NyJ9" target="blank"><i class="fa fa-eye"></i></a>
+                <!-- Recursos Humanos -->
+                <div class="col-md-4 col-sm-6 portfolio-item portfolio portfolio-premium-item">
+                    <div class="portfolio-premium-card">
+                        <img src="images/portfolio/02.png" alt="Portfolio Recursos Humanos">
+                        <div class="portfolio-premium-overlay">
+                            <h3>Portfólio Recursos Humanos</h3>
+                            <p>Indicadores de turnover, absenteísmo, head-count e folha de pagamentos.</p>
+                            <a class="view-btn" href="https://app.powerbi.com/view?r=eyJrIjoiZTBjYzJlYzAtOTU4Yi00N2ZhLWIzMWQtZGUyY2QyNDU3NzZjIiwidCI6ImY1NjYwNjA5LTg2MDktNGJiZi1iYjRlLTE2YjlmNWY0MWM3NyJ9" target="_blank"><i class="fa fa-eye"></i></a>
                         </div>
                     </div>
-                </div><!--/.portfolio-item-->
+                </div>
 
-                <div class="portfolio-item financeiro">
-                    <div class="portfolio-item-inner">
-                        <img class="img-responsive" src="images/portfolio/03.png" alt="">
-                        <div class="portfolio-info">
-                            <h3>Portfolio Financeiro</h3>
-                            Material de Exemplo
-                            <a class="preview" href="https://app.powerbi.com/view?r=eyJrIjoiNDE5YmVjZjMtYThjZi00NmVhLWI2YjQtYzk3ZDEzMGQ3ZGZmIiwidCI6ImY1NjYwNjA5LTg2MDktNGJiZi1iYjRlLTE2YjlmNWY0MWM3NyJ9" target="blank"><i class="fa fa-eye"></i></a>
+                <!-- Financeiro 1 -->
+                <div class="col-md-4 col-sm-6 portfolio-item financeiro portfolio-premium-item">
+                    <div class="portfolio-premium-card">
+                        <img src="images/portfolio/03.png" alt="Portfolio Financeiro 1">
+                        <div class="portfolio-premium-overlay">
+                            <h3>Portfólio Financeiro I</h3>
+                            <p>Fluxo de caixa, DRE estruturado, contas a pagar e receber analítico.</p>
+                            <a class="view-btn" href="https://app.powerbi.com/view?r=eyJrIjoiNDE5YmVjZjMtYThjZi00NmVhLWI2YjQtYzk3ZDEzMGQ3ZGZmIiwidCI6ImY1NjYwNjA5LTg2MDktNGJiZi1iYjRlLTE2YjlmNWY0MWM3NyJ9" target="_blank"><i class="fa fa-eye"></i></a>
                         </div>
                     </div>
-                </div><!--/.portfolio-item-->
+                </div>
 
-                <div class="portfolio-item financeiro">
-                    <div class="portfolio-item-inner">
-                        <img class="img-responsive" src="images/portfolio/04.png" alt="">
-                        <div class="portfolio-info">
-                            <h3>Portifolio financeiro</h3>
-                            Material de exemplo
-                            <a class="preview" href="https://app.powerbi.com/view?r=eyJrIjoiZWU3NmY1ZmUtMzRhNS00OTE1LWFiZTMtNzliZmQ3NWNlODI3IiwidCI6ImY1NjYwNjA5LTg2MDktNGJiZi1iYjRlLTE2YjlmNWY0MWM3NyJ9" target="blank"><i class="fa fa-eye"></i></a>
+                <!-- Financeiro 2 -->
+                <div class="col-md-4 col-sm-6 portfolio-item financeiro portfolio-premium-item">
+                    <div class="portfolio-premium-card">
+                        <img src="images/portfolio/04.png" alt="Portfolio Financeiro 2">
+                        <div class="portfolio-premium-overlay">
+                            <h3>Portfólio Financeiro II</h3>
+                            <p>Gestão de custos fixos/variáveis, investimentos e projeções de margem.</p>
+                            <a class="view-btn" href="https://app.powerbi.com/view?r=eyJrIjoiZWU3NmY1ZmUtMzRhNS00OTE1LWFiZTMtNzliZmQ3NWNlODI3IiwidCI6ImY1NjYwNjA5LTg2MDktNGJiZi1iYjRlLTE2YjlmNWY0MWM3NyJ9" target="_blank"><i class="fa fa-eye"></i></a>
                         </div>
                     </div>
-                </div><!--/.portfolio-item-->
+                </div>
 
-                <div class="portfolio-item logistica">
-                    <div class="portfolio-item-inner">
-                        <img class="img-responsive" src="images/portfolio/05.png" alt="">
-                        <div class="portfolio-info">
-                            <h3>Portfolio Logistica</h3>
-                            Material de exemplo
-                            <a class="preview" href="https://app.powerbi.com/view?r=eyJrIjoiY2I4MWJkYmYtOTgwMC00NmQwLWI1ZjQtZjBkM2JhZmRlMmYyIiwidCI6ImY1NjYwNjA5LTg2MDktNGJiZi1iYjRlLTE2YjlmNWY0MWM3NyJ9" target="blank"><i class="fa fa-eye"></i></a>
+                <!-- Logística -->
+                <div class="col-md-4 col-sm-6 portfolio-item logistica portfolio-premium-item">
+                    <div class="portfolio-premium-card">
+                        <img src="images/portfolio/05.png" alt="Portfolio Logística">
+                        <div class="portfolio-premium-overlay">
+                            <h3>Portfólio Logística</h3>
+                            <p>Mapeamento de rotas, tempos de entrega, fretes e taxas de devolução.</p>
+                            <a class="view-btn" href="https://app.powerbi.com/view?r=eyJrIjoiY2I4MWJkYmYtOTgwMC00NmQwLWI1ZjQtZjBkM2JhZmRlMmYyIiwidCI6ImY1NjYwNjA5LTg2MDktNGJiZi1iYjRlLTE2YjlmNWY0MWM3NyJ9" target="_blank"><i class="fa fa-eye"></i></a>
                         </div>
                     </div>
-                </div><!--/.portfolio-item-->
+                </div>
 
-                <div class="portfolio-item outros">
-                    <div class="portfolio-item-inner">
-                        <img class="img-responsive" src="images/portfolio/06.png" alt="">
-                        <div class="portfolio-info">
-                            <h3>Portfolio Outros</h3>
-                            Material de exemplo
-                            <a class="preview" href="https://app.powerbi.com/view?r=eyJrIjoiNTFlOTYzOWUtYWUxYi00MTVhLWI3MjktMzdiMDRmMGI0NWM2IiwidCI6ImY1NjYwNjA5LTg2MDktNGJiZi1iYjRlLTE2YjlmNWY0MWM3NyJ9" target="blank"><i class="fa fa-eye"></i></a>
+                <!-- Outros -->
+                <div class="col-md-4 col-sm-6 portfolio-item outros portfolio-premium-item">
+                    <div class="portfolio-premium-card">
+                        <img src="images/portfolio/06.png" alt="Portfolio Outros">
+                        <div class="portfolio-premium-overlay">
+                            <h3>Portfólio Outros</h3>
+                            <p>Análises diversas, pesquisas mercadológicas e diagnósticos customizados.</p>
+                            <a class="view-btn" href="https://app.powerbi.com/view?r=eyJrIjoiNTFlOTYzOWUtYWUxYi00MTVhLWI3MjktMzdiMDRmMGI0NWM2IiwidCI6ImY1NjYwNjA5LTg2MDktNGJiZi1iYjRlLTE2YjlmNWY0MWM3NyJ9" target="_blank"><i class="fa fa-eye"></i></a>
                         </div>
                     </div>
-                </div><!--/.portfolio-item-->
+                </div>
 				
-				 <div class="portfolio-item financeiro">
-                    <div class="portfolio-item-inner">
-                        <img class="img-responsive" src="images/portfolio/09.png" alt="">
-                        <div class="portfolio-info">
-                            <h3>Portfolio Financeiro</h3>
-                            Material de exemplo
-                            <a class="preview" href="https://app.powerbi.com/view?r=eyJrIjoiYWU2M2UzODItMjQ2OC00MWVkLWFhODctZGNkMzA4YzZjNjhjIiwidCI6ImY1NjYwNjA5LTg2MDktNGJiZi1iYjRlLTE2YjlmNWY0MWM3NyJ9" target="blank"><i class="fa fa-eye"></i></a>
+                <!-- Financeiro 3 -->
+				 <div class="col-md-4 col-sm-6 portfolio-item financeiro portfolio-premium-item">
+                    <div class="portfolio-premium-card">
+                        <img src="images/portfolio/09.png" alt="Portfolio Financeiro 3">
+                        <div class="portfolio-premium-overlay">
+                            <h3>Portfólio Financeiro III</h3>
+                            <p>Faturamento consolidado, auditorias internas e análises de rentabilidade.</p>
+                            <a class="view-btn" href="https://app.powerbi.com/view?r=eyJrIjoiYWU2M2UzODItMjQ2OC00MWVkLWFhODctZGNkMzA4YzZjNjhjIiwidCI6ImY1NjYwNjA5LTg2MDktNGJiZi1iYjRlLTE2YjlmNWY0MWM3NyJ9" target="_blank"><i class="fa fa-eye"></i></a>
                         </div>
                     </div>
-                </div><!--/.portfolio-item-->
+                </div>
+
 			</div>
         </div><!--/.container-->
     </section><!--/#portfolio-->
 
-    <footer id="footer">
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer id="footer" class="premium-footer">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-6" style="color: var(--color-text-body);">
                     &copy; 2026 Todos os direitos reservados a Elyar Serviços.
                 </div>
                 <div class="col-sm-6">
-                    <ul class="social-icons">
+                    <ul class="social-icons" style="margin-top: 0;">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        <li><a href="#"><i class="fa fa-flickr"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
                         <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                         <li><a href="#"><i class="fa fa-github"></i></a></li>
                     </ul>
                 </div>
             </div>
         </div>
-    </footer><!--/#footer-->
+    </footer>
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/mousescroll.js"></script>
-    <script src="js/smoothscroll.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/jquery.inview.min.js"></script>
     <script src="js/wow.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        const mobileNavToggle = document.querySelector('.navbar-toggle');
+        const navMenu = document.querySelector('.navbar-collapse');
+
+        mobileNavToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('in');
+        });
+    </script>
 </body>
 </html>
