@@ -6,26 +6,34 @@
       ==========================================================================
       1. Crie uma cópia deste arquivo e renomeie-a (ex: 'blog-meu-novo-artigo.html').
       
-      2. Edite os metadados abaixo:
+      2. Salve a imagem de cabeçalho do artigo na pasta 'images/blog/' (ex: 'meu_novo_artigo.png').
+         No HTML, altere o atributo src da imagem para apontar para o seu arquivo:
+         <img src="images/blog/meu_novo_artigo.png" ...>
+      
+      3. Edite os metadados abaixo:
          - Altere o <title> (ex: "Meu Título | Blog Elyar Serviços")
          - Altere a <meta name="description"> com um resumo atrativo.
          - Atualize a tag <meta name="keywords"> com palavras-chave sobre o seu tema.
          - Remova a tag <meta name="robots" content="noindex, nofollow"> para liberar indexação no Google.
          
-      3. No corpo do HTML:
+      4. No corpo do HTML:
          - Altere a data, autor, categoria e título no bloco "ARTICLE META HEADER".
          - Escreva o texto no bloco "RICH CONTENT" usando tags <p>, <ul>, <li>, <h3>, <h4> e <blockquote>.
          
-      4. Configure as Chaves do Script no final da página (Linha ~240):
+      5. Configure as Chaves do Script no final da página (Linha ~240):
          - Troque o valor de 'blog_views_TEMPLATE_ID' para um ID exclusivo do seu post (ex: 'blog_views_projeto_bi').
+         - Troque o valor de 'blog_likes_TEMPLATE_ID' para o seu ID exclusivo (ex: 'blog_likes_projeto_bi').
+         - Troque o valor de 'blog_liked_TEMPLATE_ID' para o seu ID exclusivo (ex: 'blog_liked_projeto_bi').
          - Troque o valor de 'blog_comments_TEMPLATE_ID' para o mesmo ID exclusivo (ex: 'blog_comments_projeto_bi').
-         - Isso garante que a contagem de visitas e comentários desse novo post sejam independentes!
+         - Altere os valores iniciais caso queira (ex: views padrão 100, likes padrão 30).
+         - Isso garante que a contagem de visitas, curtidas e comentários desse novo post sejam independentes!
          
-      5. Vincule o artigo no painel 'blog.html':
+      6. Vincule o artigo no painel 'blog.html':
          - Abra o arquivo 'blog.html'.
          - Copie um card de post anterior.
          - Altere os links para apontar para o seu novo arquivo (ex: 'blog-meu-novo-artigo.html').
-         - Atualize o ID de visualizações '#ia-views-count' no HTML e no script inferior de 'blog.html' 
+         - Altere a imagem do card para a imagem correspondente.
+         - Atualize os IDs de visualizações e likes no script inferior de 'blog.html' 
            para o novo ID exclusivo, permitindo que a quantidade de leituras seja exibida na Home do Blog.
       ==========================================================================
     -->
@@ -52,6 +60,43 @@
     <meta property="og:title" content="Título do Artigo | Blog Elyar Serviços">
     <meta property="og:description" content="RESUMO_DO_SEU_ARTIGO_AQUI">
     <meta property="og:image" content="https://elyar.com.br/images/logo_real.png">
+    
+    <style>
+        .btn-like {
+            background: rgba(255, 255, 255, 0.02) !important;
+            border: 1px solid rgba(255, 255, 255, 0.06) !important;
+            padding: 8px 18px !important;
+            border-radius: 30px !important;
+            color: var(--color-text-body) !important;
+            cursor: pointer !important;
+            transition: var(--transition-smooth) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            outline: none !important;
+        }
+        .btn-like:hover {
+            color: #ff6b6b !important;
+            border-color: rgba(255, 107, 107, 0.3) !important;
+            background: rgba(255, 107, 107, 0.05) !important;
+            transform: translateY(-2px);
+        }
+        .btn-like.liked {
+            color: white !important;
+            background: #ff6b6b !important;
+            border-color: #ff6b6b !important;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.35) !important;
+        }
+        .btn-like.liked i {
+            color: white !important;
+            animation: heartBeat 0.4s ease;
+        }
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+    </style>
 </head>
 
 <body class="premium-theme">
@@ -98,14 +143,25 @@
     <section class="premium-section" style="padding-top: 160px; min-height: 90vh; padding-bottom: 80px;">
         <div class="container">
             <!-- Back to Blog Button -->
-            <div style="margin-bottom: 30px;">
+            <div style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
                 <a href="blog.html" class="btn-premium-secondary" style="padding: 8px 20px; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; border-radius: 30px;">
                     <i class="fa fa-arrow-left"></i> Voltar para o Blog
                 </a>
+                
+                <!-- Curtir (Like) Button -->
+                <button id="like-btn" class="btn-like">
+                    <i class="fa fa-heart" style="color: #ff6b6b;"></i> Curtir Artigo (<span id="article-likes-detail">30</span>)
+                </button>
             </div>
 
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
+                    
+                    <!-- Article Banner Image -->
+                    <div style="position: relative; overflow: hidden; height: 380px; border-radius: var(--border-radius-lg); border: 1px solid rgba(255,255,255,0.05); margin-bottom: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.6);">
+                        <img src="images/blog/blog_placeholder.png" alt="Título do Artigo Banner" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+
                     <!-- Article Meta Header -->
                     <div style="margin-bottom: 30px;">
                         <span class="hero-badge" style="margin-bottom: 15px;">CATEGORIA_DO_ARTIGO</span>
@@ -183,7 +239,9 @@
                                 <label for="comment-text">Comentário</label>
                                 <textarea class="form-control-premium" id="comment-text" required rows="5" placeholder="Escreva sua opinião..."></textarea>
                             </div>
-                            <button type="submit" class="btn-premium-primary" style="border: none; padding: 12px 30px; font-size: 0.95rem;">Enviar Comentário</button>
+                            <div style="display: flex; gap: 10px;">
+                                <button type="submit" class="btn-premium-primary" style="border: none; padding: 12px 30px; font-size: 0.95rem;">Enviar Comentário</button>
+                            </div>
                         </form>
                     </div>
 
@@ -263,12 +321,38 @@
             // Exemplo: 'projeto_bi', 'seguranca_soc', etc.
             var viewsKey = 'blog_views_TEMPLATE_ID';
             var commentsKey = 'blog_comments_TEMPLATE_ID';
+            var likesKey = 'blog_likes_TEMPLATE_ID';
+            var likedKey = 'blog_liked_TEMPLATE_ID';
 
             // Increment visualizador
             var views = parseInt(localStorage.getItem(viewsKey) || 100);
             views += 1;
             localStorage.setItem(viewsKey, views);
             $('#article-views-detail').text(views);
+
+            // Likes Engine
+            var likes = parseInt(localStorage.getItem(likesKey) || 30);
+            if (!localStorage.getItem(likesKey)) localStorage.setItem(likesKey, 30);
+            $('#article-likes-detail').text(likes);
+
+            if (localStorage.getItem(likedKey) === 'true') {
+                $('#like-btn').addClass('liked');
+            }
+
+            $('#like-btn').click(function() {
+                if (localStorage.getItem(likedKey) === 'true') {
+                    likes -= 1;
+                    localStorage.setItem(likesKey, likes);
+                    localStorage.setItem(likedKey, 'false');
+                    $(this).removeClass('liked');
+                } else {
+                    likes += 1;
+                    localStorage.setItem(likesKey, likes);
+                    localStorage.setItem(likedKey, 'true');
+                    $(this).addClass('liked');
+                }
+                $('#article-likes-detail').text(likes);
+            });
 
             // Comments Engine
             function loadComments() {
