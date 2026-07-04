@@ -271,7 +271,7 @@
                 if (COMMENTS_API_URL) {
                     $.ajax({
                         url: COMMENTS_API_URL,
-                        method: 'POST',
+                        dataType: 'jsonp',
                         data: {
                             action: 'get_metrics',
                             pageId: postKey

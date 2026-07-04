@@ -322,7 +322,7 @@
                 if (DEPOIMENTOS_API_URL) {
                     $.ajax({
                         url: DEPOIMENTOS_API_URL,
-                        method: 'POST',
+                        dataType: 'jsonp',
                         data: {
                             action: 'get_testimonials'
                         },
@@ -507,16 +507,25 @@
                     if (DEPOIMENTOS_API_URL) {
                         $.ajax({
                             url: DEPOIMENTOS_API_URL,
-                            method: 'POST',
-                            data: testimonialData,
+                            dataType: 'jsonp',
+                            data: {
+                                action: 'add_testimonial',
+                                name: name,
+                                service: service,
+                                rating: rating,
+                                text: text,
+                                date: dateFormatted
+                            },
                             beforeSend: function() {
                                 $('#new-testimonial-form button[type="submit"]').prop('disabled', true).text('Enviando...');
+                            },
+                            success: function(data) {
+                                showSuccessFeedback();
+                            },
+                            error: function() {
+                                alert('Erro de conexão com o banco de dados. Tentando salvar localmente...');
+                                saveLocal(testimonialData);
                             }
-                        }).done(function() {
-                            showSuccessFeedback();
-                        }).fail(function() {
-                            alert('Erro de conexão com o banco de dados. Tentando salvar localmente...');
-                            saveLocal(testimonialData);
                         }).always(function() {
                             $('#new-testimonial-form button[type="submit"]').prop('disabled', false).text('Publicar Avaliação');
                         });

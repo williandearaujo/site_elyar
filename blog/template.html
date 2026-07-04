@@ -335,10 +335,10 @@
             
             function loadMetrics() {
                 if (COMMENTS_API_URL) {
-                    // Fetch and increment view count on load via POST to avoid CORS GET redirect blocks
+                    // Fetch and increment view count on load via JSONP (CORS-proof)
                     $.ajax({
                         url: COMMENTS_API_URL,
-                        method: 'POST',
+                        dataType: 'jsonp',
                         data: {
                             action: 'get_metrics',
                             increment: 'true',
@@ -383,7 +383,7 @@
                 if (COMMENTS_API_URL) {
                     $.ajax({
                         url: COMMENTS_API_URL,
-                        method: 'POST',
+                        dataType: 'jsonp',
                         data: {
                             action: 'like',
                             pageId: viewsKey
