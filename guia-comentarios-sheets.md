@@ -1,6 +1,6 @@
 # Guia: Comentários e Métricas Globais (Visitas/Curtidas) no Google Sheets
 
-Para que as **visualizações (visitas) e curtidas (likes)** de cada artigo do blog sejam globais e atualizadas em tempo real para todos os usuários da internet (e não salvas apenas no navegador de cada visitante individual), você pode utilizar a mesma planilha do **Google Sheets** que configurou para os comentários.
+Para que as **visualizações (visitas)** e as **curtidas (likes)** de cada artigo do blog sejam globais e atualizadas em tempo real para todos os usuários da internet (e não salvas apenas no navegador de cada visitante individual), você pode utilizar a mesma planilha do **Google Sheets** que configurou para os comentários.
 
 O código abaixo gerencia de forma unificada os comentários (na aba `Comentarios`) e as visitas/curtidas (na aba `Metricas` que o script criará automaticamente para você).
 
@@ -9,7 +9,7 @@ O código abaixo gerencia de forma unificada os comentários (na aba `Comentario
 ## 💻 Passo 1: Atualizar o Código no Apps Script
 1. Abra a sua planilha `Elyar Blog - Comentários` no Google Drive.
 2. Vá em **Extensões > Apps Script**.
-3. Substitua todo o código existente no editor pelo código unificado abaixo:
+3. Substitua todo o código existente no editor pelo código unificado abaixo (removemos a chamada de cabeçalho incompatível com o Google):
 
 ```javascript
 function doGet(e) {
@@ -53,8 +53,7 @@ function doGet(e) {
     }
     
     return ContentService.createTextOutput(JSON.stringify({ views: views, likes: likes }))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeader('Access-Control-Allow-Origin', '*');
+      .setMimeType(ContentService.MimeType.JSON);
   }
   
   // -------------------------------------------------------------
@@ -76,8 +75,7 @@ function doGet(e) {
   }
   
   return ContentService.createTextOutput(JSON.stringify(comments))
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeader('Access-Control-Allow-Origin', '*');
+    .setMimeType(ContentService.MimeType.JSON);
 }
 
 function doPost(e) {
@@ -117,8 +115,7 @@ function doPost(e) {
     }
     
     return ContentService.createTextOutput(JSON.stringify({ success: true, likes: likes }))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeader('Access-Control-Allow-Origin', '*');
+      .setMimeType(ContentService.MimeType.JSON);
   }
   
   // -------------------------------------------------------------
@@ -132,13 +129,11 @@ function doPost(e) {
   if (pageId && author && text) {
     sheet.appendRow([pageId, author, text, date]);
     return ContentService.createTextOutput(JSON.stringify({ success: true }))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeader('Access-Control-Allow-Origin', '*');
+      .setMimeType(ContentService.MimeType.JSON);
   }
   
   return ContentService.createTextOutput(JSON.stringify({ success: false, error: 'Parâmetros ausentes' }))
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeader('Access-Control-Allow-Origin', '*');
+    .setMimeType(ContentService.MimeType.JSON);
 }
 ```
 
@@ -152,6 +147,6 @@ Sempre que você edita o código do Apps Script, precisa implantá-lo novamente 
 2. Clique no ícone de **Lápis (Editar)** ao lado do Web App ativo.
 3. No campo "Versão", selecione **Nova versão** (New version).
 4. Clique no botão azul **Implantar**.
-5. Mantenha a mesma URL do Web App que configuramos no código do seu site!
+5. Copie a URL gerada e certifique-se de que é a mesma configurada nos posts do blog.
 
 Pronto! Agora o seu script gerenciará os comentários, visitas e curtidas globais automaticamente. A aba `Metricas` será criada sozinha na sua planilha na primeira visita aos artigos!

@@ -1,6 +1,6 @@
 # Guia: Banco de Dados de Depoimentos no Google Sheets (100% Gratuito)
 
-Criamos uma página dedicada para avaliações de clientes em `depoimentos.html`. Assim como no blog, os depoimentos adicionais podem ser salvos de forma **global e persistente para todos os visitantes** utilizando uma planilha do **Google Sheets** como banco de dados.
+Criamos uma página dedicada para avaliações de clientes em `depoimentos.html`. Assim como no blog, os depoimentos adicionais podem ser salvos de forma **global e persistentemente para todos os visitantes** utilizando uma planilha do **Google Sheets** como banco de dados.
 
 Siga os passos abaixo para configurar:
 
@@ -61,13 +61,11 @@ function doPost(e) {
   if (name && text) {
     sheet.appendRow([name, service, rating, text, date]);
     return ContentService.createTextOutput(JSON.stringify({ success: true }))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeader('Access-Control-Allow-Origin', '*');
+      .setMimeType(ContentService.MimeType.JSON);
   }
   
   return ContentService.createTextOutput(JSON.stringify({ success: false, error: 'Parâmetros ausentes' }))
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeader('Access-Control-Allow-Origin', '*');
+    .setMimeType(ContentService.MimeType.JSON);
 }
 ```
 
@@ -90,14 +88,11 @@ function doPost(e) {
 
 ## 🔌 Passo 4: Ativar o Banco de Dados no Código
 1. Abra o arquivo **`depoimentos.html`** na raiz do seu site.
-2. Vá até a linha **~180** e localize a variável `DEPOIMENTOS_API_URL`:
+2. Vá até a linha **~291** e localize a variável `DEPOIMENTOS_API_URL`:
    ```javascript
-   var DEPOIMENTOS_API_URL = '';
+   var DEPOIMENTOS_API_URL = 'SUA_URL_AQUI';
    ```
-3. Cole a sua URL copiada dentro das aspas:
-   ```javascript
-   var DEPOIMENTOS_API_URL = 'SUA_URL_DO_WEB_APP_DO_GOOGLE_AQUI';
-   ```
+3. Cole a sua URL copiada dentro das aspas.
 4. Salve o arquivo e envie-o para o GitHub!
 
 Pronto! Agora o seu formulário de depoimentos salvará as mensagens diretamente no Google Sheets e as exibirá no topo da listagem de depoimentos para todos os clientes! Para moderar e remover qualquer avaliação falsa ou indesejada, basta deletar a linha da planilha no Google Drive.
