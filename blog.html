@@ -85,14 +85,14 @@
                 </div>
             </div>
 
-            <!-- Blog Grid (4 Columns per Row: col-md-3) -->
+            <!-- Blog Grid (3 Columns per Row: col-md-4) -->
             <div class="row" id="blog-grid-row">
                 
                 <!-- Card 1: AI Post -->
-                <div class="col-md-3 col-sm-6 col-xs-12 blog-post-item cat-ia" style="margin-bottom: 30px;">
+                <div class="col-md-4 col-sm-6 col-xs-12 blog-post-item cat-ia" style="margin-bottom: 30px;">
                     <div class="service-premium-card" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-lg); display: flex; flex-direction: column; height: 100%;">
-                        <!-- Header banner image (Uncropped & proportional 160px height) -->
-                        <div style="position: relative; overflow: hidden; height: 160px; background-color: #0C0C0E; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;">
+                        <!-- Header banner image (Uncropped & proportional 200px height) -->
+                        <div style="position: relative; overflow: hidden; height: 200px; background-color: #0C0C0E; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;">
                             <img src="images/blog/blog_ia.png" alt="Inteligência Artificial" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; transition: var(--transition-smooth);">
                             <span class="hero-badge" style="position: absolute; top: 15px; left: 15px; margin: 0; z-index: 1; font-size: 0.7rem; padding: 3px 8px;">IA</span>
                         </div>
@@ -122,10 +122,10 @@
                 </div>
 
                 <!-- Card 2: Active Monitoring (Zabbix) -->
-                <div class="col-md-3 col-sm-6 col-xs-12 blog-post-item cat-monitoramento" style="margin-bottom: 30px;">
+                <div class="col-md-4 col-sm-6 col-xs-12 blog-post-item cat-monitoramento" style="margin-bottom: 30px;">
                     <div class="service-premium-card" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-lg); display: flex; flex-direction: column; height: 100%;">
-                        <!-- Header banner image (Uncropped & proportional 160px height) -->
-                        <div style="position: relative; overflow: hidden; height: 160px; background-color: #0C0C0E; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;">
+                        <!-- Header banner image (Uncropped & proportional 200px height) -->
+                        <div style="position: relative; overflow: hidden; height: 200px; background-color: #0C0C0E; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;">
                             <img src="images/blog/blog_monitoramento.png" alt="Monitoramento de Rede" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; transition: var(--transition-smooth);">
                             <span class="hero-badge" style="position: absolute; top: 15px; left: 15px; margin: 0; z-index: 1; font-size: 0.7rem; padding: 3px 8px;">Zabbix</span>
                         </div>
@@ -155,10 +155,10 @@
                 </div>
 
                 <!-- Card 3: PC Maintenance & Upgrades -->
-                <div class="col-md-3 col-sm-6 col-xs-12 blog-post-item cat-infra" style="margin-bottom: 30px;">
+                <div class="col-md-4 col-sm-6 col-xs-12 blog-post-item cat-infra" style="margin-bottom: 30px;">
                     <div class="service-premium-card" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-lg); display: flex; flex-direction: column; height: 100%;">
-                        <!-- Header banner image (Uncropped & proportional 160px height) -->
-                        <div style="position: relative; overflow: hidden; height: 160px; background-color: #0C0C0E; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;">
+                        <!-- Header banner image (Uncropped & proportional 200px height) -->
+                        <div style="position: relative; overflow: hidden; height: 200px; background-color: #0C0C0E; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;">
                             <img src="images/blog/blog_manutencao.png" alt="Manutenção de Computadores" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; transition: var(--transition-smooth);">
                             <span class="hero-badge" style="position: absolute; top: 15px; left: 15px; margin: 0; z-index: 1; font-size: 0.7rem; padding: 3px 8px;">Hardware</span>
                         </div>
@@ -304,7 +304,7 @@
             // -------------------------------------------------------------
             // DYNAMIC CLIENT-SIDE PAGINATION LOGIC
             // -------------------------------------------------------------
-            var itemsPerPage = 16; // 4 rows of 4 columns = 16 items max per page
+            var itemsPerPage = 12; // 3 columns x 4 rows height = 12 items max per page
 
             function paginateBlog() {
                 var visibleItems = $('.blog-post-item:visible');
