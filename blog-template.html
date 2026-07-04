@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- 
+      INSTRUÇÕES PARA PUBLICAR UM NOVO ARTIGO NO BLOG:
+      ==========================================================================
+      1. Crie uma cópia deste arquivo e renomeie-a (ex: 'blog-meu-novo-artigo.html').
+      
+      2. Edite os metadados abaixo:
+         - Altere o <title> (ex: "Meu Título | Blog Elyar Serviços")
+         - Altere a <meta name="description"> com um resumo atrativo.
+         - Atualize a tag <meta name="keywords"> com palavras-chave sobre o seu tema.
+         - Remova a tag <meta name="robots" content="noindex, nofollow"> para liberar indexação no Google.
+         
+      3. No corpo do HTML:
+         - Altere a data, autor, categoria e título no bloco "ARTICLE META HEADER".
+         - Escreva o texto no bloco "RICH CONTENT" usando tags <p>, <ul>, <li>, <h3>, <h4> e <blockquote>.
+         
+      4. Configure as Chaves do Script no final da página (Linha ~240):
+         - Troque o valor de 'blog_views_TEMPLATE_ID' para um ID exclusivo do seu post (ex: 'blog_views_projeto_bi').
+         - Troque o valor de 'blog_comments_TEMPLATE_ID' para o mesmo ID exclusivo (ex: 'blog_comments_projeto_bi').
+         - Isso garante que a contagem de visitas e comentários desse novo post sejam independentes!
+         
+      5. Vincule o artigo no painel 'blog.html':
+         - Abra o arquivo 'blog.html'.
+         - Copie um card de post anterior.
+         - Altere os links para apontar para o seu novo arquivo (ex: 'blog-meu-novo-artigo.html').
+         - Atualize o ID de visualizações '#ia-views-count' no HTML e no script inferior de 'blog.html' 
+           para o novo ID exclusivo, permitindo que a quantidade de leituras seja exibida na Home do Blog.
+      ==========================================================================
+    -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RESUMO_DO_SEU_ARTIGO_AQUI">
+    <meta name="author" content="Elyar Serviços">
+    <!-- Evita que mecanismos de busca indexem esta página de modelo limpa -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>Título do Artigo | Blog Elyar Serviços</title>
+	
+	<!-- core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    
+    <!-- Premium Stylesheet -->
+    <link href="css/elyar-premium.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://elyar.com.br/blog-template.html">
+    <meta property="og:title" content="Título do Artigo | Blog Elyar Serviços">
+    <meta property="og:description" content="RESUMO_DO_SEU_ARTIGO_AQUI">
+    <meta property="og:image" content="https://elyar.com.br/images/logo_real.png">
+</head>
+
+<body class="premium-theme">
+
+    <!-- ==========================================
+         HEADER
+         ========================================== -->
+    <header id="header" class="premium-nav scrolled">
+        <nav id="main-menu" class="navbar navbar-default navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar" style="background-color: white;"></span>
+                        <span class="icon-bar" style="background-color: white;"></span>
+                        <span class="icon-bar" style="background-color: white;"></span>
+                    </button>
+                    <a class="navbar-brand-wrapper" href="index.html" style="text-decoration: none;">
+                        <div style="width: 48px; height: 48px; overflow: hidden; border-radius: 10px; display: inline-flex; align-items: center; justify-content: flex-start; flex-shrink: 0;">
+                            <img src="images/logo_real.png" alt="logo" style="height: 48px; width: auto; max-width: none; object-fit: cover; object-position: left;">
+                        </div>
+                        <span class="logo-text-elyar" style="text-transform: none;">Elyar</span>
+                    </a>
+                </div>
+				
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="portfolio.html">Portfólio BI</a></li>
+                        <li class="active"><a href="blog.html">Blog</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+						<li><a href="https://elyar.atlassian.net/servicedesk/customer/portal/1" target="_blank">Chamados</a></li>
+						<li><a href="https://wa.me/5511977371257?text=Ol%C3%A1,%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%20Elyar%20Servi%C3%A7os" target="_blank" style="color: var(--color-accent-yellow) !important;"><i class="fa fa-whatsapp"></i> WhatsApp</a></li>
+					</ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==========================================
+         ARTICLE CONTENT
+         ========================================== -->
+    <section class="premium-section" style="padding-top: 160px; min-height: 90vh; padding-bottom: 80px;">
+        <div class="container">
+            <!-- Back to Blog Button -->
+            <div style="margin-bottom: 30px;">
+                <a href="blog.html" class="btn-premium-secondary" style="padding: 8px 20px; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; border-radius: 30px;">
+                    <i class="fa fa-arrow-left"></i> Voltar para o Blog
+                </a>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <!-- Article Meta Header -->
+                    <div style="margin-bottom: 30px;">
+                        <span class="hero-badge" style="margin-bottom: 15px;">CATEGORIA_DO_ARTIGO</span>
+                        <h1 style="font-size: 2.8rem; line-height: 1.2; margin-top: 0; margin-bottom: 20px; font-weight: 800;">
+                            Título do Seu Novo Artigo Aqui
+                        </h1>
+                        <div style="display: flex; gap: 20px; font-size: 0.9rem; color: var(--color-text-muted); flex-wrap: wrap;">
+                            <span><i class="fa fa-calendar" style="color: var(--color-accent-yellow);"></i> Data de Publicação</span>
+                            <span><i class="fa fa-user" style="color: var(--color-accent-yellow);"></i> Por Autor</span>
+                            <span><i class="fa fa-eye" style="color: var(--color-accent-yellow);"></i> <span id="article-views-detail">100</span> visualizações</span>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div style="height: 1px; background: rgba(255, 255, 255, 0.08); margin-bottom: 35px;"></div>
+
+                    <!-- Rich Content -->
+                    <div class="blog-post-content" style="color: #E2E8F0; font-size: 1.1rem; line-height: 1.8; font-family: 'Inter', sans-serif;">
+                        <p>
+                            Escreva aqui o primeiro parágrafo introduzindo o tema do seu artigo. Use um texto atrativo e instigante.
+                        </p>
+                        
+                        <h3 style="color: white; font-family: 'Outfit', sans-serif; font-size: 1.6rem; margin-top: 40px; margin-bottom: 20px; font-weight: 700;">
+                            Subtítulo do Artigo (H3)
+                        </h3>
+                        <p>
+                            Escreva o conteúdo dos tópicos intermediários. Você pode utilizar listas para facilitar a leitura rápida do usuário:
+                        </p>
+                        <ul>
+                            <li><strong>Tópico Importante 1:</strong> Descrição resumida do tópico.</li>
+                            <li><strong>Tópico Importante 2:</strong> Descrição resumida do tópico.</li>
+                            <li><strong>Tópico Importante 3:</strong> Descrição resumida do tópico.</li>
+                        </ul>
+
+                        <!-- Blockquote -->
+                        <blockquote style="background: rgba(238, 215, 15, 0.04); border-left: 4px solid var(--color-accent-yellow); padding: 20px 25px; margin: 35px 0; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;">
+                            <p style="margin: 0; font-style: italic; color: #FFF; font-size: 1.15rem;">
+                                "Insira aqui uma frase de destaque ou citação relevante sobre o assunto tratado no artigo."
+                            </p>
+                        </blockquote>
+
+                        <h3 style="color: white; font-family: 'Outfit', sans-serif; font-size: 1.6rem; margin-top: 40px; margin-bottom: 20px; font-weight: 700;">
+                            Conclusão
+                        </h3>
+                        <p>
+                            Faça um fechamento resumindo as principais lições aprendidas e faça uma chamada de ação (CTA) convidando o leitor a deixar um comentário abaixo ou entrar em contato.
+                        </p>
+                    </div>
+
+                    <!-- Divider -->
+                    <div style="height: 1px; background: rgba(255, 255, 255, 0.08); margin-top: 50px; margin-bottom: 50px;"></div>
+
+                    <!-- ==========================================
+                         COMMENTS SECTION (LOCAL ENGINE)
+                         ========================================== -->
+                    <div id="comments-section" class="contact-premium-form" style="padding: 40px; margin-top: 40px;">
+                        <h3 style="margin-top: 0; margin-bottom: 25px; font-size: 1.8rem;"><i class="fa fa-comments" style="color: var(--color-accent-yellow); margin-right: 10px;"></i> Comentários</h3>
+                        
+                        <!-- List of Comments -->
+                        <div id="comments-list" style="margin-bottom: 40px;">
+                            <p style="color: var(--color-text-muted); font-style: italic;" id="no-comments">Nenhum comentário enviado ainda. Seja o primeiro a opinar!</p>
+                        </div>
+
+                        <!-- Divider -->
+                        <div style="height: 1px; background: rgba(255, 255, 255, 0.05); margin-bottom: 30px;"></div>
+
+                        <!-- Add Comment Form -->
+                        <h4 style="color: white; margin-bottom: 20px; font-weight: 600;">Deixe sua Opinião</h4>
+                        <form id="comment-form">
+                            <div class="form-group-premium" style="margin-bottom: 20px;">
+                                <label for="author-name">Nome Completo</label>
+                                <input class="form-control-premium" type="text" id="author-name" required placeholder="Seu nome">
+                            </div>
+                            <div class="form-group-premium" style="margin-bottom: 20px;">
+                                <label for="comment-text">Comentário</label>
+                                <textarea class="form-control-premium" id="comment-text" required rows="5" placeholder="Escreva sua opinião..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-premium-primary" style="border: none; padding: 12px 30px; font-size: 0.95rem;">Enviar Comentário</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer id="footer" class="premium-footer">
+        <div class="container">
+            <div class="footer-premium-grid">
+                <!-- Col 1 -->
+                <div class="footer-col">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                        <div style="width: 38px; height: 38px; overflow: hidden; border-radius: 8px; display: inline-flex; align-items: center; justify-content: flex-start; flex-shrink: 0;">
+                            <img src="images/logo_real.png" alt="logo" style="height: 38px; width: auto; max-width: none; object-fit: cover; object-position: left;">
+                        </div>
+                        <span style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 22px; color: white; letter-spacing: 1.5px;">Elyar</span>
+                    </div>
+                    <p class="footer-desc">
+                        Desenvolvimento de painéis em Power BI de alto impacto visual e consultoria técnica especializada em infraestrutura de hardware.
+                    </p>
+                    <ul class="footer-social-list">
+                        <li><a href="https://www.instagram.com/elyarservicos" target="_blank" aria-label="Instagram"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/elyar/" target="_blank" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+                <!-- Col 2 -->
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="portfolio.html">Portfólio BI</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <!-- Col 3 -->
+                <div class="footer-col">
+                    <h4>Soluções</h4>
+                    <ul>
+                        <li><a href="servicos.html">Dashboards Power BI</a></li>
+                        <li><a href="servicos.html">Modelagem de Dados</a></li>
+                        <li><a href="servicos.html">Upgrade de Hardware</a></li>
+                        <li><a href="servicos.html">Suporte Corporativo</a></li>
+                    </ul>
+                </div>
+                <!-- Col 4 -->
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fa fa-map-marker" style="color: var(--color-accent-yellow); margin-right: 8px;"></i> Guarulhos, São Paulo</li>
+                        <li><i class="fa fa-envelope" style="color: var(--color-accent-yellow); margin-right: 8px;"></i> contato@elyar.com.br</li>
+                        <li><i class="fa fa-phone" style="color: var(--color-accent-yellow); margin-right: 8px;"></i> (11) 9.7737-1257</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom-premium">
+                <p>&copy; 2026 Elyar Serviços. Todos os direitos reservados.</p>
+                <p>Criado por <a href="index.html" style="color: var(--color-accent-yellow); text-decoration: underline;">Elyar Serviços</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/main-v1.js?v=2"></script>
+    <script>
+        $(document).ready(function() {
+            // ATENÇÃO: Troque 'TEMPLATE_ID' abaixo por um identificador exclusivo do seu novo post!
+            // Exemplo: 'projeto_bi', 'seguranca_soc', etc.
+            var viewsKey = 'blog_views_TEMPLATE_ID';
+            var commentsKey = 'blog_comments_TEMPLATE_ID';
+
+            // Increment visualizador
+            var views = parseInt(localStorage.getItem(viewsKey) || 100);
+            views += 1;
+            localStorage.setItem(viewsKey, views);
+            $('#article-views-detail').text(views);
+
+            // Comments Engine
+            function loadComments() {
+                var comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+                var list = $('#comments-list');
+                
+                if (comments.length > 0) {
+                    $('#no-comments').hide();
+                    list.find('.comment-item-box').remove(); // clear listing
+                    comments.forEach(function(c) {
+                        var dateStr = c.date || 'Recente';
+                        var commentHtml = `
+                            <div class="comment-item-box" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 20px; border-radius: var(--border-radius-md); margin-bottom: 15px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap;">
+                                    <strong style="color: var(--color-accent-yellow); font-family: 'Outfit', sans-serif;">${c.author}</strong>
+                                    <span style="font-size: 0.8rem; color: var(--color-text-muted);">${dateStr}</span>
+                                </div>
+                                <p style="margin: 0; color: var(--color-text-body); font-size: 0.95rem; line-height: 1.5;">${c.text}</p>
+                            </div>
+                        `;
+                        list.append(commentHtml);
+                    });
+                }
+            }
+
+            loadComments();
+
+            $('#comment-form').submit(function(e) {
+                e.preventDefault();
+                var author = $('#author-name').val().trim();
+                var text = $('#comment-text').val().trim();
+                
+                if (author && text) {
+                    var comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+                    var now = new Date();
+                    var dateFormatted = now.toLocaleDateString('pt-BR') + ' às ' + now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+                    
+                    comments.push({
+                        author: author,
+                        text: text,
+                        date: dateFormatted
+                    });
+                    
+                    localStorage.setItem(commentsKey, JSON.stringify(comments));
+                    
+                    $('#author-name').val('');
+                    $('#comment-text').val('');
+                    loadComments();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
