@@ -209,51 +209,24 @@ jQuery(function($) {'use strict';
 			event.preventDefault();
 			var form_status = $('<div class="form_status"></div>');
 			
-			var name = form.find('input[name="name"]').val();
-			var email = form.find('input[name="email"]').val();
-			var subject = form.find('input[name="subject"]').val();
-			var message = form.find('textarea[name="message"]').val();
-			var accessKey = form.find('input[name="access_key"]').val();
-			
-			// If key is not configured, redirect to WhatsApp with pre-filled message
-			if (!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') {
-				form.prepend( form_status.html('<p><i class="fa fa-whatsapp"></i> Redirecionando para o WhatsApp...</p>').fadeIn() );
-				
-				var formattedMessage = "*Nova Mensagem de Contato (Site Elyar)*\n\n" +
-				                       "*Nome:* " + name + "\n" +
-				                       "*E-mail:* " + email + "\n" +
-				                       "*Assunto:* " + subject + "\n" +
-				                       "*Mensagem:* " + message;
-				
-				var encodedText = encodeURIComponent(formattedMessage);
-				var whatsappUrl = "https://wa.me/5511977371257?text=" + encodedText;
-				
-				setTimeout(function() {
-					window.open(whatsappUrl, '_blank');
-					form_status.html('<p class="text-success"><i class="fa fa-check"></i> Aberto no WhatsApp!</p>').delay(3000).fadeOut();
-				}, 1000);
-				
-				return;
-			}
-			
-			// If key is configured, submit via AJAX to Web3Forms
+			// Submit via AJAX to FormSubmit.co
 			$.ajax({
-				url: 'https://api.web3forms.com/submit',
+				url: 'https://formsubmit.co/ajax/contato@elyar.com.br',
 				method: 'POST',
 				dataType: 'json',
 				data: form.serialize(),
 				beforeSend: function(){
-					form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Enviando mensagem...</p>').fadeIn() );
+					form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Enviando mensagem por e-mail...</p>').fadeIn() );
 				}
 			}).done(function(data){
-				if (data.success) {
-					form_status.html('<p class="text-success">Obrigado pelo contato! Mensagem enviada com sucesso.</p>').delay(4000).fadeOut();
+				if (data.success === "true" || data.success === true) {
+					form_status.html('<p class="text-success">Obrigado pelo contato! Sua mensagem foi enviada por e-mail com sucesso.</p>').delay(6000).fadeOut();
 					form[0].reset();
 				} else {
-					form_status.html('<p class="text-danger">Erro ao enviar. Tente novamente ou use o WhatsApp.</p>').delay(4000).fadeOut();
+					form_status.html('<p class="text-danger">Erro ao enviar o e-mail. Tente novamente ou fale conosco via WhatsApp.</p>').delay(6000).fadeOut();
 				}
 			}).fail(function() {
-				form_status.html('<p class="text-danger">Erro de conexão. Tente novamente ou use o WhatsApp.</p>').delay(4000).fadeOut();
+				form_status.html('<p class="text-danger">Erro de conexão. Tente novamente ou fale conosco via WhatsApp.</p>').delay(6000).fadeOut();
 			});
 		});
 	}
