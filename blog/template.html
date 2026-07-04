@@ -345,13 +345,30 @@
             });
 
             // Comments Engine
+
+            var COMMENTS_API_URL = ''; // Cole o link do seu Web App do Google Apps Script aqui para comentários persistentes globais!
+
+            // Comments Engine
             function loadComments() {
-                var comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+                if (COMMENTS_API_URL) {
+                    $.getJSON(COMMENTS_API_URL + '?pageId=' + commentsKey, function(comments) {
+                        renderComments(comments);
+                    }).fail(function() {
+                        // Fallback to local storage on error
+                        var comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+                        renderComments(comments);
+                    });
+                } else {
+                    var comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+                    renderComments(comments);
+                }
+            }
+
+            function renderComments(comments) {
                 var list = $('#comments-list');
-                
+                list.find('.comment-item-box').remove(); // clear listing
                 if (comments.length > 0) {
                     $('#no-comments').hide();
-                    list.find('.comment-item-box').remove(); // clear listing
                     comments.forEach(function(c) {
                         var dateStr = c.date || 'Recente';
                         var commentHtml = `
@@ -360,11 +377,13 @@
                                     <strong style="color: white; font-family: 'Outfit', sans-serif; font-size: 0.95rem;">${c.author}</strong>
                                     <span style="font-size: 0.75rem; color: var(--color-text-muted);">${dateStr}</span>
                                 </div>
-                                <p style="margin: 0; color: var(--color-text-body); font-size: 0.95rem; line-height: 1.5;">${c.text}</p>
+                                <p style="margin: 0; color: var(--color-text-body); font-size: 0.9rem; line-height: 1.5;">${c.text}</p>
                             </div>
                         `;
                         list.append(commentHtml);
                     });
+                } else {
+                    $('#no-comments').show();
                 }
             }
 
@@ -376,24 +395,46 @@
                 var text = $('#comment-text').val().trim();
                 
                 if (author && text) {
-                    var comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
                     var now = new Date();
                     var dateFormatted = now.toLocaleDateString('pt-BR') + ' às ' + now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
                     
-                    comments.push({
+                    var commentData = {
+                        pageId: commentsKey,
                         author: author,
                         text: text,
                         date: dateFormatted
-                    });
-                    
-                    localStorage.setItem(commentsKey, JSON.stringify(comments));
-                    
-                    $('#author-name').val('');
-                    $('#comment-text').val('');
-                    loadComments();
+                    };
+
+                    if (COMMENTS_API_URL) {
+                        // Send to Google Sheets
+                        $.ajax({
+                            url: COMMENTS_API_URL,
+                            method: 'POST',
+                            data: commentData,
+                            beforeSend: function() {
+                                $('#comment-form button[type="submit"]').prop('disabled', true).text('Enviando...');
+                            }
+                        }).done(function() {
+                            $('#author-name').val('');
+                            $('#comment-text').val('');
+                            loadComments();
+                        }).always(function() {
+                            $('#comment-form button[type="submit"]').prop('disabled', false).text('Enviar Comentário');
+                        });
+                    } else {
+                        // Save in LocalStorage
+                        var comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+                        comments.push(commentData);
+                        localStorage.setItem(commentsKey, JSON.stringify(comments));
+                        
+                        $('#author-name').val('');
+                        $('#comment-text').val('');
+                        loadComments();
+                    }
                 }
             });
-        });
+
+            });
     </script>
 </body>
 </html>
