@@ -316,14 +316,253 @@ jQuery(function($) {'use strict';
 		google.maps.event.addDomListener(window, 'load', initialize_map);
 	}
 
-	// Dynamically load global search script
+	// =============================================================
+	// UNIFIED MASTER HEADER, FOOTER, AND SEARCH ENGINE
+	// =============================================================
 	$(document).ready(function() {
-		var searchScriptPath = 'js/search.js';
-		var inSubfolder = window.location.pathname.includes('/blog/') || window.location.pathname.includes('/servicos/');
-		if (inSubfolder) {
-			searchScriptPath = '../js/search.js';
+		var path = window.location.pathname;
+		var isSub = path.includes('/blog/') || path.includes('/servicos/');
+		var prefix = isSub ? '../' : '';
+		
+		var activeTab = '';
+		if (path.includes('index.html') || path === '/' || path.endsWith('/site_elyar/') || path.endsWith('/')) activeTab = 'home';
+		else if (path.includes('servicos.html') || path.includes('/servicos/')) activeTab = 'servicos';
+		else if (path.includes('portfolio.html')) activeTab = 'portfolio';
+		else if (path.includes('blog.html') || path.includes('/blog/')) activeTab = 'blog';
+		else if (path.includes('contato.html')) activeTab = 'contato';
+		else if (path.includes('depoimentos.html')) activeTab = 'depoimentos';
+
+		// Inject Unified Header
+		if ($('#header').length > 0) {
+			var headerHtml = `
+			<nav id="main-menu" class="navbar navbar-default navbar-fixed-top" role="banner">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar" style="background-color: white;"></span>
+							<span class="icon-bar" style="background-color: white;"></span>
+							<span class="icon-bar" style="background-color: white;"></span>
+						</button>
+						<a class="navbar-brand-wrapper" href="${prefix}index.html" style="text-decoration: none;">
+							<div style="width: 48px; height: 48px; overflow: hidden; border-radius: 10px; display: inline-flex; align-items: center; justify-content: flex-start; flex-shrink: 0;">
+								<img src="${prefix}images/logo_real.png" alt="logo" style="height: 48px; width: auto; max-width: none; object-fit: cover; object-position: left;">
+							</div>
+							<span class="logo-text-elyar" style="text-transform: none;">Elyar</span>
+						</a>
+					</div>
+					
+					<div class="collapse navbar-collapse navbar-right">
+						<ul class="nav navbar-nav">
+							<li class="${activeTab === 'home' ? 'active' : ''}"><a href="${prefix}index.html">Início</a></li>
+							<li class="${activeTab === 'servicos' ? 'active' : ''}"><a href="${prefix}servicos.html">Serviços</a></li>
+							<li class="${activeTab === 'portfolio' ? 'active' : ''}"><a href="${prefix}portfolio.html">Portfólio BI</a></li>
+							<li class="${activeTab === 'blog' ? 'active' : ''}"><a href="${prefix}blog.html">Blog</a></li>
+							<li class="${activeTab === 'depoimentos' ? 'active' : ''}"><a href="${prefix}depoimentos.html">Depoimentos</a></li>
+							<li class="${activeTab === 'contato' ? 'active' : ''}"><a href="${prefix}contato.html">Contato</a></li>
+							<li class="search-trigger-item"><a href="#" id="global-search-btn" style="cursor: pointer;"><i class="fa fa-search"></i> Busca</a></li>
+							<li><a href="https://elyar.atlassian.net/servicedesk/customer/portal/1" target="_blank">Chamados</a></li>
+							<li><a href="https://wa.me/5511977371257?text=Ol%C3%A1,%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%20Elyar%20Servi%C3%A7os" target="_blank" style="color: var(--color-accent-yellow) !important;"><i class="fa fa-whatsapp"></i> WhatsApp</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			`;
+			$('#header').html(headerHtml);
 		}
-		$.getScript(searchScriptPath);
+
+		// Inject Unified Footer
+		if ($('#footer').length > 0) {
+			var footerHtml = `
+			<div class="container">
+				<div class="footer-premium-grid">
+					<!-- Col 1 -->
+					<div class="footer-col">
+						<div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+							<div style="width: 38px; height: 38px; overflow: hidden; border-radius: 8px; display: inline-flex; align-items: center; justify-content: flex-start; flex-shrink: 0;">
+								<img src="${prefix}images/logo_real.png" alt="logo" style="height: 38px; width: auto; max-width: none; object-fit: cover; object-position: left;">
+							</div>
+							<span style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 22px; color: white; letter-spacing: 1.5px;">Elyar</span>
+						</div>
+						<p class="footer-desc">
+							Desenvolvimento de painéis em Power BI de alto impacto visual e consultoria técnica especializada em infraestrutura de hardware.
+						</p>
+						<ul class="footer-social-list">
+							<li><a href="https://www.instagram.com/elyarservicos" target="_blank" aria-label="Instagram"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="https://www.linkedin.com/company/elyar/" target="_blank" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+					<!-- Col 2 -->
+					<div class="footer-col">
+						<h4>Navegação</h4>
+						<ul>
+							<li><a href="${prefix}index.html">Início</a></li>
+							<li><a href="${prefix}servicos.html">Serviços</a></li>
+							<li><a href="${prefix}portfolio.html">Portfólio BI</a></li>
+							<li><a href="${prefix}blog.html">Blog</a></li>
+							<li><a href="${prefix}depoimentos.html">Depoimentos</a></li>
+							<li><a href="${prefix}contato.html">Contato</a></li>
+						</ul>
+					</div>
+					<!-- Col 3 -->
+					<div class="footer-col">
+						<h4>Soluções</h4>
+						<ul>
+							<li><a href="${prefix}servicos/powerbi.html">Dashboards Power BI</a></li>
+							<li><a href="${prefix}servicos/zabbix.html">Monitoramento Zabbix</a></li>
+							<li><a href="${prefix}servicos/wazuh.html">Segurança SIEM Wazuh</a></li>
+							<li><a href="${prefix}servicos/manutencao.html">Suporte e Hardware</a></li>
+						</ul>
+					</div>
+					<!-- Col 4 -->
+					<div class="footer-col">
+						<h4>Contato</h4>
+						<ul>
+							<li><i class="fa fa-map-marker" style="color: var(--color-accent-yellow); margin-right: 8px;"></i> Guarulhos, São Paulo</li>
+							<li><i class="fa fa-envelope" style="color: var(--color-accent-yellow); margin-right: 8px;"></i> contato@elyar.com.br</li>
+							<li><i class="fa fa-phone" style="color: var(--color-accent-yellow); margin-right: 8px;"></i> (11) 9.7737-1257</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="footer-bottom-premium">
+					<p>&copy; 2026 Elyar Serviços. Todos os direitos reservados.</p>
+					<p>Criado por <a href="${prefix}index.html" style="color: var(--color-accent-yellow); text-decoration: underline;">Elyar Serviços</a></p>
+				</div>
+			</div>
+			`;
+			$('#footer').html(footerHtml);
+		}
+
+		// Inject Search Modal
+		if ($('#search-modal').length === 0) {
+			var modalHtml = `
+			<div id="search-modal" class="search-overlay-modal">
+				<div class="search-modal-container">
+					<button id="search-modal-close-btn" class="search-modal-close"><i class="fa fa-times"></i></button>
+					<h3 style="font-family: 'Outfit', sans-serif; font-weight: 700; color: white; margin-top: 0; margin-bottom: 20px; font-size: 1.3rem;">Busca Global Elyar</h3>
+					<div class="search-input-wrapper">
+						<i class="fa fa-search"></i>
+						<input type="text" id="search-query-input" class="search-input-premium" placeholder="Digite o que procura... (ex: Zabbix, Power BI, IA, Contato)" autocomplete="off">
+					</div>
+					<div id="search-results" class="search-results-list">
+						<div class="search-result-empty">Digite algo para iniciar a busca...</div>
+					</div>
+				</div>
+			</div>
+			`;
+			$('body').append(modalHtml);
+		}
+
+		// Search Index data
+		var searchIndex = [
+			{ title: "Início", path: "index.html", category: "Página", desc: "Página inicial da Elyar Serviços. Dashboards de alta performance em Power BI, monitoramento ativo e suporte de TI.", keywords: "inicio home bem vindo principal elyar" },
+			{ title: "Serviços", path: "servicos.html", category: "Página", desc: "Nossos serviços e soluções corporativas de TI: dashboards, redes, segurança da informação e governança.", keywords: "servicos portfolio solucoes o que fazemos" },
+			{ title: "Portfólio de BI", path: "portfolio.html", category: "Página", desc: "Demonstrações reais e portfólio de relatórios dinâmicos do Power BI desenvolvidos para empresas.", keywords: "portfolio dashboards exemplos bi business intelligence relatorios" },
+			{ title: "Blog & Insights", path: "blog.html", category: "Página", desc: "Artigos técnicos, tendências de mercado, IA, monitoramento, hardware e novidades do mundo da TI.", keywords: "blog artigos insights leituras novidades posts" },
+			{ title: "Depoimentos de Clientes", path: "depoimentos.html", category: "Página", desc: "Avaliações e depoimentos de empresas e profissionais atendidos pela Elyar Serviços.", keywords: "depoimentos feedback avaliacoes elogios clientes" },
+			{ title: "Contato", path: "contato.html", category: "Página", desc: "Entre em contato conosco. Fale por WhatsApp, envie e-mail ou localize nosso escritório em Guarulhos.", keywords: "contato telefone email falar suporte whatsapp localizacao guarulhos" },
+			
+			{ title: "Power BI & Dashboards", path: "servicos/powerbi.html", category: "Serviço", desc: "Desenvolvimento de dashboards de alta performance em Power BI, modelagem de dados, fórmulas DAX e segurança RLS.", keywords: "power bi dashboards kpi modelagem dax sql api dados governanca relatorios" },
+			{ title: "Monitoramento Ativo (Zabbix & Grafana)", path: "servicos/zabbix.html", category: "Serviço", desc: "Monitoramento ativo de servidores, redes e aplicações. Alertas preventivos via Telegram/WhatsApp para prevenir inatividades.", keywords: "zabbix grafana monitoramento ativo rede servidores alertas preventivos proativo" },
+			{ title: "Segurança Cibernética (Wazuh SIEM)", path: "servicos/wazuh.html", category: "Serviço", desc: "Segurança da informação baseada em SIEM com Wazuh. Proteção de dados, conformidade LGPD e detecção de ameaças.", keywords: "seguranca wazuh siem antivirus firewall lgpd invasao vulnerabilidades" },
+			{ title: "Central de Serviços (GLPI ITSM)", path: "servicos/glpi.html", category: "Serviço", desc: "Implantação de central de chamados GLPI, catálogo de serviços, helpdesk e governança de processos de TI baseados em ITIL.", keywords: "glpi chamados suporte helpdesk service desk governanca ti itil ticket central" },
+			{ title: "Upgrade & Suporte de Hardware", path: "servicos/manutencao.html", category: "Serviço", desc: "Montagem de computadores gamers, upgrades de SSD NVMe e memória RAM, limpeza química e troca de pasta térmica preventiva.", keywords: "manutencao upgrade ssd memoria ram gamer pc limpeza preventiva pasta termica montagem computadores" },
+			{ title: "Consultoria Especializada de TI", path: "servicos/consultoria.html", category: "Serviço", desc: "Consultoria estratégica de TI, análise de ativos, planejamento de segurança, compliance de licenças e governança.", keywords: "consultoria auditoria licenca planejamento seguranca governanca assessoria" },
+
+			{ title: "Inteligência Artificial: Ganhos e Desafios", path: "blog/ia-impacto.html", category: "Blog", desc: "Análise profunda sobre os impactos positivos e negativos da Inteligência Artificial nas empresas e pessoas.", keywords: "ia inteligencia artificial produtividade etica tecnologia generativa chatgpt" },
+			{ title: "Monitoramento Ativo: O Escudo da TI", path: "blog/monitoramento-ativo.html", category: "Blog", desc: "A importância do monitoramento proativo com Zabbix e Grafana para mitigar os altos custos de servidores indisponíveis.", keywords: "monitoramento ativo zabbix grafana downtime inatividade servidor rede proativo" },
+			{ title: "Upgrade e Manutenção Preventiva de Computadores", path: "blog/manutencao-computadores.html", category: "Blog", desc: "Como manter o desempenho máximo de computadores gamers e corporativos com upgrades de RAM/SSD e limpeza preventiva.", keywords: "manutencao upgrade ssd memoria ram gamer pc limpeza preventiva pasta termica montagem computadores" }
+		];
+
+		function normalizeStr(str) {
+			return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+		}
+
+		function getAdjustedPath(targetPath) {
+			var inSubfolder = window.location.pathname.includes('/blog/') || window.location.pathname.includes('/servicos/');
+			if (inSubfolder) {
+				return '../' + targetPath;
+			}
+			return targetPath;
+		}
+
+		// Search modal listeners
+		$(document).on('click', '#global-search-btn', function(e) {
+			e.preventDefault();
+			$('#search-modal').addClass('active');
+			setTimeout(function() {
+				$('#search-query-input').focus();
+			}, 100);
+		});
+
+		$(document).on('click', '#search-modal-close-btn', function() {
+			$('#search-modal').removeClass('active');
+		});
+
+		$(document).on('click', '#search-modal', function(e) {
+			if ($(e.target).hasClass('search-overlay-modal')) {
+				$('#search-modal').removeClass('active');
+			}
+		});
+
+		$(document).keyup(function(e) {
+			if (e.key === "Escape") {
+				$('#search-modal').removeClass('active');
+			}
+		});
+
+		$(document).on('input', '#search-query-input', function() {
+			var query = normalizeStr($(this).val().trim());
+			var resultsBox = $('#search-results');
+			
+			if (!query) {
+				resultsBox.html('<div class="search-result-empty">Digite algo para iniciar a busca...</div>');
+				return;
+			}
+
+			var matches = [];
+			searchIndex.forEach(function(item) {
+				var matchTitle = normalizeStr(item.title).includes(query);
+				var matchDesc = normalizeStr(item.desc).includes(query);
+				var matchKeywords = normalizeStr(item.keywords).includes(query);
+				
+				if (matchTitle || matchDesc || matchKeywords) {
+					matches.push(item);
+				}
+			});
+
+			if (matches.length === 0) {
+				resultsBox.html('<div class="search-result-empty">Nenhum resultado encontrado para a busca. Tente outros termos.</div>');
+				return;
+			}
+
+			var resultsHtml = '';
+			matches.forEach(function(item) {
+				var adjustedLink = getAdjustedPath(item.path);
+				var badgeColor = 'rgba(238, 215, 15, 0.15)';
+				var badgeTextColor = 'var(--color-accent-yellow)';
+				
+				if (item.category === 'Serviço') {
+					badgeColor = 'rgba(0, 150, 255, 0.15)';
+					badgeTextColor = '#0096ff';
+				} else if (item.category === 'Blog') {
+					badgeColor = 'rgba(46, 204, 113, 0.15)';
+					badgeTextColor = '#2ecc71';
+				}
+
+				resultsHtml += `
+					<a href="${adjustedLink}" class="search-result-item">
+						<div class="search-result-header">
+							<span class="search-result-title">${item.title}</span>
+							<span class="search-result-badge" style="background: ${badgeColor}; color: ${badgeTextColor}; border-color: transparent;">${item.category}</span>
+						</div>
+						<p class="search-result-desc">${item.desc}</p>
+					</a>
+				`;
+			});
+			resultsBox.html(resultsHtml);
+		});
 	});
 
 });

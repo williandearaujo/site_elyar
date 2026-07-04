@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Depoimentos de Clientes - Elyar Serviços. Veja as avaliações de empresas atendidas por nossas soluções.">
+    <meta name="author" content="Elyar Serviços">
+    <title>Depoimentos | Elyar Serviços</title>
+	
+	<!-- core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    
+    <!-- Premium Stylesheet -->
+    <link href="css/elyar-premium.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+
+    <!-- SEO and Firewall Domain Categorization Tags -->
+    <meta name="keywords" content="Elyar Serviços, Avaliações Elyar, Cases de Sucesso, Clientes Satisfeitos TI, Feedbacks Power BI, Recomendação Zabbix">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://elyar.com.br/depoimentos.html">
+    <meta property="og:title" content="Depoimentos | Elyar Serviços">
+    <meta property="og:description" content="Confira o que as empresas dizem sobre as soluções em Business Intelligence, monitoramento e segurança da Elyar.">
+    <meta property="og:image" content="https://elyar.com.br/images/logo_real.png">
+    
+    <style>
+        .testimonials-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+        @media (max-width: 768px) {
+            .testimonials-hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        .rating-summary-card {
+            background: linear-gradient(135deg, #1E1E24 0%, #0C0C0E 100%);
+            border: 1px solid rgba(238, 215, 15, 0.1);
+            border-radius: var(--border-radius-lg);
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        .star-gold {
+            color: #eed70f !important;
+            margin-right: 2px;
+            text-shadow: 0 0 10px rgba(238, 215, 15, 0.3);
+        }
+        .star-gray {
+            color: rgba(255,255,255,0.15) !important;
+            margin-right: 2px;
+        }
+        .testimonial-card-premium {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: var(--border-radius-md);
+            padding: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            transition: var(--transition-smooth);
+        }
+        .testimonial-card-premium:hover {
+            transform: translateY(-5px);
+            border-color: rgba(238, 215, 15, 0.15);
+            box-shadow: 0 15px 35px -10px rgba(238, 215, 15, 0.1);
+        }
+        /* Modal Custom Styles */
+        .modal-premium {
+            background: rgba(12, 12, 14, 0.96) !important;
+            backdrop-filter: blur(8px);
+        }
+        .modal-content-premium {
+            background: #16161A !important;
+            border: 1px solid rgba(238, 215, 15, 0.2) !important;
+            border-radius: var(--border-radius-lg) !important;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8) !important;
+            color: white !important;
+        }
+        .modal-header-premium {
+            border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+            padding: 20px 25px !important;
+        }
+        .modal-body-premium {
+            padding: 25px !important;
+        }
+        .star-select-btn {
+            font-size: 1.8rem;
+            color: rgba(255,255,255,0.15);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        .star-select-btn.active, .star-select-btn:hover {
+            color: #eed70f;
+            text-shadow: 0 0 10px rgba(238, 215, 15, 0.4);
+        }
+    </style>
+</head>
+
+<body class="premium-theme">
+
+    <!-- ==========================================
+         HEADER (Dynamic Placeholder)
+         ========================================== -->
+    <header id="header" class="premium-nav scrolled"></header>
+
+    <!-- ==========================================
+         TESTIMONIALS SECTION
+         ========================================== -->
+    <section class="premium-section" style="padding-top: 160px; min-height: 90vh; padding-bottom: 80px;">
+        <div class="container">
+            
+            <!-- Hero Grid -->
+            <div class="testimonials-hero-grid">
+                <div>
+                    <span class="hero-badge" style="margin-bottom: 15px;"><i class="fa fa-quote-right"></i> Opinião de Quem Confia</span>
+                    <h1 style="font-size: 3rem; line-height: 1.2; margin-top: 0; margin-bottom: 20px; font-weight: 800;">
+                        O que dizem os nossos clientes
+                    </h1>
+                    <p class="hero-desc" style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 30px;">
+                        A transparência e o foco em resultados são os pilares da Elyar Serviços. Confira os depoimentos de empresas e parceiros sobre nossas frentes de Power BI, monitoramento, segurança e suporte.
+                    </p>
+                    <button id="deixar-depoimento-btn" class="btn-premium-primary" style="padding: 12px 35px; font-size: 1rem; border: none;">
+                        Deixar Meu Depoimento <i class="fa fa-commenting-o"></i>
+                    </button>
+                </div>
+                
+                <div>
+                    <!-- Stats Card -->
+                    <div class="rating-summary-card">
+                        <div style="font-size: 4rem; font-weight: 800; color: white; line-height: 1; font-family: 'Outfit', sans-serif;">
+                            4.8 <span style="font-size: 1.8rem; color: var(--color-text-muted);">/ 5.0</span>
+                        </div>
+                        <div style="margin: 15px 0;">
+                            <i class="fa fa-star star-gold" style="font-size: 1.6rem;"></i>
+                            <i class="fa fa-star star-gold" style="font-size: 1.6rem;"></i>
+                            <i class="fa fa-star star-gold" style="font-size: 1.6rem;"></i>
+                            <i class="fa fa-star star-gold" style="font-size: 1.6rem;"></i>
+                            <i class="fa fa-star star-gold" style="font-size: 1.6rem;"></i>
+                        </div>
+                        <p style="color: var(--color-text-body); font-size: 1rem; margin-bottom: 0;">
+                            Nota baseada em <strong id="total-stats-count" style="color: white;">43</strong> avaliações auditadas.
+                        </p>
+                        <div style="margin-top: 25px; display: flex; justify-content: center; gap: 30px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;">
+                            <div>
+                                <h4 style="margin: 0; color: white; font-weight: 700;">100%</h4>
+                                <span style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase;">Satisfação</span>
+                            </div>
+                            <div>
+                                <h4 style="margin: 0; color: white; font-weight: 700;" id="stats-5stars">30</h4>
+                                <span style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase;">Notas 5★</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters Bar -->
+            <div class="row" style="margin-bottom: 30px;">
+                <div class="col-md-12 text-center" style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
+                    
+                    <!-- Star Filters -->
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; align-items: center;">
+                        <span style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600; margin-right: 10px;">Nota:</span>
+                        <ul class="portfolio-filter star-filters" style="margin: 0; display: inline-flex; gap: 8px; list-style: none; padding: 0;">
+                            <li><a class="btn btn-default active" href="#" data-filter-star="*">Todas</a></li>
+                            <li><a class="btn btn-default" href="#" data-filter-star="5">5 Estrelas</a></li>
+                            <li><a class="btn btn-default" href="#" data-filter-star="4">4 Estrelas</a></li>
+                            <li><a class="btn btn-default" href="#" data-filter-star="3">3 Estrelas</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Service Filters -->
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; align-items: center;">
+                        <span style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600; margin-right: 10px;">Serviço:</span>
+                        <ul class="portfolio-filter service-filters" style="margin: 0; display: inline-flex; gap: 8px; list-style: none; padding: 0; flex-wrap: wrap;">
+                            <li><a class="btn btn-default active" href="#" data-filter-service="*">Todos</a></li>
+                            <li><a class="btn btn-default" href="#" data-filter-service="Power BI">Power BI</a></li>
+                            <li><a class="btn btn-default" href="#" data-filter-service="Zabbix">Zabbix &amp; Grafana</a></li>
+                            <li><a class="btn btn-default" href="#" data-filter-service="Wazuh">Wazuh SIEM</a></li>
+                            <li><a class="btn btn-default" href="#" data-filter-service="GLPI">GLPI Chamados</a></li>
+                            <li><a class="btn btn-default" href="#" data-filter-service="Hardware">Manutenção/Hardware</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials Grid (3 Columns) -->
+            <div class="row" id="testimonials-grid">
+                <!-- Injected via Javascript -->
+            </div>
+
+            <!-- Pagination Toolbar Container -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="blog-pagination" id="testimonials-pagination-container"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+         TESTIMONIAL SUBMIT MODAL
+         ========================================== -->
+    <div class="modal fade modal-premium" id="deixar-depoimento-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content-premium">
+                <div class="modal-header modal-header-premium">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; opacity: 0.7;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h3 class="modal-title" style="margin: 0; font-family: 'Outfit', sans-serif; font-weight: 700; color: white;">
+                        <i class="fa fa-commenting" style="color: var(--color-accent-yellow); margin-right: 8px;"></i> Deixar Depoimento
+                    </h3>
+                </div>
+                <form id="new-testimonial-form">
+                    <div class="modal-body modal-body-premium">
+                        <!-- Nome -->
+                        <div style="margin-bottom: 18px;">
+                            <label style="color: white; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; display: block;">Seu Nome / Nome da Empresa</label>
+                            <input class="form-control-premium" type="text" id="test-author-name" required placeholder="Ex: Roberto Silva (TechCorp)" style="padding: 12px 15px;">
+                        </div>
+                        
+                        <!-- Serviço -->
+                        <div style="margin-bottom: 18px;">
+                            <label style="color: white; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; display: block;">Serviço Contratado</label>
+                            <select class="form-control-premium" id="test-service-select" required style="padding: 10px 15px; height: auto; background-color: #0C0C0E; color: white; border: 1px solid rgba(255,255,255,0.08);">
+                                <option value="Dashboards Power BI">Dashboards Power BI</option>
+                                <option value="Monitoramento Zabbix & Grafana">Monitoramento Zabbix & Grafana</option>
+                                <option value="Segurança Wazuh SIEM">Segurança Wazuh SIEM</option>
+                                <option value="Central de Serviços GLPI">Central de Serviços GLPI</option>
+                                <option value="Manutenção e Upgrade de Hardware">Manutenção e Upgrade de Hardware</option>
+                                <option value="Consultoria de TI">Consultoria de TI</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Avaliação (Stars Select) -->
+                        <div style="margin-bottom: 18px;">
+                            <label style="color: white; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; display: block;">Sua Avaliação</label>
+                            <div style="display: flex; gap: 8px;">
+                                <i class="fa fa-star star-select-btn active" data-rating="1"></i>
+                                <i class="fa fa-star star-select-btn active" data-rating="2"></i>
+                                <i class="fa fa-star star-select-btn active" data-rating="3"></i>
+                                <i class="fa fa-star star-select-btn active" data-rating="4"></i>
+                                <i class="fa fa-star star-select-btn active" data-rating="5"></i>
+                            </div>
+                            <input type="hidden" id="test-rating-value" value="5">
+                        </div>
+                        
+                        <!-- Depoimento -->
+                        <div style="margin-bottom: 5px;">
+                            <label style="color: white; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; display: block;">Mensagem / Elogio</label>
+                            <textarea class="form-control-premium" id="test-comment-text" required rows="4" placeholder="Conte-nos como foi sua experiência com nossos serviços..." style="padding: 12px 15px; resize: vertical;"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 20px 25px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: flex-end; gap: 10px;">
+                        <button type="button" class="btn-premium-secondary" data-dismiss="modal" style="padding: 10px 25px; font-size: 0.85rem;">Cancelar</button>
+                        <button type="submit" class="btn-premium-primary" style="padding: 10px 30px; font-size: 0.85rem; border: none;">Publicar Avaliação</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         FOOTER (Dynamic Placeholder)
+         ========================================== -->
+    <footer id="footer" class="premium-footer"></footer>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/testimonials-data.js"></script>
+    <script src="js/main-v1.js?v=3"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // -------------------------------------------------------------
+            // CONFIGURAÇÃO DO GOOGLE SHEETS PARA DEPOIMENTOS
+            // -------------------------------------------------------------
+            // Cole a URL do seu Google Apps Script de Depoimentos aqui!
+            var DEPOIMENTOS_API_URL = ''; 
+
+            var itemsPerPage = 9; // 3 columns x 3 rows = 9 cards per page
+            var currentTestimonials = [];
+            var filterStar = '*';
+            var filterService = '*';
+
+            // 1. Star Selection interaction in form modal
+            $('.star-select-btn').click(function() {
+                var rating = parseInt($(this).data('rating'));
+                $('#test-rating-value').val(rating);
+                
+                $('.star-select-btn').removeClass('active');
+                $('.star-select-btn').each(function() {
+                    var r = parseInt($(this).data('rating'));
+                    if (r <= rating) {
+                        $(this).addClass('active');
+                    }
+                });
+            });
+
+            // 2. Open Modal Trigger
+            $('#deixar-depoimento-btn').click(function() {
+                $('#new-testimonial-form')[0].reset();
+                $('#test-rating-value').val(5);
+                $('.star-select-btn').addClass('active');
+                $('#deixar-depoimento-modal').modal('show');
+            });
+
+            // 3. Main Data loading
+            function loadTestimonials() {
+                if (DEPOIMENTOS_API_URL) {
+                    $.getJSON(DEPOIMENTOS_API_URL, function(cloudData) {
+                        // Merge cloud testimonials with local static data (cloud first)
+                        currentTestimonials = cloudData.concat(window.testimonialsData);
+                        processAndRender();
+                    }).fail(function() {
+                        currentTestimonials = window.testimonialsData;
+                        processAndRender();
+                    });
+                } else {
+                    // Fallback: merge localStorage reviews if any, then static reviews
+                    var localSaved = JSON.parse(localStorage.getItem('saved_testimonials') || '[]');
+                    currentTestimonials = localSaved.concat(window.testimonialsData);
+                    processAndRender();
+                }
+            }
+
+            // 4. Calculate Stats and render grid
+            function processAndRender() {
+                // Re-calculate statistics based on all items
+                var totalCount = currentTestimonials.length;
+                var sum = 0;
+                var count5 = 0;
+                
+                currentTestimonials.forEach(function(item) {
+                    var r = parseFloat(item.rating) || 5;
+                    sum += r;
+                    if (r >= 5) count5++;
+                });
+
+                var avg = totalCount > 0 ? (sum / totalCount).toFixed(1) : "5.0";
+                $('.rating-summary-card font').text(avg); // Update summary text
+                $('#total-stats-count').text(totalCount);
+                $('#stats-5stars').text(count5);
+
+                // Run filters
+                var filtered = [];
+                currentTestimonials.forEach(function(item) {
+                    var matchStar = (filterStar === '*') || (Math.floor(item.rating).toString() === filterStar);
+                    
+                    var matchService = false;
+                    if (filterService === '*') {
+                        matchService = true;
+                    } else {
+                        // Check if item.service contains the filter keyword
+                        var itemServ = item.service.toLowerCase();
+                        var fServ = filterService.toLowerCase();
+                        if (fServ === 'power bi' && itemServ.includes('power bi')) matchService = true;
+                        else if (fServ === 'zabbix' && (itemServ.includes('zabbix') || itemServ.includes('monitoramento'))) matchService = true;
+                        else if (fServ === 'wazuh' && itemServ.includes('wazuh')) matchService = true;
+                        else if (fServ === 'glpi' && itemServ.includes('glpi')) matchService = true;
+                        else if (fServ === 'hardware' && (itemServ.includes('hardware') || itemServ.includes('manutenção') || itemServ.includes('upgrade'))) matchService = true;
+                    }
+
+                    if (matchStar && matchService) {
+                        filtered.push(item);
+                    }
+                });
+
+                renderGrid(filtered);
+            }
+
+            // 5. Render Grid with Pagination
+            function renderGrid(list) {
+                var grid = $('#testimonials-grid');
+                grid.empty();
+                
+                var totalPages = Math.ceil(list.length / itemsPerPage);
+                var paginationContainer = $('#testimonials-pagination-container');
+                paginationContainer.empty();
+                
+                if (list.length === 0) {
+                    grid.html('<div class="col-md-12 text-center" style="padding: 50px 0;"><p style="font-style: italic; color: var(--color-text-muted);">Nenhum depoimento corresponde aos filtros selecionados.</p></div>');
+                    return;
+                }
+
+                function showPage(page) {
+                    grid.empty();
+                    var start = (page - 1) * itemsPerPage;
+                    var end = Math.min(start + itemsPerPage, list.length);
+                    
+                    for (var i = start; i < end; i++) {
+                        var item = list[i];
+                        var starsHtml = '';
+                        var ratingVal = Math.floor(item.rating) || 5;
+                        
+                        for (var s = 1; s <= 5; s++) {
+                            if (s <= ratingVal) {
+                                starsHtml += '<i class="fa fa-star star-gold"></i>';
+                            } else {
+                                starsHtml += '<i class="fa fa-star star-gray"></i>';
+                            }
+                        }
+                        
+                        var cardHtml = `
+                            <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 30px; display: flex;">
+                                <div class="testimonial-card-premium">
+                                    <div>
+                                        <div style="margin-bottom: 12px;">${starsHtml}</div>
+                                        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-body); font-style: italic; margin-bottom: 25px;">
+                                            "${item.text}"
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <div style="height: 1px; background: rgba(255,255,255,0.05); margin-bottom: 15px;"></div>
+                                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                                            <div>
+                                                <strong style="color: white; font-family: 'Outfit', sans-serif; font-size: 0.95rem; display: block;">${item.name}</strong>
+                                                <span style="font-size: 0.75rem; color: var(--color-accent-yellow); font-weight: 600;">${item.service}</span>
+                                            </div>
+                                            <span style="font-size: 0.75rem; color: var(--color-text-muted);"><i class="fa fa-calendar"></i> ${item.date}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        grid.append(cardHtml);
+                    }
+                    
+                    paginationContainer.find('.page-btn').removeClass('active');
+                    paginationContainer.find('.page-btn[data-page="' + page + '"]').addClass('active');
+                }
+
+                // Render page buttons
+                if (totalPages > 1) {
+                    for (var i = 1; i <= totalPages; i++) {
+                        var btn = $('<button class="page-btn" data-page="' + i + '">' + i + '</button>');
+                        btn.click(function() {
+                            var p = parseInt($(this).attr('data-page'));
+                            showPage(p);
+                            $('html, body').animate({scrollTop: $('.star-filters').offset().top - 120}, 500);
+                        });
+                        paginationContainer.append(btn);
+                    }
+                }
+                
+                showPage(1);
+            }
+
+            // 6. Filter button clicks
+            $('.star-filters a').click(function(e) {
+                e.preventDefault();
+                $('.star-filters a').removeClass('active');
+                $(this).addClass('active');
+                filterStar = $(this).attr('data-filter-star');
+                processAndRender();
+            });
+
+            $('.service-filters a').click(function(e) {
+                e.preventDefault();
+                $('.service-filters a').removeClass('active');
+                $(this).addClass('active');
+                filterService = $(this).attr('data-filter-service');
+                processAndRender();
+            });
+
+            // 7. Form Submission
+            $('#new-testimonial-form').submit(function(e) {
+                e.preventDefault();
+                
+                var name = $('#test-author-name').val().trim();
+                var service = $('#test-service-select').val();
+                var rating = parseInt($('#test-rating-value').val());
+                var text = $('#test-comment-text').val().trim();
+                
+                if (name && text) {
+                    var now = new Date();
+                    var dateFormatted = now.toLocaleDateString('pt-BR');
+                    
+                    var testimonialData = {
+                        name: name,
+                        service: service,
+                        rating: rating,
+                        text: text,
+                        date: dateFormatted
+                    };
+
+                    if (DEPOIMENTOS_API_URL) {
+                        $.ajax({
+                            url: DEPOIMENTOS_API_URL,
+                            method: 'POST',
+                            data: testimonialData,
+                            beforeSend: function() {
+                                $('#new-testimonial-form button[type="submit"]').prop('disabled', true).text('Enviando...');
+                            }
+                        }).done(function() {
+                            $('#deixar-depoimento-modal').modal('hide');
+                            loadTestimonials();
+                        }).fail(function() {
+                            alert('Erro de conexão com o banco de dados. Tentando salvar localmente...');
+                            saveLocal(testimonialData);
+                        }).always(function() {
+                            $('#new-testimonial-form button[type="submit"]').prop('disabled', false).text('Publicar Avaliação');
+                        });
+                    } else {
+                        saveLocal(testimonialData);
+                    }
+                }
+            });
+
+            function saveLocal(data) {
+                var localSaved = JSON.parse(localStorage.getItem('saved_testimonials') || '[]');
+                localSaved.unshift(data); // Add to beginning
+                localStorage.setItem('saved_testimonials', JSON.stringify(localSaved));
+                
+                $('#deixar-depoimento-modal').modal('hide');
+                loadTestimonials();
+            }
+
+            // Initial load
+            loadTestimonials();
+        });
+    </script>
+</body>
+</html>
