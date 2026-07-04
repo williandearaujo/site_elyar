@@ -4,11 +4,11 @@
     <!-- 
       INSTRUÇÕES PARA PUBLICAR UM NOVO ARTIGO NO BLOG:
       ==========================================================================
-      1. Crie uma cópia deste arquivo e renomeie-a (ex: 'blog-meu-novo-artigo.html').
+      1. Crie uma cópia deste arquivo dentro da pasta 'blog/' (ex: 'blog/meu-novo-artigo.html').
       
-      2. Salve a imagem de cabeçalho do artigo na pasta 'images/blog/' (ex: 'meu_novo_artigo.png').
-         No HTML, altere o atributo src da imagem para apontar para o seu arquivo:
-         <img src="images/blog/meu_novo_artigo.png" ...>
+      2. Salve a imagem de cabeçalho do artigo na pasta 'images/blog/' (ex: 'blog_meu_novo_artigo.png').
+         No HTML do novo post, altere o atributo src da imagem para apontar para o seu arquivo:
+         <img src="../images/blog/blog_meu_novo_artigo.png" ...>
       
       3. Edite os metadados abaixo:
          - Altere o <title> (ex: "Meu Título | Blog Elyar Serviços")
@@ -28,10 +28,10 @@
          - Altere os valores iniciais caso queira (ex: views padrão 100, likes padrão 30).
          - Isso garante que a contagem de visitas, curtidas e comentários desse novo post sejam independentes!
          
-      6. Vincule o artigo no painel 'blog.html':
+      6. Vincule o artigo no painel 'blog.html' (que fica na raiz):
          - Abra o arquivo 'blog.html'.
          - Copie um card de post anterior.
-         - Altere os links para apontar para o seu novo arquivo (ex: 'blog-meu-novo-artigo.html').
+         - Altere os links para apontar para o seu novo arquivo (ex: 'blog/meu-novo-artigo.html').
          - Altere a imagem do card para a imagem correspondente.
          - Atualize os IDs de visualizações e likes no script inferior de 'blog.html' 
            para o novo ID exclusivo, permitindo que a quantidade de leituras seja exibida na Home do Blog.
@@ -46,48 +46,50 @@
     <title>Título do Artigo | Blog Elyar Serviços</title>
 	
 	<!-- core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
     
     <!-- Premium Stylesheet -->
-    <link href="css/elyar-premium.css" rel="stylesheet">
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link href="../css/elyar-premium.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/ico/favicon.ico">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://elyar.com.br/blog-template.html">
+    <meta property="og:url" content="https://elyar.com.br/blog/template.html">
     <meta property="og:title" content="Título do Artigo | Blog Elyar Serviços">
     <meta property="og:description" content="RESUMO_DO_SEU_ARTIGO_AQUI">
     <meta property="og:image" content="https://elyar.com.br/images/logo_real.png">
     
     <style>
-        .btn-like {
+        .btn-like-premium {
             background: rgba(255, 255, 255, 0.02) !important;
-            border: 1px solid rgba(255, 255, 255, 0.06) !important;
-            padding: 8px 18px !important;
-            border-radius: 30px !important;
+            border: 1px solid rgba(238, 215, 15, 0.2) !important;
+            padding: 6px 16px !important;
+            border-radius: 20px !important;
             color: var(--color-text-body) !important;
+            font-size: 0.85rem !important;
+            font-family: 'Outfit', sans-serif !important;
             cursor: pointer !important;
             transition: var(--transition-smooth) !important;
             display: inline-flex !important;
             align-items: center !important;
-            gap: 8px !important;
+            gap: 6px !important;
             outline: none !important;
         }
-        .btn-like:hover {
+        .btn-like-premium:hover {
             color: #ff6b6b !important;
-            border-color: rgba(255, 107, 107, 0.3) !important;
+            border-color: rgba(255, 107, 107, 0.4) !important;
             background: rgba(255, 107, 107, 0.05) !important;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
-        .btn-like.liked {
+        .btn-like-premium.liked {
             color: white !important;
             background: #ff6b6b !important;
             border-color: #ff6b6b !important;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.35) !important;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3) !important;
         }
-        .btn-like.liked i {
+        .btn-like-premium.liked i {
             color: white !important;
             animation: heartBeat 0.4s ease;
         }
@@ -114,9 +116,9 @@
                         <span class="icon-bar" style="background-color: white;"></span>
                         <span class="icon-bar" style="background-color: white;"></span>
                     </button>
-                    <a class="navbar-brand-wrapper" href="index.html" style="text-decoration: none;">
+                    <a class="navbar-brand-wrapper" href="../index.html" style="text-decoration: none;">
                         <div style="width: 48px; height: 48px; overflow: hidden; border-radius: 10px; display: inline-flex; align-items: center; justify-content: flex-start; flex-shrink: 0;">
-                            <img src="images/logo_real.png" alt="logo" style="height: 48px; width: auto; max-width: none; object-fit: cover; object-position: left;">
+                            <img src="../images/logo_real.png" alt="logo" style="height: 48px; width: auto; max-width: none; object-fit: cover; object-position: left;">
                         </div>
                         <span class="logo-text-elyar" style="text-transform: none;">Elyar</span>
                     </a>
@@ -124,11 +126,11 @@
 				
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li><a href="index.html">Início</a></li>
-                        <li><a href="servicos.html">Serviços</a></li>
-                        <li><a href="portfolio.html">Portfólio BI</a></li>
-                        <li class="active"><a href="blog.html">Blog</a></li>
-                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="../servicos.html">Serviços</a></li>
+                        <li><a href="../portfolio.html">Portfólio BI</a></li>
+                        <li class="active"><a href="../blog.html">Blog</a></li>
+                        <li><a href="../contato.html">Contato</a></li>
 						<li><a href="https://elyar.atlassian.net/servicedesk/customer/portal/1" target="_blank">Chamados</a></li>
 						<li><a href="https://wa.me/5511977371257?text=Ol%C3%A1,%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%20Elyar%20Servi%C3%A7os" target="_blank" style="color: var(--color-accent-yellow) !important;"><i class="fa fa-whatsapp"></i> WhatsApp</a></li>
 					</ul>
@@ -144,12 +146,12 @@
         <div class="container">
             <!-- Back to Blog Button -->
             <div style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
-                <a href="blog.html" class="btn-premium-secondary" style="padding: 8px 20px; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; border-radius: 30px;">
+                <a href="../blog.html" class="btn-premium-secondary" style="padding: 8px 20px; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; border-radius: 30px;">
                     <i class="fa fa-arrow-left"></i> Voltar para o Blog
                 </a>
                 
                 <!-- Curtir (Like) Button -->
-                <button id="like-btn" class="btn-like">
+                <button id="like-btn" class="btn-like-premium">
                     <i class="fa fa-heart" style="color: #ff6b6b;"></i> Curtir Artigo (<span id="article-likes-detail">30</span>)
                 </button>
             </div>
@@ -158,9 +160,7 @@
                 <div class="col-md-8 col-md-offset-2">
                     
                     <!-- Article Banner Image -->
-                    <div style="position: relative; overflow: hidden; height: 380px; border-radius: var(--border-radius-lg); border: 1px solid rgba(255,255,255,0.05); margin-bottom: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.6);">
-                        <img src="images/blog/blog_placeholder.png" alt="Título do Artigo Banner" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
+                    <img src="../images/blog/blog_placeholder.png" alt="Título do Artigo Banner" class="img-responsive" style="border-radius: var(--border-radius-lg); border: 1px solid rgba(255,255,255,0.05); margin-bottom: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); width: 100%; height: auto;">
 
                     <!-- Article Meta Header -->
                     <div style="margin-bottom: 30px;">
@@ -211,37 +211,27 @@
                         </p>
                     </div>
 
-                    <!-- Divider -->
-                    <div style="height: 1px; background: rgba(255, 255, 255, 0.08); margin-top: 50px; margin-bottom: 50px;"></div>
-
-                    <!-- ==========================================
-                         COMMENTS SECTION (LOCAL ENGINE)
-                         ========================================== -->
-                    <div id="comments-section" class="contact-premium-form" style="padding: 40px; margin-top: 40px;">
-                        <h3 style="margin-top: 0; margin-bottom: 25px; font-size: 1.8rem;"><i class="fa fa-comments" style="color: var(--color-accent-yellow); margin-right: 10px;"></i> Comentários</h3>
+                    <!-- Delicate Comments Section (No heavy forms/boxes) -->
+                    <div id="comments-section" style="margin-top: 50px; border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 40px;">
+                        <h3 style="margin-top: 0; margin-bottom: 25px; font-size: 1.5rem; font-family: 'Outfit', sans-serif; font-weight: 600; color: white;">
+                            <i class="fa fa-comments" style="color: var(--color-accent-yellow); margin-right: 8px;"></i> Comentários
+                        </h3>
                         
                         <!-- List of Comments -->
                         <div id="comments-list" style="margin-bottom: 40px;">
-                            <p style="color: var(--color-text-muted); font-style: italic;" id="no-comments">Nenhum comentário enviado ainda. Seja o primeiro a opinar!</p>
+                            <p style="color: var(--color-text-muted); font-style: italic; font-size: 0.95rem;" id="no-comments">Nenhum comentário enviado ainda. Seja o primeiro a opinar!</p>
                         </div>
 
-                        <!-- Divider -->
-                        <div style="height: 1px; background: rgba(255, 255, 255, 0.05); margin-bottom: 30px;"></div>
-
                         <!-- Add Comment Form -->
-                        <h4 style="color: white; margin-bottom: 20px; font-weight: 600;">Deixe sua Opinião</h4>
-                        <form id="comment-form">
-                            <div class="form-group-premium" style="margin-bottom: 20px;">
-                                <label for="author-name">Nome Completo</label>
-                                <input class="form-control-premium" type="text" id="author-name" required placeholder="Seu nome">
+                        <h4 style="color: white; margin-bottom: 15px; font-weight: 600; font-size: 1.1rem; font-family: 'Outfit', sans-serif;">Deixe sua Opinião</h4>
+                        <form id="comment-form" style="max-width: 600px;">
+                            <div style="margin-bottom: 12px;">
+                                <input class="form-control-premium" type="text" id="author-name" required placeholder="Seu nome" style="padding: 10px 15px; font-size: 0.9rem;">
                             </div>
-                            <div class="form-group-premium" style="margin-bottom: 20px;">
-                                <label for="comment-text">Comentário</label>
-                                <textarea class="form-control-premium" id="comment-text" required rows="5" placeholder="Escreva sua opinião..."></textarea>
+                            <div style="margin-bottom: 12px;">
+                                <textarea class="form-control-premium" id="comment-text" required rows="4" placeholder="Escreva seu comentário..." style="padding: 10px 15px; font-size: 0.9rem; resize: vertical;"></textarea>
                             </div>
-                            <div style="display: flex; gap: 10px;">
-                                <button type="submit" class="btn-premium-primary" style="border: none; padding: 12px 30px; font-size: 0.95rem;">Enviar Comentário</button>
-                            </div>
+                            <button type="submit" class="btn-premium-primary" style="border: none; padding: 10px 24px; font-size: 0.85rem;">Enviar Comentário</button>
                         </form>
                     </div>
 
@@ -260,7 +250,7 @@
                 <div class="footer-col">
                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
                         <div style="width: 38px; height: 38px; overflow: hidden; border-radius: 8px; display: inline-flex; align-items: center; justify-content: flex-start; flex-shrink: 0;">
-                            <img src="images/logo_real.png" alt="logo" style="height: 38px; width: auto; max-width: none; object-fit: cover; object-position: left;">
+                            <img src="../images/logo_real.png" alt="logo" style="height: 38px; width: auto; max-width: none; object-fit: cover; object-position: left;">
                         </div>
                         <span style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 22px; color: white; letter-spacing: 1.5px;">Elyar</span>
                     </div>
@@ -276,21 +266,21 @@
                 <div class="footer-col">
                     <h4>Navegação</h4>
                     <ul>
-                        <li><a href="index.html">Início</a></li>
-                        <li><a href="servicos.html">Serviços</a></li>
-                        <li><a href="portfolio.html">Portfólio BI</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="../servicos.html">Serviços</a></li>
+                        <li><a href="../portfolio.html">Portfólio BI</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li><a href="../contato.html">Contato</a></li>
                     </ul>
                 </div>
                 <!-- Col 3 -->
                 <div class="footer-col">
                     <h4>Soluções</h4>
                     <ul>
-                        <li><a href="servicos.html">Dashboards Power BI</a></li>
-                        <li><a href="servicos.html">Modelagem de Dados</a></li>
-                        <li><a href="servicos.html">Upgrade de Hardware</a></li>
-                        <li><a href="servicos.html">Suporte Corporativo</a></li>
+                        <li><a href="../servicos.html">Dashboards Power BI</a></li>
+                        <li><a href="../servicos.html">Modelagem de Dados</a></li>
+                        <li><a href="../servicos.html">Upgrade de Hardware</a></li>
+                        <li><a href="../servicos.html">Suporte Corporativo</a></li>
                     </ul>
                 </div>
                 <!-- Col 4 -->
@@ -306,19 +296,17 @@
             
             <div class="footer-bottom-premium">
                 <p>&copy; 2026 Elyar Serviços. Todos os direitos reservados.</p>
-                <p>Criado por <a href="index.html" style="color: var(--color-accent-yellow); text-decoration: underline;">Elyar Serviços</a></p>
+                <p>Criado por <a href="../index.html" style="color: var(--color-accent-yellow); text-decoration: underline;">Elyar Serviços</a></p>
             </div>
         </div>
     </footer>
 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/main-v1.js?v=2"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script src="../js/main-v1.js?v=2"></script>
     <script>
         $(document).ready(function() {
-            // ATENÇÃO: Troque 'TEMPLATE_ID' abaixo por um identificador exclusivo do seu novo post!
-            // Exemplo: 'projeto_bi', 'seguranca_soc', etc.
             var viewsKey = 'blog_views_TEMPLATE_ID';
             var commentsKey = 'blog_comments_TEMPLATE_ID';
             var likesKey = 'blog_likes_TEMPLATE_ID';
@@ -365,10 +353,10 @@
                     comments.forEach(function(c) {
                         var dateStr = c.date || 'Recente';
                         var commentHtml = `
-                            <div class="comment-item-box" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 20px; border-radius: var(--border-radius-md); margin-bottom: 15px;">
+                            <div class="comment-item-box" style="border-left: 2px solid var(--color-accent-yellow); background: rgba(255,255,255,0.01); padding: 15px 20px; border-radius: 0 8px 8px 0; margin-bottom: 20px;">
                                 <div style="display: flex; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap;">
-                                    <strong style="color: var(--color-accent-yellow); font-family: 'Outfit', sans-serif;">${c.author}</strong>
-                                    <span style="font-size: 0.8rem; color: var(--color-text-muted);">${dateStr}</span>
+                                    <strong style="color: white; font-family: 'Outfit', sans-serif; font-size: 0.95rem;">${c.author}</strong>
+                                    <span style="font-size: 0.75rem; color: var(--color-text-muted);">${dateStr}</span>
                                 </div>
                                 <p style="margin: 0; color: var(--color-text-body); font-size: 0.95rem; line-height: 1.5;">${c.text}</p>
                             </div>
