@@ -73,14 +73,25 @@
                 <p>Acompanhe novidades, tendências e orientações sobre tecnologia, análise de dados e segurança.</p>
             </div>
 
-            <div class="row" style="margin-top: 50px;">
+            <!-- Category Navigation Filter -->
+            <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+                <div class="col-md-12 text-center">
+                    <ul class="portfolio-filter" style="margin-bottom: 30px; display: inline-flex; justify-content: center; gap: 10px; list-style: none; padding: 0;">
+                        <li><a class="btn btn-default active" href="#" data-filter="*">Todos</a></li>
+                        <li><a class="btn btn-default" href="#" data-filter=".cat-ia">Inteligência Artificial</a></li>
+                        <li><a class="btn btn-default" href="#" data-filter=".cat-monitoramento">Monitoramento</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
                 
                 <!-- Card 1: AI Post -->
-                <div class="col-md-6" style="margin-bottom: 40px;">
+                <div class="col-md-6 blog-post-item cat-ia" style="margin-bottom: 40px;">
                     <div class="service-premium-card" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-lg); display: flex; flex-direction: column; height: 100%;">
-                        <!-- Header banner image -->
-                        <div style="position: relative; overflow: hidden; height: 240px; border-bottom: 1px solid rgba(255,255,255,0.04);">
-                            <img src="images/blog/blog_ia.png" alt="Inteligência Artificial" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth);">
+                        <!-- Header banner image (No height crop) -->
+                        <div style="position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.04);">
+                            <img src="images/blog/blog_ia.png" alt="Inteligência Artificial" style="width: 100%; height: auto; display: block; transition: var(--transition-smooth);">
                             <span class="hero-badge" style="position: absolute; top: 20px; left: 20px; margin: 0; z-index: 1;">Inteligência Artificial</span>
                         </div>
                         
@@ -111,11 +122,11 @@
                 </div>
 
                 <!-- Card 2: Active Monitoring (Zabbix) -->
-                <div class="col-md-6" style="margin-bottom: 40px;">
+                <div class="col-md-6 blog-post-item cat-monitoramento" style="margin-bottom: 40px;">
                     <div class="service-premium-card" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-lg); display: flex; flex-direction: column; height: 100%;">
-                        <!-- Header banner image -->
-                        <div style="position: relative; overflow: hidden; height: 240px; border-bottom: 1px solid rgba(255,255,255,0.04);">
-                            <img src="images/blog/blog_monitoramento.png" alt="Monitoramento de Rede" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth);">
+                        <!-- Header banner image (No height crop) -->
+                        <div style="position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.04);">
+                            <img src="images/blog/blog_monitoramento.png" alt="Monitoramento de Rede" style="width: 100%; height: auto; display: block; transition: var(--transition-smooth);">
                             <span class="hero-badge" style="position: absolute; top: 20px; left: 20px; margin: 0; z-index: 1;">Monitoramento</span>
                         </div>
                         
@@ -164,7 +175,7 @@
                         <span style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 22px; color: white; letter-spacing: 1.5px;">Elyar</span>
                     </div>
                     <p class="footer-desc">
-                        Desenvolvimento de painéis em Power BI de alto impacto visual e consultoria técnica especializada in infraestrutura de hardware.
+                        Desenvolvimento de painéis em Power BI de alto impacto visual e consultoria técnica especializada em infraestrutura de hardware.
                     </p>
                     <ul class="footer-social-list">
                         <li><a href="https://www.instagram.com/elyarservicos" target="_blank" aria-label="Instagram"><i class="fa fa-instagram"></i></a></li>
@@ -239,6 +250,21 @@
             var monLikes = localStorage.getItem(monLikesKey) || 30;
             if (!localStorage.getItem(monLikesKey)) localStorage.setItem(monLikesKey, 30);
             $('#mon-likes-count').text(monLikes);
+
+            // Category Filter Logic
+            $('.portfolio-filter a').click(function(e) {
+                e.preventDefault();
+                $('.portfolio-filter a').removeClass('active');
+                $(this).addClass('active');
+                
+                var filterValue = $(this).attr('data-filter');
+                if (filterValue === '*') {
+                    $('.blog-post-item').fadeIn(400);
+                } else {
+                    $('.blog-post-item').hide();
+                    $(filterValue).fadeIn(400);
+                }
+            });
         });
     </script>
 </body>
