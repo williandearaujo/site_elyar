@@ -230,10 +230,11 @@ jQuery(function($) {'use strict';
 	if ($('#google-map').length > 0 && typeof google !== 'undefined') {
 		var latitude = $('#google-map').data('latitude');
 		var longitude = $('#google-map').data('longitude');
+		var zoom = $('#google-map').data('zoom') || 14;
 		var initialize_map = function() {
 			var myLatlng = new google.maps.LatLng(latitude,longitude);
 			var mapOptions = {
-				zoom: 14,
+				zoom: parseInt(zoom, 10),
 				scrollwheel: false,
 				center: myLatlng
 			};
