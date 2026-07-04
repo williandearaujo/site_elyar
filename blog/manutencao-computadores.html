@@ -316,8 +316,24 @@
             var baselineViews = 0;
             var baselineLikes = 0;
             
+            // Safe Local Storage Helpers for Incognito / Strict Privacy Mode
+            function safeGetLocal(key, defaultValue) {
+                try {
+                    var val = localStorage.getItem(key);
+                    return val !== null ? val : defaultValue;
+                } catch(e) {
+                    return defaultValue;
+                }
+            }
+            function safeSetLocal(key, value) {
+                try {
+                    localStorage.setItem(key, value);
+                } catch(e) {}
+            }
+            
             function loadMetrics() {
                 if (COMMENTS_API_URL) {
+                    // Fetch and increment view count on load
                     $.getJSON(COMMENTS_API_URL + '?action=get_metrics&increment=true&pageId=' + viewsKey, function(data) {
                         var totalViews = (parseInt(data.views) || 0) + baselineViews;
                         var totalLikes = (parseInt(data.likes) || 0) + baselineLikes;
@@ -330,13 +346,15 @@
             }
             
             function loadLocalFallback() {
-                var views = parseInt(localStorage.getItem(viewsKey) || '0');
+                var views = parseInt(safeGetLocal(viewsKey, '0'));
                 if (!sessionStorage.getItem(viewsKey + '_session')) {
                     views += 1;
-                    localStorage.setItem(viewsKey, views);
-                    sessionStorage.setItem(viewsKey + '_session', 'true');
+                    safeSetLocal(viewsKey, views);
+                    try {
+                        sessionStorage.setItem(viewsKey + '_session', 'true');
+                    } catch(e) {}
                 }
-                var likes = parseInt(localStorage.getItem(likesKey) || '0');
+                var likes = parseInt(safeGetLocal(likesKey, '0'));
                 $('#man-views-detail').text(views + baselineViews);
                 $('#man-likes-detail').text(likes + baselineLikes);
             }
@@ -345,7 +363,7 @@
         
             // Like Interaction
             $('#like-btn').click(function() {
-                if (localStorage.getItem(likedKey) === 'true') {
+                if (safeGetLocal(likedKey, 'false') === 'true') {
                     alert('Você já curtiu este artigo!');
                     return;
                 }
@@ -359,21 +377,29 @@
                             pageId: viewsKey
                         },
                         success: function(data) {
-                            localStorage.setItem(likedKey, 'true');
+                            safeSetLocal(likedKey, 'true');
                             $('#like-btn').addClass('liked');
                             loadMetrics();
+                        },
+                        error: function() {
+                            // Local fallback if tracking protection blocks Google request
+                            var likes = parseInt(safeGetLocal(likesKey, '0')) + 1;
+                            safeSetLocal(likesKey, likes);
+                            safeSetLocal(likedKey, 'true');
+                            $('#like-btn').addClass('liked');
+                            loadLocalFallback();
                         }
                     });
                 } else {
-                    var likes = parseInt(localStorage.getItem(likesKey) || '0') + 1;
-                    localStorage.setItem(likesKey, likes);
-                    localStorage.setItem(likedKey, 'true');
+                    var likes = parseInt(safeGetLocal(likesKey, '0')) + 1;
+                    safeSetLocal(likesKey, likes);
+                    safeSetLocal(likedKey, 'true');
                     $('#like-btn').addClass('liked');
                     loadMetrics();
                 }
             });
             
-            if (localStorage.getItem(likedKey) === 'true') {
+            if (safeGetLocal(likedKey, 'false') === 'true') {
                 $('#like-btn').addClass('liked');
             }
 
@@ -388,11 +414,11 @@
                         renderComments(comments);
                     }).fail(function() {
                         // Fallback to local storage on error
-                        var comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+                        var comments = JSON.parse(safeGetLocal(commentsKey, '[]') || '[]');
                         renderComments(comments);
                     });
                 } else {
-                    var comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+                    var comments = JSON.parse(safeGetLocal(commentsKey, '[]') || '[]');
                     renderComments(comments);
                 }
             }
@@ -460,9 +486,9 @@
                         });
                     } else {
                         // Save in LocalStorage
-                        var comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+                        var comments = JSON.parse(safeGetLocal(commentsKey, '[]') || '[]');
                         comments.push(commentData);
-                        localStorage.setItem(commentsKey, JSON.stringify(comments));
+                        safeSetLocal(commentsKey, JSON.stringify(comments));
                         
                         $('#comment-form').prepend('<div class="alert alert-success" style="background: rgba(46, 204, 113, 0.15); border-color: #2ecc71; color: #2ecc71; margin-bottom: 20px; padding: 15px; border-radius: 6px;"><i class="fa fa-check-circle"></i> Comentário enviado com sucesso! Atualizando comentários...</div>');
                         $('#author-name').val('');
