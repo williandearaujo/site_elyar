@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ELYAR PREMIUM TECH DESIGN SYSTEM - V4 (BLACK & GOLD MASTERPIECE)
+   ELYAR PREMIUM TECH DESIGN SYSTEM - V5 (RESPONSIVE NAVBAR FIXED)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
@@ -50,117 +50,30 @@ body.premium-theme h6 {
 }
 
 /* ==========================================================================
-   NAVIGATION & TABS (ROBUST FLEXBOX OVERRIDES)
+   NAVIGATION & TABS (ROBUST FLEXBOX OVERRIDES & RESPONSIVE FIX)
    ========================================================================== */
 
 #header.premium-nav {
-    background-color: rgba(12, 12, 14, 0.95) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border-bottom: 1px solid rgba(238, 215, 15, 0.1) !important;
-    height: var(--header-height) !important;
-    transition: var(--transition-smooth) !important;
-    z-index: 1000;
-}
-
-#header.premium-nav.scrolled {
-    height: 75px !important;
-    background-color: rgba(12, 12, 14, 0.98) !important;
-    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.6) !important;
+    background: transparent !important;
+    border: none !important;
+    height: auto !important;
 }
 
 /* Reset Bootstrap #main-menu classes to avoid clashes */
 #main-menu.navbar-default {
-    background: transparent !important;
-    border: none !important;
+    background-color: rgba(12, 12, 14, 0.95) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(238, 215, 15, 0.1) !important;
+    transition: var(--transition-smooth) !important;
     box-shadow: none !important;
-    margin-bottom: 0 !important;
-}
-
-/* Flexbox alignments for Navbar elements */
-#header.premium-nav .container {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    height: 100% !important;
-}
-
-#header.premium-nav .navbar-header {
-    float: none !important;
-    display: flex !important;
-    align-items: center !important;
-    margin: 0 !important;
-}
-
-#header.premium-nav .navbar-collapse {
-    display: flex !important;
-    align-items: center !important;
-    float: none !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-}
-
-#header.premium-nav .navbar-nav {
-    display: flex !important;
-    align-items: center !important;
-    flex-direction: row !important;
-    float: none !important;
-    margin: 0 !important;
-    gap: 8px !important;
-}
-
-#header.premium-nav .navbar-nav > li {
-    float: none !important;
-    display: inline-block !important;
-}
-
-/* Custom Pill Tab Styling for Menu Items */
-#header.premium-nav .navbar-nav > li > a {
-    color: var(--color-text-body) !important;
-    font-family: 'Outfit', sans-serif !important;
-    font-weight: 600 !important;
-    font-size: 1rem !important;
-    padding: 8px 18px !important;
-    margin: 0 !important;
-    border-radius: 30px !important;
-    background: transparent !important;
-    border: 1px solid transparent !important;
-    transition: var(--transition-fast) !important;
-    text-transform: none !important;
-    letter-spacing: 0.5px !important;
-}
-
-/* Hover State */
-#header.premium-nav .navbar-nav > li > a:hover,
-#header.premium-nav .navbar-nav > li:hover > a {
-    color: var(--color-accent-yellow) !important;
-    background: rgba(238, 215, 15, 0.06) !important;
-    border-color: rgba(238, 215, 15, 0.15) !important;
-}
-
-/* Active State (Solid Gold Pill with Black Text) */
-#header.premium-nav .navbar-nav > li.active > a {
-    color: #0C0C0E !important;
-    background: var(--color-accent-yellow) !important;
-    border-color: var(--color-accent-yellow) !important;
-    box-shadow: 0 4px 15px rgba(238, 215, 15, 0.35) !important;
-    font-weight: 700 !important;
-}
-
-/* Mobile Toggle overrides */
-#header.premium-nav .navbar-toggle {
-    margin-top: 0 !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-    align-self: center;
 }
 
 /* Logo Wrapper */
 .navbar-brand-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
     padding: 0 !important;
     margin: 0 !important;
 }
@@ -173,6 +86,157 @@ body.premium-theme h6 {
     background: linear-gradient(90deg, #FFFFFF 0%, var(--color-accent-yellow) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* Desktop Navigation Styles (>= 768px) */
+@media (min-width: 768px) {
+    #main-menu.navbar-default {
+        height: 85px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    #header.scrolled #main-menu.navbar-default {
+        height: 70px !important;
+        background-color: rgba(12, 12, 14, 0.98) !important;
+        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.6) !important;
+    }
+
+    #main-menu.navbar-default .container {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        height: 100% !important;
+        width: 100% !important;
+        overflow: visible !important;
+    }
+
+    #main-menu.navbar-default .navbar-header {
+        float: none !important;
+        display: flex !important;
+        align-items: center !important;
+        margin: 0 !important;
+        overflow: visible !important;
+    }
+
+    #main-menu.navbar-default .navbar-collapse {
+        display: flex !important;
+        align-items: center !important;
+        float: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    #main-menu.navbar-default .navbar-nav {
+        display: flex !important;
+        align-items: center !important;
+        flex-direction: row !important;
+        float: none !important;
+        margin: 0 !important;
+        gap: 8px !important;
+    }
+
+    #main-menu.navbar-default .navbar-nav > li {
+        float: none !important;
+        display: inline-block !important;
+    }
+
+    #main-menu.navbar-default .navbar-nav > li > a {
+        color: var(--color-text-body) !important;
+        font-family: 'Outfit', sans-serif !important;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+        padding: 8px 18px !important;
+        margin: 0 !important;
+        border-radius: 30px !important;
+        background: transparent !important;
+        border: 1px solid transparent !important;
+        border-top: none !important;
+        transition: var(--transition-fast) !important;
+        text-transform: none !important;
+        letter-spacing: 0.5px !important;
+    }
+
+    #main-menu.navbar-default .navbar-nav > li > a:hover,
+    #main-menu.navbar-default .navbar-nav > li:hover > a {
+        color: var(--color-accent-yellow) !important;
+        background: rgba(238, 215, 15, 0.06) !important;
+        border-color: rgba(238, 215, 15, 0.15) !important;
+        border-top: none !important;
+    }
+
+    #main-menu.navbar-default .navbar-nav > li.active > a {
+        color: #0C0C0E !important;
+        background: var(--color-accent-yellow) !important;
+        border-color: var(--color-accent-yellow) !important;
+        border-top: none !important;
+        box-shadow: 0 4px 15px rgba(238, 215, 15, 0.35) !important;
+        font-weight: 700 !important;
+    }
+}
+
+/* Mobile Navigation Styles (< 768px) */
+@media (max-width: 767px) {
+    #main-menu.navbar-default {
+        padding: 10px 0 !important;
+    }
+
+    #main-menu.navbar-default .navbar-header {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding: 0 15px !important;
+    }
+
+    #main-menu.navbar-default .navbar-toggle {
+        margin: 0 !important;
+        border-color: rgba(255, 255, 255, 0.1) !important;
+        align-self: center;
+    }
+
+    #main-menu.navbar-default .navbar-collapse {
+        background-color: rgba(12, 12, 14, 0.98) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+        margin-top: 10px !important;
+        padding: 15px !important;
+        max-height: 400px !important;
+        overflow-y: auto !important;
+    }
+
+    #main-menu.navbar-default .navbar-nav {
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    #main-menu.navbar-default .navbar-nav > li > a {
+        color: var(--color-text-body) !important;
+        font-family: 'Outfit', sans-serif !important;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+        padding: 10px 15px !important;
+        border-radius: 8px !important;
+        border: 1px solid transparent !important;
+        border-top: none !important;
+        display: block !important;
+    }
+
+    #main-menu.navbar-default .navbar-nav > li > a:hover {
+        color: var(--color-accent-yellow) !important;
+        background: rgba(238, 215, 15, 0.06) !important;
+        border-color: rgba(238, 215, 15, 0.1) !important;
+    }
+
+    #main-menu.navbar-default .navbar-nav > li.active > a {
+        color: #0C0C0E !important;
+        background: var(--color-accent-yellow) !important;
+        border-color: var(--color-accent-yellow) !important;
+    }
 }
 
 /* ==========================================================================
@@ -649,35 +713,6 @@ body.premium-theme h6 {
    ========================================================================== */
 
 @media (max-width: 991px) {
-    #header.premium-nav {
-        height: auto !important;
-        padding: 10px 0 !important;
-    }
-
-    #header.premium-nav .container {
-        flex-direction: column !important;
-        gap: 15px !important;
-        align-items: center !important;
-    }
-
-    #header.premium-nav .navbar-collapse {
-        width: 100% !important;
-        justify-content: center !important;
-        margin-top: 10px !important;
-    }
-
-    #header.premium-nav .navbar-nav {
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        width: 100% !important;
-        gap: 5px !important;
-    }
-
-    #header.premium-nav .navbar-nav > li > a {
-        padding: 6px 12px !important;
-        font-size: 0.9rem !important;
-    }
-
     .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
