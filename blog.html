@@ -85,113 +85,115 @@
                 </div>
             </div>
 
-            <div class="row">
+            <!-- Blog Grid (4 Columns per Row: col-md-3) -->
+            <div class="row" id="blog-grid-row">
                 
                 <!-- Card 1: AI Post -->
-                <div class="col-md-6 blog-post-item cat-ia" style="margin-bottom: 40px;">
+                <div class="col-md-3 col-sm-6 col-xs-12 blog-post-item cat-ia" style="margin-bottom: 30px;">
                     <div class="service-premium-card" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-lg); display: flex; flex-direction: column; height: 100%;">
-                        <!-- Header banner image (Uncropped & smaller height box) -->
-                        <div style="position: relative; overflow: hidden; height: 200px; background-color: #0C0C0E; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;">
+                        <!-- Header banner image (Uncropped & proportional 160px height) -->
+                        <div style="position: relative; overflow: hidden; height: 160px; background-color: #0C0C0E; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;">
                             <img src="images/blog/blog_ia.png" alt="Inteligência Artificial" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; transition: var(--transition-smooth);">
-                            <span class="hero-badge" style="position: absolute; top: 15px; left: 15px; margin: 0; z-index: 1;">Inteligência Artificial</span>
+                            <span class="hero-badge" style="position: absolute; top: 15px; left: 15px; margin: 0; z-index: 1; font-size: 0.7rem; padding: 3px 8px;">IA</span>
                         </div>
                         
                         <!-- Card Details -->
-                        <div style="padding: 30px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
                             <div>
-                                <div style="display: flex; gap: 15px; font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 15px; flex-wrap: wrap;">
-                                    <span><i class="fa fa-calendar text-primary"></i> 04 de Julho de 2026</span>
-                                    <span><i class="fa fa-eye text-primary"></i> <span id="ia-views-count">100</span> visualizações</span>
-                                    <span><i class="fa fa-heart text-primary"></i> <span id="ia-likes-count">52</span> curtidas</span>
+                                <div style="display: flex; gap: 10px; font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 12px; flex-wrap: wrap;">
+                                    <span><i class="fa fa-calendar"></i> 04/07/2026</span>
+                                    <span><i class="fa fa-eye"></i> <span id="ia-views-count">100</span></span>
+                                    <span><i class="fa fa-heart"></i> <span id="ia-likes-count">52</span></span>
                                 </div>
-                                <h3 style="font-size: 1.5rem; margin-top: 0; margin-bottom: 15px; line-height: 1.3;">
-                                    Inteligência Artificial: O Impacto nas Empresas e Pessoas
+                                <h3 style="font-size: 1.2rem; margin-top: 0; margin-bottom: 10px; line-height: 1.3; font-weight: 700; color: white;">
+                                    Inteligência Artificial: O Impacto nas Empresas
                                 </h3>
-                                <p style="color: var(--color-text-body); line-height: 1.5; font-size: 0.95rem; margin-bottom: 25px;">
-                                    A Inteligência Artificial deixou de ser ficção para redesenhar o ecossistema corporativo. Analisamos os ganhos de produtividade e os novos desafios éticos.
+                                <p style="color: var(--color-text-body); line-height: 1.4; font-size: 0.85rem; margin-bottom: 20px;">
+                                    A Inteligência Artificial redesenha o ecossistema corporativo. Analisamos os ganhos e desafios éticos.
                                 </p>
                             </div>
                             
                             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-                                <div style="display: flex; gap: 6px;">
-                                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 15px; color: var(--color-text-muted);">#Tecnologia</span>
-                                </div>
-                                <a href="blog/ia-impacto.html" class="btn-premium-primary" style="padding: 8px 20px; font-size: 0.85rem;">Ler Artigo <i class="fa fa-arrow-right"></i></a>
+                                <span style="font-size: 0.7rem; background: rgba(255,255,255,0.03); padding: 2px 6px; border-radius: 10px; color: var(--color-text-muted);">#Tecnologia</span>
+                                <a href="blog/ia-impacto.html" class="btn-premium-primary" style="padding: 6px 14px; font-size: 0.8rem;">Ler Post <i class="fa fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 2: Active Monitoring (Zabbix) -->
-                <div class="col-md-6 blog-post-item cat-monitoramento" style="margin-bottom: 40px;">
+                <div class="col-md-3 col-sm-6 col-xs-12 blog-post-item cat-monitoramento" style="margin-bottom: 30px;">
                     <div class="service-premium-card" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-lg); display: flex; flex-direction: column; height: 100%;">
-                        <!-- Header banner image (Uncropped & smaller height box) -->
-                        <div style="position: relative; overflow: hidden; height: 200px; background-color: #0C0C0E; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;">
+                        <!-- Header banner image (Uncropped & proportional 160px height) -->
+                        <div style="position: relative; overflow: hidden; height: 160px; background-color: #0C0C0E; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;">
                             <img src="images/blog/blog_monitoramento.png" alt="Monitoramento de Rede" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; transition: var(--transition-smooth);">
-                            <span class="hero-badge" style="position: absolute; top: 15px; left: 15px; margin: 0; z-index: 1;">Monitoramento</span>
+                            <span class="hero-badge" style="position: absolute; top: 15px; left: 15px; margin: 0; z-index: 1; font-size: 0.7rem; padding: 3px 8px;">Zabbix</span>
                         </div>
                         
                         <!-- Card Details -->
-                        <div style="padding: 30px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
                             <div>
-                                <div style="display: flex; gap: 15px; font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 15px; flex-wrap: wrap;">
-                                    <span><i class="fa fa-calendar text-primary"></i> 04 de Julho de 2026</span>
-                                    <span><i class="fa fa-eye text-primary"></i> <span id="mon-views-count">100</span> visualizações</span>
-                                    <span><i class="fa fa-heart text-primary"></i> <span id="mon-likes-count">30</span> curtidas</span>
+                                <div style="display: flex; gap: 10px; font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 12px; flex-wrap: wrap;">
+                                    <span><i class="fa fa-calendar"></i> 04/07/2026</span>
+                                    <span><i class="fa fa-eye"></i> <span id="mon-views-count">100</span></span>
+                                    <span><i class="fa fa-heart"></i> <span id="mon-likes-count">30</span></span>
                                 </div>
-                                <h3 style="font-size: 1.5rem; margin-top: 0; margin-bottom: 15px; line-height: 1.3;">
+                                <h3 style="font-size: 1.2rem; margin-top: 0; margin-bottom: 10px; line-height: 1.3; font-weight: 700; color: white;">
                                     Monitoramento Ativo: O Escudo da TI
                                 </h3>
-                                <p style="color: var(--color-text-body); line-height: 1.5; font-size: 0.95rem; margin-bottom: 25px;">
-                                    Entenda a importância do monitoramento proativo para evitar indisponibilidades caras em sistemas corporativos e como Zabbix e Grafana atuam na prevenção.
+                                <p style="color: var(--color-text-body); line-height: 1.4; font-size: 0.85rem; margin-bottom: 20px;">
+                                    Entenda a importância do monitoramento proativo para evitar indisponibilidades e perdas de receita.
                                 </p>
                             </div>
                             
                             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-                                <div style="display: flex; gap: 6px;">
-                                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 15px; color: var(--color-text-muted);">#Infraestrutura</span>
-                                </div>
-                                <a href="blog/monitoramento-ativo.html" class="btn-premium-primary" style="padding: 8px 20px; font-size: 0.85rem;">Ler Artigo <i class="fa fa-arrow-right"></i></a>
+                                <span style="font-size: 0.7rem; background: rgba(255,255,255,0.03); padding: 2px 6px; border-radius: 10px; color: var(--color-text-muted);">#Infra</span>
+                                <a href="blog/monitoramento-ativo.html" class="btn-premium-primary" style="padding: 6px 14px; font-size: 0.8rem;">Ler Post <i class="fa fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 3: PC Maintenance & Upgrades -->
-                <div class="col-md-6 blog-post-item cat-infra" style="margin-bottom: 40px;">
+                <div class="col-md-3 col-sm-6 col-xs-12 blog-post-item cat-infra" style="margin-bottom: 30px;">
                     <div class="service-premium-card" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-lg); display: flex; flex-direction: column; height: 100%;">
-                        <!-- Header banner image (Uncropped & smaller height box) -->
-                        <div style="position: relative; overflow: hidden; height: 200px; background-color: #0C0C0E; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;">
+                        <!-- Header banner image (Uncropped & proportional 160px height) -->
+                        <div style="position: relative; overflow: hidden; height: 160px; background-color: #0C0C0E; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;">
                             <img src="images/blog/blog_manutencao.png" alt="Manutenção de Computadores" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; transition: var(--transition-smooth);">
-                            <span class="hero-badge" style="position: absolute; top: 15px; left: 15px; margin: 0; z-index: 1;">Infraestrutura</span>
+                            <span class="hero-badge" style="position: absolute; top: 15px; left: 15px; margin: 0; z-index: 1; font-size: 0.7rem; padding: 3px 8px;">Hardware</span>
                         </div>
                         
                         <!-- Card Details -->
-                        <div style="padding: 30px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
                             <div>
-                                <div style="display: flex; gap: 15px; font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 15px; flex-wrap: wrap;">
-                                    <span><i class="fa fa-calendar text-primary"></i> 04 de Julho de 2026</span>
-                                    <span><i class="fa fa-eye text-primary"></i> <span id="man-views-count">0</span> visualizações</span>
-                                    <span><i class="fa fa-heart text-primary"></i> <span id="man-likes-count">0</span> curtidas</span>
+                                <div style="display: flex; gap: 10px; font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 12px; flex-wrap: wrap;">
+                                    <span><i class="fa fa-calendar"></i> 04/07/2026</span>
+                                    <span><i class="fa fa-eye"></i> <span id="man-views-count">0</span></span>
+                                    <span><i class="fa fa-heart"></i> <span id="man-likes-count">0</span></span>
                                 </div>
-                                <h3 style="font-size: 1.5rem; margin-top: 0; margin-bottom: 15px; line-height: 1.3;">
-                                    Além do Limite: O Poder do Upgrade e a Importância da Manutenção Preventiva
+                                <h3 style="font-size: 1.2rem; margin-top: 0; margin-bottom: 10px; line-height: 1.3; font-weight: 700; color: white;">
+                                    Além do Limite: O Poder do Upgrade
                                 </h3>
-                                <p style="color: var(--color-text-body); line-height: 1.5; font-size: 0.95rem; margin-bottom: 25px;">
-                                    Saiba como prolongar a vida útil de computadores corporativos e gamers através de upgrades de SSD, memória e limpeza física regular.
+                                <p style="color: var(--color-text-body); line-height: 1.4; font-size: 0.85rem; margin-bottom: 20px;">
+                                    Saiba como prolongar a vida útil de computadores corporativos e gamers com upgrades de RAM/SSD.
                                 </p>
                             </div>
                             
                             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-                                <div style="display: flex; gap: 6px;">
-                                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 15px; color: var(--color-text-muted);">#Hardware</span>
-                                </div>
-                                <a href="blog/manutencao-computadores.html" class="btn-premium-primary" style="padding: 8px 20px; font-size: 0.85rem;">Ler Artigo <i class="fa fa-arrow-right"></i></a>
+                                <span style="font-size: 0.7rem; background: rgba(255,255,255,0.03); padding: 2px 6px; border-radius: 10px; color: var(--color-text-muted);">#Upgrade</span>
+                                <a href="blog/manutencao-computadores.html" class="btn-premium-primary" style="padding: 6px 14px; font-size: 0.8rem;">Ler Post <i class="fa fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
+            </div>
+
+            <!-- Pagination Toolbar Container -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="blog-pagination" id="blog-pagination-container"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -299,7 +301,51 @@
             if (!localStorage.getItem(manLikesKey)) localStorage.setItem(manLikesKey, 0);
             $('#man-likes-count').text(manLikes);
 
-            // Category Filter Logic
+            // -------------------------------------------------------------
+            // DYNAMIC CLIENT-SIDE PAGINATION LOGIC
+            // -------------------------------------------------------------
+            var itemsPerPage = 16; // 4 rows of 4 columns = 16 items max per page
+
+            function paginateBlog() {
+                var visibleItems = $('.blog-post-item:visible');
+                var totalItems = visibleItems.length;
+                var totalPages = Math.ceil(totalItems / itemsPerPage);
+                
+                var paginationContainer = $('#blog-pagination-container');
+                paginationContainer.empty();
+                
+                if (totalPages <= 1) {
+                    visibleItems.show();
+                    return;
+                }
+                
+                // Hide all and show only first page
+                visibleItems.hide();
+                
+                function showPage(page) {
+                    visibleItems.hide();
+                    var start = (page - 1) * itemsPerPage;
+                    var end = start + itemsPerPage;
+                    visibleItems.slice(start, end).fadeIn(300);
+                    
+                    paginationContainer.find('.page-btn').removeClass('active');
+                    paginationContainer.find('.page-btn[data-page="' + page + '"]').addClass('active');
+                }
+                
+                // Render Page Buttons
+                for (var i = 1; i <= totalPages; i++) {
+                    var btn = $('<button class="page-btn" data-page="' + i + '">' + i + '</button>');
+                    btn.click(function() {
+                        var p = parseInt($(this).attr('data-page'));
+                        showPage(p);
+                    });
+                    paginationContainer.append(btn);
+                }
+                
+                showPage(1);
+            }
+
+            // Category Filter Click Event
             $('.portfolio-filter a').click(function(e) {
                 e.preventDefault();
                 $('.portfolio-filter a').removeClass('active');
@@ -307,12 +353,18 @@
                 
                 var filterValue = $(this).attr('data-filter');
                 if (filterValue === '*') {
-                    $('.blog-post-item').fadeIn(400);
+                    $('.blog-post-item').show();
                 } else {
                     $('.blog-post-item').hide();
-                    $(filterValue).fadeIn(400);
+                    $(filterValue).show();
                 }
+                
+                // Recalculate pagination based on filtered view
+                paginateBlog();
             });
+
+            // Initial call to set up pagination on page load
+            paginateBlog();
         });
     </script>
 </body>

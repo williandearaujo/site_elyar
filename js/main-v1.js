@@ -316,4 +316,14 @@ jQuery(function($) {'use strict';
 		google.maps.event.addDomListener(window, 'load', initialize_map);
 	}
 
+	// Dynamically load global search script
+	$(document).ready(function() {
+		var searchScriptPath = 'js/search.js';
+		var inSubfolder = window.location.pathname.includes('/blog/') || window.location.pathname.includes('/servicos/');
+		if (inSubfolder) {
+			searchScriptPath = '../js/search.js';
+		}
+		$.getScript(searchScriptPath);
+	});
+
 });
