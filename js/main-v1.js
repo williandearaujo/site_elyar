@@ -200,6 +200,51 @@ jQuery(function($) {'use strict';
 				});
 			});
 		};
+		// Custom Premium Counter
+		var counterSec = $('.metrics-section');
+		if (counterSec.length > 0) {
+			var counted = false;
+			var startCounter = function() {
+				if (counted) return;
+				
+				var docViewTop = $(window).scrollTop();
+				var docViewBottom = docViewTop + $(window).height();
+				var elemTop = counterSec.offset().top;
+				var elemBottom = elemTop + counterSec.height();
+				
+				if ((elemTop <= docViewBottom) && (elemBottom >= docViewTop)) {
+					counted = true;
+					$('.metric-number').each(function() {
+						var $this = $(this);
+						var target = parseFloat($this.attr('data-target'));
+						var isDecimal = $this.attr('data-decimals') ? true : false;
+						
+						$({ countVal: 0 }).animate({ countVal: target }, {
+							duration: 2000,
+							easing: 'swing',
+							step: function() {
+								if (isDecimal) {
+									$this.text(parseFloat(this.countVal).toFixed(1));
+								} else {
+									$this.text(Math.floor(this.countVal));
+								}
+							},
+							complete: function() {
+								if (isDecimal) {
+									$this.text(target.toFixed(1));
+								} else {
+									$this.text(target);
+								}
+							}
+						});
+					});
+				}
+			};
+			
+			$(window).on('scroll', startCounter);
+			// Run once on load in case it starts visible
+			setTimeout(startCounter, 500);
+		}
 	});
 
 	// Contact form
