@@ -1,17 +1,19 @@
 # Guia: Banco de Dados de Depoimentos no Google Sheets
 
-Este guia contém o código original e funcional para conectar a página de depoimentos (`depoimentos.html`) com a sua planilha do Google Sheets.
+Este guia contém o código definitivo e corrigido para conectar a página de depoimentos (`depoimentos.html`) com a sua planilha do Google Sheets de forma segura e estável.
 
 ---
 
 ## 💻 Passo 1: Atualizar o Código no Apps Script
 1. Abra a sua planilha `Elyar Blog - Depoimentos` no Google Drive.
 2. Vá em **Extensões > Apps Script**.
-3. Substitua todo o código existente no editor pelo código original abaixo:
+3. Substitua todo o código existente no editor pelo código corrigido abaixo:
 
 ```javascript
 function doGet(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  // Busca a aba pelo nome exato, evitando ler a aba ativa errada do navegador
+  var sheet = ss.getSheetByName("Depoimentos") || ss.getSheets()[0];
   var data = sheet.getDataRange().getValues();
   
   var testimonials = [];
@@ -37,7 +39,9 @@ function doGet(e) {
 }
 
 function doPost(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  // Escreve obrigatoriamente na aba Depoimentos
+  var sheet = ss.getSheetByName("Depoimentos") || ss.getSheets()[0];
   
   // Recebe os parâmetros enviados pelo formulário
   var name = e.parameter.name;
