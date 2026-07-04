@@ -214,6 +214,9 @@ jQuery(function($) {'use strict';
 				url: 'https://formsubmit.co/ajax/contato@elyar.com.br',
 				method: 'POST',
 				dataType: 'json',
+				headers: {
+					'Accept': 'application/json'
+				},
 				data: form.serialize(),
 				beforeSend: function(){
 					form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Enviando mensagem por e-mail...</p>').fadeIn() );
@@ -223,10 +226,22 @@ jQuery(function($) {'use strict';
 					form_status.html('<p class="text-success">Obrigado pelo contato! Sua mensagem foi enviada por e-mail com sucesso.</p>').delay(6000).fadeOut();
 					form[0].reset();
 				} else {
-					form_status.html('<p class="text-danger">Erro ao enviar o e-mail. Tente novamente ou fale conosco via WhatsApp.</p>').delay(6000).fadeOut();
+					var serverMsg = data.message || "";
+					// Check if it is the first submit requesting activation
+					if (serverMsg.toLowerCase().includes('activate') || serverMsg.toLowerCase().includes('first') || serverMsg.toLowerCase().includes('confirmation')) {
+						form_status.html('<p class="text-warning" style="color: #ffc107; font-weight: 600;"><i class="fa fa-exclamation-triangle"></i> Ativação necessária! Verifique a caixa de entrada de contato@elyar.com.br para ativar o formulário.</p>');
+					} else {
+						form_status.html('<p class="text-danger">Erro: ' + (serverMsg || 'Falha ao enviar o e-mail.') + ' Tente novamente ou use o WhatsApp.</p>').delay(8000).fadeOut();
+					}
 				}
-			}).fail(function() {
-				form_status.html('<p class="text-danger">Erro de conexão. Tente novamente ou fale conosco via WhatsApp.</p>').delay(6000).fadeOut();
+			}).fail(function(xhr) {
+				var errResponse = xhr.responseJSON || {};
+				var errMsg = errResponse.message || "";
+				if (errMsg.toLowerCase().includes('activate') || errMsg.toLowerCase().includes('first') || errMsg.toLowerCase().includes('confirmation')) {
+					form_status.html('<p class="text-warning" style="color: #ffc107; font-weight: 600;"><i class="fa fa-exclamation-triangle"></i> Ativação necessária! Verifique a caixa de entrada de contato@elyar.com.br para ativar o formulário.</p>');
+				} else {
+					form_status.html('<p class="text-danger">Erro de conexão. Tente novamente ou fale conosco via WhatsApp.</p>').delay(8000).fadeOut();
+				}
 			});
 		});
 	}
