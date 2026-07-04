@@ -505,8 +505,7 @@
                                 $('#new-testimonial-form button[type="submit"]').prop('disabled', true).text('Enviando...');
                             }
                         }).done(function() {
-                            $('#deixar-depoimento-modal').modal('hide');
-                            loadTestimonials();
+                            showSuccessFeedback();
                         }).fail(function() {
                             alert('Erro de conexão com o banco de dados. Tentando salvar localmente...');
                             saveLocal(testimonialData);
@@ -519,13 +518,29 @@
                 }
             });
 
+            function showSuccessFeedback() {
+                var modalBody = $('#deixar-depoimento-modal .modal-body');
+                var modalFooter = $('#deixar-depoimento-modal').find('div[style*="justify-content: flex-end"]');
+                
+                // Hide input fields and footer buttons
+                $('#new-testimonial-form').find('.modal-body > div').hide();
+                modalFooter.hide();
+                
+                // Prepend success alert
+                modalBody.prepend('<div class="alert alert-success text-center" style="background: rgba(46, 204, 113, 0.15); border-color: #2ecc71; color: #2ecc71; padding: 20px; font-size: 1.1rem; margin: 0; border-radius: 6px;"><i class="fa fa-check-circle fa-2x" style="display: block; margin-bottom: 10px;"></i> Depoimento enviado com sucesso!<br><span style="font-size: 0.85rem; color: var(--color-text-muted);">Atualizando a página para carregar as novas avaliações...</span></div>');
+                
+                setTimeout(function() {
+                    $('#deixar-depoimento-modal').modal('hide');
+                    window.location.reload();
+                }, 1800);
+            }
+
             function saveLocal(data) {
                 var localSaved = JSON.parse(localStorage.getItem('saved_testimonials') || '[]');
                 localSaved.unshift(data); // Add to beginning
                 localStorage.setItem('saved_testimonials', JSON.stringify(localSaved));
                 
-                $('#deixar-depoimento-modal').modal('hide');
-                loadTestimonials();
+                showSuccessFeedback();
             }
 
             // Initial load
