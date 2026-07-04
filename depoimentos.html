@@ -320,21 +320,12 @@
             // 3. Main Data loading
             function loadTestimonials() {
                 if (DEPOIMENTOS_API_URL) {
-                    $.ajax({
-                        url: DEPOIMENTOS_API_URL,
-                        dataType: 'jsonp',
-                        data: {
-                            action: 'get_testimonials'
-                        },
-                        success: function(cloudData) {
-                            var parsedData = typeof cloudData === 'string' ? JSON.parse(cloudData) : cloudData;
-                            currentTestimonials = parsedData.concat(window.testimonialsData);
-                            processAndRender();
-                        },
-                        error: function() {
-                            currentTestimonials = window.testimonialsData;
-                            processAndRender();
-                        }
+                    $.getJSON(DEPOIMENTOS_API_URL, function(cloudData) {
+                        currentTestimonials = cloudData.concat(window.testimonialsData);
+                        processAndRender();
+                    }).fail(function() {
+                        currentTestimonials = window.testimonialsData;
+                        processAndRender();
                     });
                 } else {
                     // Fallback: merge localStorage reviews if any, then static reviews
@@ -507,25 +498,16 @@
                     if (DEPOIMENTOS_API_URL) {
                         $.ajax({
                             url: DEPOIMENTOS_API_URL,
-                            dataType: 'jsonp',
-                            data: {
-                                action: 'add_testimonial',
-                                name: name,
-                                service: service,
-                                rating: rating,
-                                text: text,
-                                date: dateFormatted
-                            },
+                            method: 'POST',
+                            data: testimonialData,
                             beforeSend: function() {
                                 $('#new-testimonial-form button[type="submit"]').prop('disabled', true).text('Enviando...');
-                            },
-                            success: function(data) {
-                                showSuccessFeedback();
-                            },
-                            error: function() {
-                                alert('Erro de conexão com o banco de dados. Tentando salvar localmente...');
-                                saveLocal(testimonialData);
                             }
+                        }).done(function() {
+                            showSuccessFeedback();
+                        }).fail(function() {
+                            alert('Erro de conexão com o banco de dados. Tentando salvar localmente...');
+                            saveLocal(testimonialData);
                         }).always(function() {
                             $('#new-testimonial-form button[type="submit"]').prop('disabled', false).text('Publicar Avaliação');
                         });

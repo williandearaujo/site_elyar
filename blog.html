@@ -268,38 +268,14 @@
             var COMMENTS_API_URL = 'https://script.google.com/macros/s/AKfycbxjIQEv4uWt8uEXWq3_9pR_-_bm4BIKzDChL8Vo1k9YTCY5r2DUVVOqkBl3zQpYnmfbhQ/exec';
 
             function loadPostMetrics(postKey, viewsEl, likesEl, baseViews, baseLikes) {
-                if (COMMENTS_API_URL) {
-                    $.ajax({
-                        url: COMMENTS_API_URL,
-                        dataType: 'jsonp',
-                        data: {
-                            action: 'get_metrics',
-                            pageId: postKey
-                        },
-                        success: function(data) {
-                            var views = (parseInt(data.views) || 0) + baseViews;
-                            var likes = (parseInt(data.likes) || 0) + baseLikes;
-                            $(viewsEl).text(views);
-                            $(likesEl).text(likes);
-                        },
-                        error: function() {
-                            try {
-                                $(viewsEl).text(localStorage.getItem(postKey + '_views') || baseViews);
-                                $(likesEl).text(localStorage.getItem(postKey + '_likes') || baseLikes);
-                            } catch(e) {
-                                $(viewsEl).text(baseViews);
-                                $(likesEl).text(baseLikes);
-                            }
-                        }
-                    });
-                } else {
-                    try {
-                        $(viewsEl).text(localStorage.getItem(postKey + '_views') || baseViews);
-                        $(likesEl).text(localStorage.getItem(postKey + '_likes') || baseLikes);
-                    } catch(e) {
-                        $(viewsEl).text(baseViews);
-                        $(likesEl).text(baseLikes);
-                    }
+                try {
+                    var views = parseInt(localStorage.getItem(postKey) || baseViews);
+                    var likes = parseInt(localStorage.getItem(postKey.replace('_views', '_likes')) || baseLikes);
+                    $(viewsEl).text(views);
+                    $(likesEl).text(likes);
+                } catch(e) {
+                    $(viewsEl).text(baseViews);
+                    $(likesEl).text(baseLikes);
                 }
             }
             
