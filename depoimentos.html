@@ -320,13 +320,21 @@
             // 3. Main Data loading
             function loadTestimonials() {
                 if (DEPOIMENTOS_API_URL) {
-                    $.getJSON(DEPOIMENTOS_API_URL, function(cloudData) {
-                        // Merge cloud testimonials with local static data (cloud first)
-                        currentTestimonials = cloudData.concat(window.testimonialsData);
-                        processAndRender();
-                    }).fail(function() {
-                        currentTestimonials = window.testimonialsData;
-                        processAndRender();
+                    $.ajax({
+                        url: DEPOIMENTOS_API_URL,
+                        method: 'POST',
+                        data: {
+                            action: 'get_testimonials'
+                        },
+                        success: function(cloudData) {
+                            var parsedData = typeof cloudData === 'string' ? JSON.parse(cloudData) : cloudData;
+                            currentTestimonials = parsedData.concat(window.testimonialsData);
+                            processAndRender();
+                        },
+                        error: function() {
+                            currentTestimonials = window.testimonialsData;
+                            processAndRender();
+                        }
                     });
                 } else {
                     // Fallback: merge localStorage reviews if any, then static reviews

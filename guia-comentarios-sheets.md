@@ -9,16 +9,21 @@ O código abaixo gerencia de forma unificada os comentários (na aba `Comentario
 ## 💻 Passo 1: Atualizar o Código no Apps Script
 1. Abra a sua planilha `Elyar Blog - Comentários` no Google Drive.
 2. Vá em **Extensões > Apps Script**.
-3. Substitua todo o código existente no editor pelo código unificado abaixo (removemos a chamada de cabeçalho incompatível com o Google):
+3. Substitua todo o código existente no editor pelo código unificado abaixo:
 
 ```javascript
 function doGet(e) {
+  return ContentService.createTextOutput("API ativa. Use POST para todas as operações.")
+    .setMimeType(ContentService.MimeType.TEXT);
+}
+
+function doPost(e) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var action = e.parameter.action; // "get_comments" ou "get_metrics"
+  var action = e.parameter.action; // "get_metrics", "like", "get_comments" ou "add_comment"
   var pageId = e.parameter.pageId;
   
   // -------------------------------------------------------------
-  // CONTROLE DE MÉTRICAS (VISITAS & CURTIDAS)
+  // ACTION: GET_METRICS (LEITURA E INCREMENTO DE VISITAS)
   // -------------------------------------------------------------
   if (action === "get_metrics") {
     var sheet = ss.getSheetByName("Metricas");
@@ -57,34 +62,7 @@ function doGet(e) {
   }
   
   // -------------------------------------------------------------
-  // CONTROLE DE COMENTÁRIOS (PADRÃO)
-  // -------------------------------------------------------------
-  var sheet = ss.getSheetByName("Comentarios") || ss.getSheets()[0];
-  var data = sheet.getDataRange().getValues();
-  
-  var comments = [];
-  for (var i = 1; i < data.length; i++) {
-    if (data[i][0] === pageId) {
-      comments.push({
-        pageId: data[i][0],
-        author: data[i][1],
-        text: data[i][2],
-        date: data[i][3]
-      });
-    }
-  }
-  
-  return ContentService.createTextOutput(JSON.stringify(comments))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-
-function doPost(e) {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var action = e.parameter.action; // "add_comment" ou "like"
-  var pageId = e.parameter.pageId;
-  
-  // -------------------------------------------------------------
-  // REGISTRAR CURTIDA (LIKE)
+  // ACTION: LIKE (INCREMENTO DE CURTIDAS)
   // -------------------------------------------------------------
   if (action === "like") {
     var sheet = ss.getSheetByName("Metricas");
@@ -119,7 +97,30 @@ function doPost(e) {
   }
   
   // -------------------------------------------------------------
-  // REGISTRAR COMENTÁRIO (PADRÃO)
+  // ACTION: GET_COMMENTS (LEITURA DE COMENTÁRIOS)
+  // -------------------------------------------------------------
+  if (action === "get_comments") {
+    var sheet = ss.getSheetByName("Comentarios") || ss.getSheets()[0];
+    var data = sheet.getDataRange().getValues();
+    
+    var comments = [];
+    for (var i = 1; i < data.length; i++) {
+      if (data[i][0] === pageId) {
+        comments.push({
+          pageId: data[i][0],
+          author: data[i][1],
+          text: data[i][2],
+          date: data[i][3]
+        });
+      }
+    }
+    
+    return ContentService.createTextOutput(JSON.stringify(comments))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+  
+  // -------------------------------------------------------------
+  // ACTION: ADD_COMMENT (GRAVAÇÃO DE COMENTÁRIO - PADRÃO)
   // -------------------------------------------------------------
   var sheet = ss.getSheetByName("Comentarios") || ss.getSheets()[0];
   var author = e.parameter.author;
@@ -149,4 +150,4 @@ Sempre que você edita o código do Apps Script, precisa implantá-lo novamente 
 4. Clique no botão azul **Implantar**.
 5. Copie a URL gerada e certifique-se de que é a mesma configurada nos posts do blog.
 
-Pronto! Agora o seu script gerenciará os comentários, visitas e curtidas globais automaticamente. A aba `Metricas` será criada sozinha na sua planilha na primeira visita aos artigos!
+Pronto! Agora todas as chamadas do seu site são enviadas via `POST` seguro, resolvendo o problema de CORS dos navegadores e garantindo que visitas e curtidas sejam computadas instantaneamente.

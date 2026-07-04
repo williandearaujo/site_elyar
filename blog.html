@@ -269,18 +269,37 @@
 
             function loadPostMetrics(postKey, viewsEl, likesEl, baseViews, baseLikes) {
                 if (COMMENTS_API_URL) {
-                    $.getJSON(COMMENTS_API_URL + '?action=get_metrics&pageId=' + postKey + '&cb=' + new Date().getTime(), function(data) {
-                        var views = (parseInt(data.views) || 0) + baseViews;
-                        var likes = (parseInt(data.likes) || 0) + baseLikes;
-                        $(viewsEl).text(views);
-                        $(likesEl).text(likes);
-                    }).fail(function() {
-                        $(viewsEl).text(localStorage.getItem(postKey + '_views') || baseViews);
-                        $(likesEl).text(localStorage.getItem(postKey + '_likes') || baseLikes);
+                    $.ajax({
+                        url: COMMENTS_API_URL,
+                        method: 'POST',
+                        data: {
+                            action: 'get_metrics',
+                            pageId: postKey
+                        },
+                        success: function(data) {
+                            var views = (parseInt(data.views) || 0) + baseViews;
+                            var likes = (parseInt(data.likes) || 0) + baseLikes;
+                            $(viewsEl).text(views);
+                            $(likesEl).text(likes);
+                        },
+                        error: function() {
+                            try {
+                                $(viewsEl).text(localStorage.getItem(postKey + '_views') || baseViews);
+                                $(likesEl).text(localStorage.getItem(postKey + '_likes') || baseLikes);
+                            } catch(e) {
+                                $(viewsEl).text(baseViews);
+                                $(likesEl).text(baseLikes);
+                            }
+                        }
                     });
                 } else {
-                    $(viewsEl).text(localStorage.getItem(postKey + '_views') || baseViews);
-                    $(likesEl).text(localStorage.getItem(postKey + '_likes') || baseLikes);
+                    try {
+                        $(viewsEl).text(localStorage.getItem(postKey + '_views') || baseViews);
+                        $(likesEl).text(localStorage.getItem(postKey + '_likes') || baseLikes);
+                    } catch(e) {
+                        $(viewsEl).text(baseViews);
+                        $(likesEl).text(baseLikes);
+                    }
                 }
             }
             

@@ -333,13 +333,23 @@
             
             function loadMetrics() {
                 if (COMMENTS_API_URL) {
-                    // Fetch and increment view count on load
-                    $.getJSON(COMMENTS_API_URL + '?action=get_metrics&increment=true&pageId=' + viewsKey + '&cb=' + new Date().getTime(), function(data) {
-                        var totalViews = (parseInt(data.views) || 0) + baselineViews;
-                        var totalLikes = (parseInt(data.likes) || 0) + baselineLikes;
-                        $('#man-views-detail').text(totalViews);
-                        $('#man-likes-detail').text(totalLikes);
-                    }).fail(loadLocalFallback);
+                    // Fetch and increment view count on load via POST to avoid CORS GET redirect blocks
+                    $.ajax({
+                        url: COMMENTS_API_URL,
+                        method: 'POST',
+                        data: {
+                            action: 'get_metrics',
+                            increment: 'true',
+                            pageId: viewsKey
+                        },
+                        success: function(data) {
+                            var totalViews = (parseInt(data.views) || 0) + baselineViews;
+                            var totalLikes = (parseInt(data.likes) || 0) + baselineLikes;
+                            $('#man-views-detail').text(totalViews);
+                            $('#man-likes-detail').text(totalLikes);
+                        },
+                        error: loadLocalFallback
+                    });
                 } else {
                     loadLocalFallback();
                 }

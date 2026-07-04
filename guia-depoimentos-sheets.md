@@ -23,35 +23,44 @@ Siga os passos abaixo para configurar:
 
 ```javascript
 function doGet(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  var data = sheet.getDataRange().getValues();
-  
-  var testimonials = [];
-  
-  // Lê as linhas de depoimentos salvos (pulando a primeira linha de cabeçalho)
-  for (var i = 1; i < data.length; i++) {
-    if (data[i][0]) { // Se tiver nome
-      testimonials.push({
-        name: data[i][0],
-        service: data[i][1],
-        rating: parseFloat(data[i][2]) || 5,
-        text: data[i][3],
-        date: data[i][4]
-      });
-    }
-  }
-  
-  // Retorna os dados invertidos (mais recentes primeiro)
-  testimonials.reverse();
-  
-  return ContentService.createTextOutput(JSON.stringify(testimonials))
-    .setMimeType(ContentService.MimeType.JSON);
+  return ContentService.createTextOutput("API ativa. Use POST para todas as operações.")
+    .setMimeType(ContentService.MimeType.TEXT);
 }
 
 function doPost(e) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var action = e.parameter.action; // "get_testimonials" ou "add_testimonial"
   
-  // Recebe os parâmetros enviados pelo formulário
+  // -------------------------------------------------------------
+  // ACTION: GET_TESTIMONIALS (LEITURA DE DEPOIMENTOS DE FORMA SEGURA)
+  // -------------------------------------------------------------
+  if (action === "get_testimonials") {
+    var data = sheet.getDataRange().getValues();
+    var testimonials = [];
+    
+    // Lê as linhas de depoimentos salvos (pulando a primeira linha de cabeçalho)
+    for (var i = 1; i < data.length; i++) {
+      if (data[i][0]) { // Se tiver nome
+        testimonials.push({
+          name: data[i][0],
+          service: data[i][1],
+          rating: parseFloat(data[i][2]) || 5,
+          text: data[i][3],
+          date: data[i][4]
+        });
+      }
+    }
+    
+    // Retorna os dados invertidos (mais recentes primeiro)
+    testimonials.reverse();
+    
+    return ContentService.createTextOutput(JSON.stringify(testimonials))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+  
+  // -------------------------------------------------------------
+  // ACTION: ADD_TESTIMONIAL (GRAVAÇÃO DE DEPOIMENTO - PADRÃO)
+  // -------------------------------------------------------------
   var name = e.parameter.name;
   var service = e.parameter.service;
   var rating = e.parameter.rating;
@@ -74,15 +83,14 @@ function doPost(e) {
 ---
 
 ## 🚀 Passo 3: Publicar como Web App
-1. Clique em **Implantar > Nova implantação** no Apps Script.
-2. Selecione o tipo **Web app** na engrenagem.
-3. Configure exatamente assim:
+1. Clique em **Implantar > Gerenciar implantações** (ou Nova implantação) no Apps Script.
+2. Crie ou edite a implantação configurada como:
+   * **Tipo**: Web app
    * **Descrição**: `API de Depoimentos Elyar`
    * **Executar como**: **Você** (seu e-mail)
-   * **Quem tem acesso**: **Qualquer pessoa**
-4. Clique em **Implantar**.
-5. Conceda as autorizações necessárias na sua conta do Google (clicando em *Avançado > Ir para Projeto Sem Título*).
-6. Copie a **URL do Web App** gerada (termina com `/exec`).
+   * **Quem tem acesso**: **Qualquer pessoa** (Anyone)
+3. Clique em **Implantar**.
+4. Copie a **URL do Web App** gerada (termina com `/exec`).
 
 ---
 
@@ -94,5 +102,3 @@ function doPost(e) {
    ```
 3. Cole a sua URL copiada dentro das aspas.
 4. Salve o arquivo e envie-o para o GitHub!
-
-Pronto! Agora o seu formulário de depoimentos salvará as mensagens diretamente no Google Sheets e as exibirá no topo da listagem de depoimentos para todos os clientes! Para moderar e remover qualquer avaliação falsa ou indesejada, basta deletar a linha da planilha no Google Drive.
