@@ -360,14 +360,20 @@ var viewsKey = 'blog_views_ia_impacto';
 
             function loadComments() {
                 if (COMMENTS_API_URL) {
-                    $.getJSON(COMMENTS_API_URL + '?pageId=' + commentsKey, function(comments) {
-                        renderComments(comments);
-                    }).fail(function() {
-                        var comments = [];
-                        try {
-                            comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
-                        } catch(e) {}
-                        renderComments(comments);
+                    $.ajax({
+                        url: COMMENTS_API_URL + '?pageId=' + commentsKey,
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function(comments) {
+                            renderComments(comments);
+                        },
+                        error: function() {
+                            var comments = [];
+                            try {
+                                comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+                            } catch(e) {}
+                            renderComments(comments);
+                        }
                     });
                 } else {
                     var comments = [];
@@ -381,9 +387,10 @@ var viewsKey = 'blog_views_ia_impacto';
             function renderComments(comments) {
                 var list = $('#comments-list');
                 list.find('.comment-item-box').remove();
-                if (comments.length > 0) {
+                var commentsArray = Array.isArray(comments) ? comments : [];
+                if (commentsArray.length > 0) {
                     $('#no-comments').hide();
-                    comments.forEach(function(c) {
+                    commentsArray.forEach(function(c) {
                         var dateStr = c.date || 'Recente';
                         var commentHtml = `
                             <div class="comment-item-box" style="border-left: 2px solid var(--color-accent-yellow); background: rgba(255,255,255,0.01); padding: 15px 20px; border-radius: 0 8px 8px 0; margin-bottom: 20px;">
@@ -426,30 +433,33 @@ var viewsKey = 'blog_views_ia_impacto';
                             data: commentData,
                             beforeSend: function() {
                                 $('#comment-form button[type="submit"]').prop('disabled', true).text('Enviando...');
+                            },
+                            success: function(data) {
+                                $('#comment-form').prepend('<div class="alert alert-success" style="background: rgba(46, 204, 113, 0.15); border-color: #2ecc71; color: #2ecc71; margin-bottom: 20px; padding: 15px; border-radius: 6px;"><i class="fa fa-check-circle"></i> Comentário enviado com sucesso! Atualizando...</div>');
+                                $('#author-name').val('');
+                                $('#comment-text').val('');
+                                setTimeout(function() {
+                                    window.location.reload();
+                                }, 1600);
+                            },
+                            error: function() {
+                                // Local fallback
+                                var comments = [];
+                                try {
+                                    comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+                                    comments.push(commentData);
+                                    localStorage.setItem(commentsKey, JSON.stringify(comments));
+                                } catch(err) {}
+                                $('#comment-form').prepend('<div class="alert alert-success" style="background: rgba(46, 204, 113, 0.15); border-color: #2ecc71; color: #2ecc71; margin-bottom: 20px; padding: 15px; border-radius: 6px;"><i class="fa fa-check-circle"></i> Comentário enviado com sucesso! (Modo Local)</div>');
+                                $('#author-name').val('');
+                                $('#comment-text').val('');
+                                setTimeout(function() {
+                                    window.location.reload();
+                                }, 1200);
+                            },
+                            complete: function() {
+                                $('#comment-form button[type="submit"]').prop('disabled', false).text('Enviar Comentário');
                             }
-                        }).done(function() {
-                            $('#comment-form').prepend('<div class="alert alert-success" style="background: rgba(46, 204, 113, 0.15); border-color: #2ecc71; color: #2ecc71; margin-bottom: 20px; padding: 15px; border-radius: 6px;"><i class="fa fa-check-circle"></i> Comentário enviado com sucesso! Atualizando...</div>');
-                            $('#author-name').val('');
-                            $('#comment-text').val('');
-                            setTimeout(function() {
-                                window.location.reload();
-                            }, 1600);
-                        }).fail(function() {
-                            // Local fallback
-                            var comments = [];
-                            try {
-                                comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
-                                comments.push(commentData);
-                                localStorage.setItem(commentsKey, JSON.stringify(comments));
-                            } catch(err) {}
-                            $('#comment-form').prepend('<div class="alert alert-success" style="background: rgba(46, 204, 113, 0.15); border-color: #2ecc71; color: #2ecc71; margin-bottom: 20px; padding: 15px; border-radius: 6px;"><i class="fa fa-check-circle"></i> Comentário enviado com sucesso! (Modo Local)</div>');
-                            $('#author-name').val('');
-                            $('#comment-text').val('');
-                            setTimeout(function() {
-                                window.location.reload();
-                            }, 1200);
-                        }).always(function() {
-                            $('#comment-form button[type="submit"]').prop('disabled', false).text('Enviar Comentário');
                         });
                     } else {
                         var comments = [];
