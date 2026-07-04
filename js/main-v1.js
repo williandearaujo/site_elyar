@@ -200,50 +200,47 @@ jQuery(function($) {'use strict';
 				});
 			});
 		};
-		// Custom Premium Counter
-		var counterSec = $('.metrics-section');
-		if (counterSec.length > 0) {
-			var counted = false;
-			var startCounter = function() {
-				if (counted) return;
-				
-				var docViewTop = $(window).scrollTop();
-				var docViewBottom = docViewTop + $(window).height();
-				var elemTop = counterSec.offset().top;
-				var elemBottom = elemTop + counterSec.height();
-				
-				if ((elemTop <= docViewBottom) && (elemBottom >= docViewTop)) {
-					counted = true;
-					$('.metric-number').each(function() {
-						var $this = $(this);
-						var target = parseFloat($this.attr('data-target'));
-						var isDecimal = $this.attr('data-decimals') ? true : false;
-						
-						$({ countVal: 0 }).animate({ countVal: target }, {
-							duration: 2000,
-							easing: 'swing',
-							step: function() {
-								if (isDecimal) {
-									$this.text(parseFloat(this.countVal).toFixed(1));
-								} else {
-									$this.text(Math.floor(this.countVal));
-								}
-							},
-							complete: function() {
-								if (isDecimal) {
-									$this.text(target.toFixed(1));
-								} else {
-									$this.text(target);
-								}
-							}
-						});
-					});
-				}
+		// Custom Premium Counter via Native requestAnimationFrame & IntersectionObserver
+		var counterSec = document.querySelector('.metrics-section');
+		if (counterSec) {
+			var animateValue = function(obj, start, end, duration, decimals) {
+				var startTimestamp = null;
+				var step = function(timestamp) {
+					if (!startTimestamp) startTimestamp = timestamp;
+					var progress = Math.min((timestamp - startTimestamp) / duration, 1);
+					var currentVal = progress * (end - start) + start;
+					if (decimals) {
+						obj.innerHTML = parseFloat(currentVal).toFixed(1);
+					} else {
+						obj.innerHTML = Math.floor(currentVal);
+					}
+					if (progress < 1) {
+						window.requestAnimationFrame(step);
+					} else {
+						if (decimals) {
+							obj.innerHTML = parseFloat(end).toFixed(1);
+						} else {
+							obj.innerHTML = Math.floor(end);
+						}
+					}
+				};
+				window.requestAnimationFrame(step);
 			};
-			
-			$(window).on('scroll', startCounter);
-			// Run once on load in case it starts visible
-			setTimeout(startCounter, 500);
+
+			var observer = new IntersectionObserver(function(entries, observer) {
+				entries.forEach(function(entry) {
+					if (entry.isIntersecting) {
+						var numbers = entry.target.querySelectorAll('.metric-number');
+						numbers.forEach(function(num) {
+							var target = parseFloat(num.getAttribute('data-target')) || 0;
+							var decimals = num.getAttribute('data-decimals') ? true : false;
+							animateValue(num, 0, target, 2000, decimals);
+						});
+						observer.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.1 });
+			observer.observe(counterSec);
 		}
 	});
 
