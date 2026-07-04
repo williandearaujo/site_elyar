@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nossos Serviços - Elyar Serviços. Especialidades em Dashboards Power BI e Assistência técnica em computadores.">
+    <meta name="description" content="Nossos Serviços - Elyar Serviços. Dashboards Power BI, Monitoramento Zabbix/Grafana, SIEM Wazuh, GLPI e Consultoria de TI.">
     <meta name="author" content="Elyar Serviços">
     <title>Serviços | Elyar Serviços</title>
 	
@@ -58,39 +58,87 @@
     <section class="premium-section" style="padding-top: 160px; min-height: 80vh;">
         <div class="container">
             <div class="premium-section-header text-center">
-                <h2>Serviços Especializados</h2>
-                <p>Confira no detalhe como podemos otimizar o fluxo de dados e a performance da tecnologia da sua empresa.</p>
+                <h2>Portfólio de Soluções</h2>
+                <p>Unimos governança, dados, infraestrutura e monitoramento avançado para manter seu ambiente ágil e previsível.</p>
             </div>
             
-            <div class="services-premium-grid" style="margin-top: 50px;">
+            <div class="services-premium-grid" style="margin-top: 50px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
                 <!-- Power BI -->
                 <div class="service-premium-card">
                     <div class="service-icon-box"><i class="fa fa-line-chart"></i></div>
-                    <h3>Business Intelligence & Power BI</h3>
+                    <h3>Power BI &amp; Dashboards</h3>
                     <p>
-                        Desenvolvemos relatórios completos que integram diferentes sistemas (Bancos de dados SQL, planilhas Excel, APIs). Através de fórmulas DAX complexas e modelagem em estrela (Star Schema), geramos painéis interativos e rápidos que expõem insights valiosos sobre vendas, financeiro, logística e RH.
+                        Dashboards executivos e operacionais com conexões em tempo real, DAX avançado e relatórios focados na tomada de decisão estratégica.
                     </p>
-                    <ul class="service-tags">
-                        <li>DAX & Fórmulas Avançadas</li>
-                        <li>Conexão de Bancos & APIs</li>
-                        <li>Modelagem Dimensional</li>
-                        <li>Filtros Interativos</li>
+                    <ul class="service-tags" style="list-style: none; padding: 0; display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 25px;">
+                        <li>Dados</li>
                     </ul>
+                    <a href="servicos-powerbi.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px;">Ver Detalhes <i class="fa fa-arrow-right"></i></a>
                 </div>
                 
-                <!-- Computer Support -->
+                <!-- Computadores -->
                 <div class="service-premium-card">
                     <div class="service-icon-box"><i class="fa fa-laptop"></i></div>
-                    <h3>Suporte & Manutenção de Computadores</h3>
+                    <h3>Manutenção &amp; Upgrades</h3>
                     <p>
-                        Avaliamos a infraestrutura física de TI da sua organização. Realizamos manutenção preventiva e corretiva em notebooks e computadores de mesa, incluindo substituição de discos por SSDs de alta velocidade, aumento de memória RAM e formatação completa de sistemas operacionais.
+                        Manutenção preventiva e corretiva de computadores e notebooks, upgrades de SSD/RAM e suporte técnico para manter o time focado.
                     </p>
-                    <ul class="service-tags">
-                        <li>Instalação de SSD & RAM</li>
-                        <li>Limpeza e Troca de Pasta Térmica</li>
-                        <li>Instalação & Configuração de OS</li>
-                        <li>Diagnósticos de Hardware</li>
+                    <ul class="service-tags" style="list-style: none; padding: 0; display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 25px;">
+                        <li>Suporte</li>
                     </ul>
+                    <a href="servicos-manutencao.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px;">Ver Detalhes <i class="fa fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Zabbix -->
+                <div class="service-premium-card">
+                    <div class="service-icon-box"><i class="fa fa-area-chart"></i></div>
+                    <h3>Zabbix &amp; Grafana</h3>
+                    <p>
+                        Instalação, hardening e configuração de monitoramento de servidores, redes e aplicações com alertas avançados e painéis gerenciais.
+                    </p>
+                    <ul class="service-tags" style="list-style: none; padding: 0; display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 25px;">
+                        <li>Monitoramento</li>
+                    </ul>
+                    <a href="servicos-zabbix.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px;">Ver Detalhes <i class="fa fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Wazuh -->
+                <div class="service-premium-card">
+                    <div class="service-icon-box"><i class="fa fa-shield"></i></div>
+                    <h3>Wazuh &amp; Segurança</h3>
+                    <p>
+                        Implantação de SIEM com monitoramento de integridade, conformidade de segurança e playbooks de resposta automática a incidentes.
+                    </p>
+                    <ul class="service-tags" style="list-style: none; padding: 0; display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 25px;">
+                        <li>Segurança</li>
+                    </ul>
+                    <a href="servicos-wazuh.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px;">Ver Detalhes <i class="fa fa-arrow-right"></i></a>
+                </div>
+
+                <!-- GLPI -->
+                <div class="service-premium-card">
+                    <div class="service-icon-box"><i class="fa fa-ticket"></i></div>
+                    <h3>GLPI &amp; ITSM</h3>
+                    <p>
+                        Configuração de catálogos de serviços de TI, níveis de SLA, gestão de ativos de hardware/software e chamados estruturados.
+                    </p>
+                    <ul class="service-tags" style="list-style: none; padding: 0; display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 25px;">
+                        <li>ITSM</li>
+                    </ul>
+                    <a href="servicos-glpi.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px;">Ver Detalhes <i class="fa fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Consultoria -->
+                <div class="service-premium-card">
+                    <div class="service-icon-box"><i class="fa fa-briefcase"></i></div>
+                    <h3>Consultoria de TI</h3>
+                    <p>
+                        Roteiros estratégicos de governança de TI, compliance com LGPD, automatizações e mapeamento de riscos operacionais.
+                    </p>
+                    <ul class="service-tags" style="list-style: none; padding: 0; display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 25px;">
+                        <li>Estratégia</li>
+                    </ul>
+                    <a href="servicos-consultoria.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px;">Ver Detalhes <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
