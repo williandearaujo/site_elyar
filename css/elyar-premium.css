@@ -942,6 +942,33 @@ body.premium-theme h6 {
     }
 }
 
+@media (max-width: 480px) {
+    .premium-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-badge {
+        font-size: 0.75rem;
+        padding: 5px 12px;
+    }
+
+    .premium-section {
+        padding: 60px 0;
+    }
+
+    .premium-section-header h2 {
+        font-size: 1.9rem;
+    }
+
+    .metrics-grid {
+        gap: 25px;
+    }
+
+    .service-premium-card {
+        padding: 30px 24px;
+    }
+}
+
 /* ==========================================================================
    PAGINAÇÃO DO BLOG E MODAL DE BUSCA GLOBAL
    ========================================================================== */
