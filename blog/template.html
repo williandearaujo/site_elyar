@@ -19,7 +19,9 @@
       4. No corpo do HTML:
          - Altere a data, autor, categoria e título no bloco "ARTICLE META HEADER".
          - Escreva o texto no bloco "RICH CONTENT" usando tags <p>, <ul>, <li>, <h3>, <h4> e <blockquote>.
-         
+         - Personalize o bloco "CTA Section" (logo apos o conteudo) com um titulo, frase e link para
+           o servico de servicos/ mais relacionado ao tema do artigo.
+
       5. Configure as Chaves do Script no final da página (Linha ~240):
          - Troque o valor de 'blog_views_TEMPLATE_ID' para um ID exclusivo do seu post (ex: 'blog_views_projeto_bi').
          - Troque o valor de 'blog_likes_TEMPLATE_ID' para o seu ID exclusivo (ex: 'blog_likes_projeto_bi').
@@ -178,6 +180,19 @@
                         <p>
                             Faça um fechamento resumindo as principais lições aprendidas e faça uma chamada de ação (CTA) convidando o leitor a deixar um comentário abaixo ou entrar em contato.
                         </p>
+                    </div>
+
+                    <!-- CTA Section: troque o link/texto abaixo para o servico mais relacionado ao tema do post -->
+                    <div style="background: linear-gradient(135deg, #1E1E24 0%, #0C0C0E 100%); border: 1px solid rgba(238, 215, 15, 0.08); padding: 35px; border-radius: var(--border-radius-lg); text-align: center; margin-top: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); margin-bottom: 50px;">
+                        <h3 style="color: white; font-family: 'Outfit', sans-serif; font-size: 1.8rem; margin-top: 0; margin-bottom: 15px;">
+                            Título da Chamada de Ação
+                        </h3>
+                        <p style="color: var(--color-text-body); font-size: 1rem; line-height: 1.6; max-width: 600px; margin: 0 auto 25px auto;">
+                            Frase curta conectando o tema do artigo a um dos serviços da Elyar.
+                        </p>
+                        <a href="../servicos.html" class="btn-premium-primary" style="padding: 12px 35px; font-size: 1rem;">
+                            Conhecer o Serviço Relacionado <i class="fa fa-arrow-right"></i>
+                        </a>
                     </div>
 
                     <!-- Delicate Comments Section (No heavy forms/boxes) -->
