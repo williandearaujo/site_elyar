@@ -286,6 +286,7 @@
     <script src="js/wow.min.js"></script>
     <script src="js/testimonials-data.js"></script>
     <script src="js/main-v1.js?v=4"></script>
+    <script src="js/api-client.js"></script>
     
     <script>
         $(document).ready(function() {
@@ -325,16 +326,17 @@
             // 3. Main Data loading
             function loadTestimonials() {
                 if (DEPOIMENTOS_API_URL) {
-                    $.ajax({
+                    ElyarApi.request({
                         url: DEPOIMENTOS_API_URL,
                         method: 'GET',
                         dataType: 'json',
-                        success: function(cloudData) {
+                        retries: 1,
+                        onSuccess: function(cloudData) {
                             var cloudArray = Array.isArray(cloudData) ? cloudData : [];
                             currentTestimonials = cloudArray.concat(window.testimonialsData);
                             processAndRender();
                         },
-                        error: function() {
+                        onError: function() {
                             currentTestimonials = window.testimonialsData;
                             processAndRender();
                         }
@@ -538,22 +540,21 @@
                     };
 
                     if (DEPOIMENTOS_API_URL) {
-                        $.ajax({
+                        ElyarApi.request({
                             url: DEPOIMENTOS_API_URL,
                             method: 'POST',
                             data: testimonialData,
-                            beforeSend: function() {
+                            retries: 1,
+                            onLoading: function() {
                                 $('#new-testimonial-form button[type="submit"]').prop('disabled', true).text('Enviando...');
                             },
-                            success: function(data) {
+                            onSuccess: function() {
+                                $('#new-testimonial-form button[type="submit"]').prop('disabled', false).text('Publicar Avaliação');
                                 showSuccessFeedback();
                             },
-                            error: function() {
-                                alert('Erro de conexão com o banco de dados. Tentando salvar localmente...');
-                                saveLocal(testimonialData);
-                            },
-                            complete: function() {
+                            onError: function() {
                                 $('#new-testimonial-form button[type="submit"]').prop('disabled', false).text('Publicar Avaliação');
+                                saveLocal(testimonialData);
                             }
                         });
                     } else {

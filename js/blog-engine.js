@@ -59,15 +59,18 @@ $(document).ready(function () {
     });
 
     function loadComments() {
-        $.ajax({
+        ElyarApi.request({
             url: COMMENTS_API_URL + '?pageId=' + commentsKey,
             method: 'GET',
             dataType: 'json',
-            cache: false,
-            success: function (comments) {
+            retries: 1,
+            onLoading: function () {
+                $('#no-comments').show().text('Carregando comentários...');
+            },
+            onSuccess: function (comments) {
                 renderComments(comments);
             },
-            error: function () {
+            onError: function () {
                 var comments = [];
                 try {
                     comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
@@ -97,7 +100,7 @@ $(document).ready(function () {
                 list.append(commentHtml);
             });
         } else {
-            $('#no-comments').show();
+            $('#no-comments').show().text('Nenhum comentário enviado ainda. Seja o primeiro a opinar!');
         }
     }
 
@@ -129,17 +132,20 @@ $(document).ready(function () {
             }, delay);
         }
 
-        $.ajax({
+        ElyarApi.request({
             url: COMMENTS_API_URL,
             method: 'POST',
             data: commentData,
-            beforeSend: function () {
+            retries: 1,
+            onLoading: function () {
                 $('#comment-form button[type="submit"]').prop('disabled', true).text('Enviando...');
             },
-            success: function () {
+            onSuccess: function () {
+                $('#comment-form button[type="submit"]').prop('disabled', false).text('Enviar Comentário');
                 showSuccessAndReload('Comentário enviado com sucesso! Atualizando...', 1600);
             },
-            error: function () {
+            onError: function () {
+                $('#comment-form button[type="submit"]').prop('disabled', false).text('Enviar Comentário');
                 var comments = [];
                 try {
                     comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
@@ -147,9 +153,6 @@ $(document).ready(function () {
                     localStorage.setItem(commentsKey, JSON.stringify(comments));
                 } catch (err) {}
                 showSuccessAndReload('Comentário enviado com sucesso! (Modo Local)', 1200);
-            },
-            complete: function () {
-                $('#comment-form button[type="submit"]').prop('disabled', false).text('Enviar Comentário');
             }
         });
     });
