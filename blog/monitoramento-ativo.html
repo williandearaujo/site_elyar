@@ -434,7 +434,7 @@ var viewsKey = 'blog_views_monitoramento_ativo';
                                 }, 1600);
                             },
                             error: function() {
-                                // Local fallback
+                                alert('Erro de conexão com o banco de dados. Tentando salvar localmente...');
                                 var comments = [];
                                 try {
                                     comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
