@@ -60,6 +60,60 @@
       ]
     }
     </script>
+
+    <style>
+        .home-testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .home-testimonial-card {
+            background-color: var(--color-bg-main);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-md);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            transition: var(--transition-smooth);
+        }
+        .home-testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(238, 215, 15, 0.15);
+        }
+        .home-testimonial-card .stars {
+            margin-bottom: 12px;
+            color: #eed70f;
+        }
+        .home-testimonial-card .quote {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--color-text-body);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .home-testimonial-card .author-line {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 15px;
+        }
+        .home-testimonial-card .author-line strong {
+            display: block;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+        }
+        .home-testimonial-card .author-line span {
+            font-size: 0.75rem;
+            color: var(--color-accent-yellow);
+            font-weight: 600;
+        }
+        @media (max-width: 991px) {
+            .home-testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body class="premium-theme">
@@ -154,15 +208,15 @@
                 
                 <!-- Power BI -->
                 <div class="service-premium-card">
-                    <div class="portfolio-img-container" style="background: linear-gradient(135deg, #1E1E24 0%, #0C0C0E 100%); height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.04); position: relative;">
-                        <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(238, 215, 15, 0.15) 0%, transparent 70%);"></div>
-                        <i class="fa fa-line-chart" style="font-size: 3.5rem; color: var(--color-accent-yellow); text-shadow: 0 0 20px rgba(238, 215, 15, 0.4); z-index: 1;"></i>
+                    <div class="portfolio-img-container service-icon-visual">
+                        <div class="icon-glow"></div>
+                        <i class="fa fa-line-chart"></i>
                         <div class="portfolio-premium-overlay">
                             <a class="view-btn" href="servicos/powerbi.html" aria-label="Ver detalhes do serviço"><i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="portfolio-card-body" style="display: flex; flex-direction: column;">
-                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                    <div class="portfolio-card-body service-card-body-col">
+                        <div class="service-card-row">
                             <div class="portfolio-card-icon-box">
                                 <i class="fa fa-line-chart"></i>
                             </div>
@@ -172,21 +226,21 @@
                                 <p>Dashboards executivos com conexões SQL/API e métricas estratégicas.</p>
                             </div>
                         </div>
-                        <a href="servicos/powerbi.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px; border-radius: 30px;">Saiba Mais <i class="fa fa-chevron-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                        <a href="servicos/powerbi.html" class="btn-premium-secondary service-card-cta">Saiba Mais <i class="fa fa-chevron-right service-card-cta-icon"></i></a>
                     </div>
                 </div>
-                
+
                 <!-- Computadores -->
                 <div class="service-premium-card">
-                    <div class="portfolio-img-container" style="background: linear-gradient(135deg, #1E1E24 0%, #0C0C0E 100%); height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.04); position: relative;">
-                        <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(238, 215, 15, 0.15) 0%, transparent 70%);"></div>
-                        <i class="fa fa-laptop" style="font-size: 3.5rem; color: var(--color-accent-yellow); text-shadow: 0 0 20px rgba(238, 215, 15, 0.4); z-index: 1;"></i>
+                    <div class="portfolio-img-container service-icon-visual">
+                        <div class="icon-glow"></div>
+                        <i class="fa fa-laptop"></i>
                         <div class="portfolio-premium-overlay">
                             <a class="view-btn" href="servicos/manutencao.html" aria-label="Ver detalhes do serviço"><i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="portfolio-card-body" style="display: flex; flex-direction: column;">
-                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                    <div class="portfolio-card-body service-card-body-col">
+                        <div class="service-card-row">
                             <div class="portfolio-card-icon-box">
                                 <i class="fa fa-laptop"></i>
                             </div>
@@ -196,21 +250,21 @@
                                 <p>Upgrades de hardware (SSD/RAM) e otimizações completas de sistemas.</p>
                             </div>
                         </div>
-                        <a href="servicos/manutencao.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px; border-radius: 30px;">Saiba Mais <i class="fa fa-chevron-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                        <a href="servicos/manutencao.html" class="btn-premium-secondary service-card-cta">Saiba Mais <i class="fa fa-chevron-right service-card-cta-icon"></i></a>
                     </div>
                 </div>
 
                 <!-- Zabbix -->
                 <div class="service-premium-card">
-                    <div class="portfolio-img-container" style="background: linear-gradient(135deg, #1E1E24 0%, #0C0C0E 100%); height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.04); position: relative;">
-                        <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(238, 215, 15, 0.15) 0%, transparent 70%);"></div>
-                        <i class="fa fa-area-chart" style="font-size: 3.5rem; color: var(--color-accent-yellow); text-shadow: 0 0 20px rgba(238, 215, 15, 0.4); z-index: 1;"></i>
+                    <div class="portfolio-img-container service-icon-visual">
+                        <div class="icon-glow"></div>
+                        <i class="fa fa-area-chart"></i>
                         <div class="portfolio-premium-overlay">
                             <a class="view-btn" href="servicos/zabbix.html" aria-label="Ver detalhes do serviço"><i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="portfolio-card-body" style="display: flex; flex-direction: column;">
-                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                    <div class="portfolio-card-body service-card-body-col">
+                        <div class="service-card-row">
                             <div class="portfolio-card-icon-box">
                                 <i class="fa fa-area-chart"></i>
                             </div>
@@ -220,21 +274,21 @@
                                 <p>Monitoramento ativo de servidores e redes, com alertas por severidade.</p>
                             </div>
                         </div>
-                        <a href="servicos/zabbix.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px; border-radius: 30px;">Saiba Mais <i class="fa fa-chevron-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                        <a href="servicos/zabbix.html" class="btn-premium-secondary service-card-cta">Saiba Mais <i class="fa fa-chevron-right service-card-cta-icon"></i></a>
                     </div>
                 </div>
 
                 <!-- Wazuh -->
                 <div class="service-premium-card">
-                    <div class="portfolio-img-container" style="background: linear-gradient(135deg, #1E1E24 0%, #0C0C0E 100%); height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.04); position: relative;">
-                        <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(238, 215, 15, 0.15) 0%, transparent 70%);"></div>
-                        <i class="fa fa-shield" style="font-size: 3.5rem; color: var(--color-accent-yellow); text-shadow: 0 0 20px rgba(238, 215, 15, 0.4); z-index: 1;"></i>
+                    <div class="portfolio-img-container service-icon-visual">
+                        <div class="icon-glow"></div>
+                        <i class="fa fa-shield"></i>
                         <div class="portfolio-premium-overlay">
                             <a class="view-btn" href="servicos/wazuh.html" aria-label="Ver detalhes do serviço"><i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="portfolio-card-body" style="display: flex; flex-direction: column;">
-                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                    <div class="portfolio-card-body service-card-body-col">
+                        <div class="service-card-row">
                             <div class="portfolio-card-icon-box">
                                 <i class="fa fa-shield"></i>
                             </div>
@@ -244,21 +298,21 @@
                                 <p>SOC ativo com SIEM estruturado e playbooks de resposta a incidentes.</p>
                             </div>
                         </div>
-                        <a href="servicos/wazuh.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px; border-radius: 30px;">Saiba Mais <i class="fa fa-chevron-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                        <a href="servicos/wazuh.html" class="btn-premium-secondary service-card-cta">Saiba Mais <i class="fa fa-chevron-right service-card-cta-icon"></i></a>
                     </div>
                 </div>
 
                 <!-- GLPI -->
                 <div class="service-premium-card">
-                    <div class="portfolio-img-container" style="background: linear-gradient(135deg, #1E1E24 0%, #0C0C0E 100%); height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.04); position: relative;">
-                        <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(238, 215, 15, 0.15) 0%, transparent 70%);"></div>
-                        <i class="fa fa-ticket" style="font-size: 3.5rem; color: var(--color-accent-yellow); text-shadow: 0 0 20px rgba(238, 215, 15, 0.4); z-index: 1;"></i>
+                    <div class="portfolio-img-container service-icon-visual">
+                        <div class="icon-glow"></div>
+                        <i class="fa fa-ticket"></i>
                         <div class="portfolio-premium-overlay">
                             <a class="view-btn" href="servicos/glpi.html" aria-label="Ver detalhes do serviço"><i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="portfolio-card-body" style="display: flex; flex-direction: column;">
-                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                    <div class="portfolio-card-body service-card-body-col">
+                        <div class="service-card-row">
                             <div class="portfolio-card-icon-box">
                                 <i class="fa fa-ticket"></i>
                             </div>
@@ -268,21 +322,21 @@
                                 <p>Gerenciamento de chamados técnicos de suporte e controle de SLAs.</p>
                             </div>
                         </div>
-                        <a href="servicos/glpi.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px; border-radius: 30px;">Saiba Mais <i class="fa fa-chevron-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                        <a href="servicos/glpi.html" class="btn-premium-secondary service-card-cta">Saiba Mais <i class="fa fa-chevron-right service-card-cta-icon"></i></a>
                     </div>
                 </div>
 
                 <!-- Consultoria -->
                 <div class="service-premium-card">
-                    <div class="portfolio-img-container" style="background: linear-gradient(135deg, #1E1E24 0%, #0C0C0E 100%); height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.04); position: relative;">
-                        <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(238, 215, 15, 0.15) 0%, transparent 70%);"></div>
-                        <i class="fa fa-briefcase" style="font-size: 3.5rem; color: var(--color-accent-yellow); text-shadow: 0 0 20px rgba(238, 215, 15, 0.4); z-index: 1;"></i>
+                    <div class="portfolio-img-container service-icon-visual">
+                        <div class="icon-glow"></div>
+                        <i class="fa fa-briefcase"></i>
                         <div class="portfolio-premium-overlay">
                             <a class="view-btn" href="servicos/consultoria.html" aria-label="Ver detalhes do serviço"><i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="portfolio-card-body" style="display: flex; flex-direction: column;">
-                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                    <div class="portfolio-card-body service-card-body-col">
+                        <div class="service-card-row">
                             <div class="portfolio-card-icon-box">
                                 <i class="fa fa-briefcase"></i>
                             </div>
@@ -292,10 +346,77 @@
                                 <p>Governança de tecnologia, auditorias de conformidade com a LGPD.</p>
                             </div>
                         </div>
-                        <a href="servicos/consultoria.html" class="btn-premium-secondary" style="margin-top: auto; width: 100%; justify-content: center; padding: 10px; border-radius: 30px;">Saiba Mais <i class="fa fa-chevron-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                        <a href="servicos/consultoria.html" class="btn-premium-secondary service-card-cta">Saiba Mais <i class="fa fa-chevron-right service-card-cta-icon"></i></a>
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         TESTIMONIALS TEASER
+         ========================================== -->
+    <section class="premium-section" style="background-color: var(--color-bg-card); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="premium-section-header text-center">
+                <h2>Confiança Construída com Resultados</h2>
+                <p>Conheça <a href="sobre.html" style="color: var(--color-accent-yellow);">nossa história</a> e veja o que empresas que já trabalham com a Elyar têm a dizer.</p>
+            </div>
+
+            <div class="home-testimonials-grid">
+                <div class="home-testimonial-card">
+                    <div>
+                        <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                        <p class="quote">"Excelente atendimento! O dashboard de vendas que desenvolveram superou todas as expectativas. Tomamos decisões muito mais rápidas agora."</p>
+                    </div>
+                    <div class="author-line">
+                        <strong>Thiago Mendes</strong>
+                        <span>Dashboards Power BI</span>
+                    </div>
+                </div>
+
+                <div class="home-testimonial-card">
+                    <div>
+                        <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                        <p class="quote">"Depois da implantação do Zabbix, nunca mais fomos pegos de surpresa com servidores fora do ar. Os alertas chegam direto no celular. Recomendado!"</p>
+                    </div>
+                    <div class="author-line">
+                        <strong>Juliana Rocha</strong>
+                        <span>Monitoramento Zabbix &amp; Grafana</span>
+                    </div>
+                </div>
+
+                <div class="home-testimonial-card">
+                    <div>
+                        <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                        <p class="quote">"O GLPI organizou completamente a nossa TI. Acabou a bagunça de chamados perdidos por e-mail. A consultoria da Elyar foi impecável."</p>
+                    </div>
+                    <div class="author-line">
+                        <strong>Cláudia Souza</strong>
+                        <span>Central de Serviços GLPI</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 45px;">
+                <a href="depoimentos.html" class="btn-premium-secondary">Ver Todos os Depoimentos <i class="fa fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CTA FINAL
+         ========================================== -->
+    <section class="premium-section" style="padding-top: 70px; padding-bottom: 90px;">
+        <div class="container text-center">
+            <h2 style="font-size: 2rem; margin-bottom: 15px;">Pronto para dar o próximo passo?</h2>
+            <p style="color: var(--color-text-body); max-width: 560px; margin: 0 auto 30px auto;">
+                Fale com a nossa equipe e descubra como Power BI, monitoramento ativo e segurança da informação podem transformar sua operação.
+            </p>
+            <div class="hero-ctas" style="justify-content: center;">
+                <a href="contato.html" class="btn-premium-primary">Falar com a Elyar <i class="fa fa-chevron-right"></i></a>
+                <a href="https://wa.me/5511977371257" target="_blank" class="btn-premium-secondary"><i class="fa fa-whatsapp"></i> WhatsApp</a>
             </div>
         </div>
     </section>

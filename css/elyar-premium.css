@@ -555,6 +555,55 @@ body.premium-theme h6 {
     color: var(--color-text-body);
 }
 
+/* Icon-only visual banner used by service preview cards (home) */
+.service-icon-visual {
+    background: linear-gradient(135deg, #1E1E24 0%, #0C0C0E 100%);
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    position: relative;
+}
+
+.service-icon-visual .icon-glow {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(238, 215, 15, 0.15) 0%, transparent 70%);
+}
+
+.service-icon-visual > i {
+    font-size: 3.5rem;
+    color: var(--color-accent-yellow);
+    text-shadow: 0 0 20px rgba(238, 215, 15, 0.4);
+    z-index: 1;
+}
+
+.service-card-body-col {
+    flex-direction: column;
+}
+
+.service-card-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.service-card-cta {
+    margin-top: auto;
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.service-card-cta-icon {
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
+
 /* ==========================================================================
    PORTFOLIO (DASHBOARD GRID - REDESIGNED WITH CARDS & ICONS)
    ========================================================================== */
