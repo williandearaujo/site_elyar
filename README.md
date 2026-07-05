@@ -15,7 +15,8 @@ Este repositório contém os arquivos do site oficial da **Elyar Serviços** hos
     *   `blog/ia-impacto.html` - Artigo sobre Inteligência Artificial.
     *   `blog/monitoramento-ativo.html` - Artigo sobre Monitoramento Zabbix & Grafana.
     *   `blog/template.html` - **Modelo base para a criação de novos artigos**.
-*   `js/main-v1.js` - Script principal da TI, controles do menu, contadores progressivos e formulários.
+*   `js/main-v1.js` - Script principal do site: injeta header/footer/nav, busca do site, controles do menu, contadores progressivos e formulários.
+*   `js/blog-engine.js` - Motor compartilhado de comentários/curtidas/visualizações de cada post do blog (lido via atributos `data-*` no `<body>` de cada artigo).
 *   `css/elyar-premium.css` - Estilos customizados da identidade Black & Gold.
 *   `sitemap.xml` & `robots.txt` - Arquivos de configuração de SEO para o Google.
 
@@ -57,18 +58,13 @@ Substitua os textos de exemplo no corpo da página:
 *   **Texto Principal**: Escreva o conteúdo usando as tags HTML convencionais (`<p>`, `<h3>`, `<blockquote>`, etc.).
 *   **⚠️ ATENÇÃO AOS LINKS:** Lembre-se que o seu post está dentro de uma subpasta. Todos os links internos do menu e rodapé no seu post usam `../` (como `../index.html`, `../servicos.html`). Caso queira fazer um link para um serviço específico no texto, siga o mesmo modelo (ex: `../servicos-zabbix.html`).
 
-### Passo 5: Configurar chaves exclusivas de Interação (Script no final)
-No final do seu arquivo, localize a tag `<script>` interna e **substitua o ID genérico `TEMPLATE_ID`** por um ID curto e exclusivo do seu artigo.
-*   *Exemplo:* Mude de `TEMPLATE_ID` para `seguranca_nuvem`.
-```javascript
-// Altere as chaves para que fiquem exclusivas deste post:
-var viewsKey = 'blog_views_seguranca_nuvem';
-var commentsKey = 'blog_comments_seguranca_nuvem';
-var likesKey = 'blog_likes_seguranca_nuvem';
-var likedKey = 'blog_liked_seguranca_nuvem';
+### Passo 5: Configurar o ID exclusivo do Post (atributos no `<body>`)
+Comentários, curtidas e visualizações de todos os posts são controlados por um único arquivo compartilhado, `js/blog-engine.js`. Você não precisa mexer em nenhum script — só ajustar os atributos `data-*` da tag `<body>` no topo do seu novo arquivo:
+```html
+<body class="premium-theme" data-post-id="TEMPLATE_ID" data-views-seed="100" data-likes-seed="30">
 ```
-*(Nota: Isso garante que as visualizações, curtidas e comentários deste artigo fiquem separados e não se misturem com outros posts).*
-Você também pode definir os números iniciais simulados nas linhas seguintes (ex: views iniciais `100`, likes iniciais `30`).
+*   **`data-post-id`**: troque `TEMPLATE_ID` por um ID curto e exclusivo do seu artigo (ex: `seguranca_nuvem`). É a partir dele que o `blog-engine.js` monta as chaves de armazenamento (`blog_views_seguranca_nuvem`, `blog_comments_seguranca_nuvem`, etc.), garantindo que este post não se misture com os demais.
+*   **`data-views-seed`** e **`data-likes-seed`**: os números iniciais simulados de visualizações e curtidas (opcional, ajuste como preferir).
 
 ### Passo 6: Vincular o Artigo no Hub do Blog (`blog.html`)
 Para que o artigo apareça na página de listagem principal (`blog.html` na raiz):
@@ -79,19 +75,10 @@ Para que o artigo apareça na página de listagem principal (`blog.html` na raiz
    * Altere a imagem `src` para a sua nova imagem (`images/blog/blog_seguranca_nuvem.png` — sem `../` porque o arquivo `blog.html` está na raiz).
    * Altere a categoria, a data de publicação, o título e a descrição resumida.
    * **IDs de Views e Curtidas no HTML**: No código HTML do card que você acabou de criar, atualize os seletores de ID para os seletores do seu novo post (ex: `<span id="nuvem-views-count">0</span>` e `<span id="nuvem-likes-count">0</span>`).
-4. **Vincular no Script do Hub**: Vá ao final do arquivo `blog.html` e adicione a leitura das chaves exclusivas que você definiu no Passo 5 para que os contadores atualizem na listagem:
+4. **Vincular no Script do Hub**: Vá ao final do arquivo `blog.html` e adicione uma entrada na lista `blogPosts` (dentro do `<script>` de rodapé) usando o mesmo `data-post-id` (Passo 5) do seu novo artigo, para que os contadores atualizem na listagem:
    ```javascript
-   // Exemplo de como adicionar a leitura de visualizações e likes para o novo post:
-   var nuvemViewsKey = 'blog_views_seguranca_nuvem';
-   var nuvemLikesKey = 'blog_likes_seguranca_nuvem';
-   
-   var nuvemViews = localStorage.getItem(nuvemViewsKey) || 100;
-   if (!localStorage.getItem(nuvemViewsKey)) localStorage.setItem(nuvemViewsKey, 100);
-   $('#nuvem-views-count').text(nuvemViews);
-   
-   var nuvemLikes = localStorage.getItem(nuvemLikesKey) || 30;
-   if (!localStorage.getItem(nuvemLikesKey)) localStorage.setItem(nuvemLikesKey, 30);
-   $('#nuvem-likes-count').text(nuvemLikes);
+   // Adicione um objeto na lista blogPosts com o postId do novo artigo:
+   { postId: 'seguranca_nuvem', viewsEl: '#nuvem-views-count', likesEl: '#nuvem-likes-count', baseViews: 100, baseLikes: 30 }
    ```
 
 ---
@@ -104,4 +91,4 @@ O formulário de contatos envia e-mails utilizando a API do **FormSubmit.co** di
 ---
 
 ## ⚙️ Conectando com Scripts e CSS Globais
-Como as páginas do blog estão dentro de uma subpasta, caso altere o nome do arquivo principal de Javascript (`js/main-v1.js`), lembre-se que no `blog.html` a importação é normal (`js/main-v1.js?v=2`), enquanto dentro dos artigos na subpasta `blog/` a importação deve conter o prefixo do diretório pai (`../js/main-v1.js?v=2`).
+Como as páginas do blog estão dentro de uma subpasta, caso altere o nome do arquivo principal de Javascript (`js/main-v1.js` ou `js/blog-engine.js`), lembre-se que no `blog.html` a importação é normal (`js/main-v1.js?v=4`), enquanto dentro dos artigos na subpasta `blog/` a importação deve conter o prefixo do diretório pai (`../js/main-v1.js?v=4`, `../js/blog-engine.js`).
