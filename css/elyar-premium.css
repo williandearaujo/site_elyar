@@ -38,6 +38,20 @@ body.premium-theme {
     overflow-x: hidden;
 }
 
+/* ==========================================================================
+   SCROLL REVEAL (WOW.js + animate.css, ja carregados em todas as paginas)
+   ========================================================================== */
+.wow {
+    visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wow {
+        visibility: visible;
+        animation: none !important;
+    }
+}
+
 body.premium-theme h1, 
 body.premium-theme h2, 
 body.premium-theme h3, 
@@ -351,6 +365,98 @@ body.premium-theme h6 {
                 0 0 50px -10px rgba(238, 215, 15, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: var(--transition-smooth);
+}
+
+/* Floating stat/graph badges over the hero visual */
+.hero-visual-content {
+    position: relative;
+}
+
+@keyframes heroFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+.hero-float-badge {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(22, 22, 26, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(238, 215, 15, 0.18);
+    border-radius: var(--border-radius-md);
+    padding: 12px 18px;
+    box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
+    z-index: 3;
+    animation: heroFloat 5s ease-in-out infinite;
+}
+
+.hero-float-badge .badge-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: rgba(238, 215, 15, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent-yellow);
+}
+
+.hero-float-badge .badge-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.hero-float-badge .badge-text strong {
+    display: block;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.2;
+}
+
+.hero-float-badge .badge-text span {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+}
+
+.hero-float-badge--dashboards {
+    top: -18px;
+    left: -25px;
+    animation-delay: 0s;
+}
+
+.hero-float-badge--monitoring {
+    bottom: 20px;
+    right: -30px;
+    animation-delay: 1.2s;
+}
+
+.hero-float-badge--stat {
+    top: 40%;
+    right: -35px;
+    animation-delay: 2.4s;
+}
+
+@media (max-width: 1200px) {
+    .hero-float-badge--dashboards { left: -10px; }
+    .hero-float-badge--monitoring,
+    .hero-float-badge--stat { right: -10px; }
+}
+
+@media (max-width: 991px) {
+    .hero-float-badge {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-float-badge {
+        animation: none;
+    }
 }
 
 /* ==========================================================================
