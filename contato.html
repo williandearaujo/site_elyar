@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Informações de Contato - Elyar Serviços">
+    <meta name="description" content="Entre em contato com a Elyar Serviços: WhatsApp, e-mail e formulário para orçamentos de Power BI, monitoramento, segurança e manutenção de TI.">
     <meta name="author" content="Elyar Serviços">
     <title>Contato | Elyar Serviços</title>
 	
@@ -20,16 +20,16 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://elyar.com.br/">
-    <meta property="og:title" content="Elyar Serviços | Business Intelligence, Monitoramento e Segurança">
-    <meta property="og:description" content="Especialistas em desenvolvimento de dashboards de alta performance em Power BI, monitoramento de infraestrutura com Zabbix, segurança cibernética com Wazuh SIEM e governança de TI.">
+    <meta property="og:url" content="https://elyar.com.br/contato.html">
+    <meta property="og:title" content="Contato | Elyar Serviços">
+    <meta property="og:description" content="Entre em contato com a Elyar Serviços: WhatsApp, e-mail e formulário para orçamentos de Power BI, monitoramento, segurança e manutenção de TI.">
     <meta property="og:image" content="https://elyar.com.br/images/logo_real.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://elyar.com.br/">
-    <meta property="twitter:title" content="Elyar Serviços | Business Intelligence, Monitoramento e Segurança">
-    <meta property="twitter:description" content="Especialistas em desenvolvimento de dashboards de alta performance em Power BI, monitoramento de infraestrutura com Zabbix, segurança cibernética com Wazuh SIEM e governança de TI.">
+    <meta property="twitter:url" content="https://elyar.com.br/contato.html">
+    <meta property="twitter:title" content="Contato | Elyar Serviços">
+    <meta property="twitter:description" content="Entre em contato com a Elyar Serviços: WhatsApp, e-mail e formulário para orçamentos de Power BI, monitoramento, segurança e manutenção de TI.">
     <meta property="twitter:image" content="https://elyar.com.br/images/logo_real.png">
 
     <!-- Schema.org JSON-LD Structured Data for Search Engine & Security Crawler Categorization -->
@@ -107,10 +107,14 @@
                 <!-- Right Form -->
                 <div class="contact-premium-form">
                     <h3>Envie uma Mensagem</h3>
+                    <div id="contact-success-alert" class="alert alert-success" style="display: none; background: rgba(46, 204, 113, 0.15); border: 1px solid #2ecc71; color: #2ecc71; padding: 15px 18px; border-radius: 8px; margin-bottom: 20px;">
+                        <i class="fa fa-check-circle"></i> Mensagem enviada com sucesso! Responderemos em breve.
+                    </div>
                     <form id="main-contact-form" name="contact-form" method="post" action="https://formsubmit.co/contato@elyar.com.br">
                         <!-- Configurações do FormSubmit -->
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_subject" value="Nova mensagem de contato - Elyar">
+                        <input type="hidden" name="_next" value="https://elyar.com.br/contato.html?enviado=1">
                         <div class="form-group-premium">
                             <label for="name">Nome Completo</label>
                             <input class="form-control-premium" type="text" id="name" name="name" required placeholder="Seu nome">
@@ -154,5 +158,17 @@
     <script src="js/jquery.isotope.min.js"></script>
     <script src="js/wow.min.js"></script>
     <script src="js/main-v1.js?v=4"></script>
+    <script>
+        $(document).ready(function () {
+            if (window.location.search.indexOf('enviado=1') !== -1) {
+                $('#contact-success-alert').show();
+                $('#main-contact-form')[0].reset();
+                if (window.history.replaceState) {
+                    window.history.replaceState(null, '', window.location.pathname);
+                }
+                $('html, body').animate({ scrollTop: $('.contact-premium-form').offset().top - 140 }, 400);
+            }
+        });
+    </script>
 </body>
 </html>
