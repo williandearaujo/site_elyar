@@ -55,12 +55,17 @@
             color: rgba(255,255,255,0.15) !important;
             margin-right: 2px;
         }
+        #testimonials-grid {
+            display: flex;
+            flex-wrap: wrap;
+        }
         .testimonial-card-premium {
             background: var(--color-bg-card);
             border: 1px solid rgba(255,255,255,0.04);
             border-radius: var(--border-radius-md);
             padding: 30px;
             height: 100%;
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -418,6 +423,36 @@
                                 starsHtml += '<i class="fa fa-star star-gray"></i>';
                             }
                         }
+
+                        // Format ISO date (e.g. 2026-07-04T03:00:00.000Z) to DD/MM/YYYY
+                        var formattedDate = 'Recente';
+                        if (item.date) {
+                            var dateStr = item.date.toString();
+                            if (dateStr.includes('T')) {
+                                var ymd = dateStr.split('T')[0].split('-');
+                                if (ymd.length === 3) {
+                                    formattedDate = ymd[2] + '/' + ymd[1] + '/' + ymd[0];
+                                } else {
+                                    formattedDate = dateStr;
+                                }
+                            } else {
+                                formattedDate = dateStr;
+                            }
+                        }
+
+                        // Truncate text if it is longer than 180 characters
+                        var textHtml = '';
+                        var isLong = item.text && item.text.length > 180;
+                        if (isLong) {
+                            var shortText = item.text.substring(0, 175) + '...';
+                            textHtml = `
+                                <span class="testimonial-short-text">"${shortText}"</span>
+                                <span class="testimonial-full-text" style="display: none;">"${item.text}"</span>
+                                <a href="#" class="read-more-btn" style="color: var(--color-accent-yellow); font-size: 0.85rem; font-weight: 600; margin-left: 5px; text-decoration: none; display: block; margin-top: 8px;">Leia mais <i class="fa fa-angle-down"></i></a>
+                            `;
+                        } else {
+                            textHtml = `"${item.text}"`;
+                        }
                         
                         var cardHtml = `
                             <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 30px; display: flex;">
@@ -425,7 +460,7 @@
                                     <div>
                                         <div style="margin-bottom: 12px;">${starsHtml}</div>
                                         <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-body); font-style: italic; margin-bottom: 25px;">
-                                            "${item.text}"
+                                            ${textHtml}
                                         </p>
                                     </div>
                                     <div>
@@ -435,7 +470,7 @@
                                                 <strong style="color: white; font-family: 'Outfit', sans-serif; font-size: 0.95rem; display: block;">${item.name}</strong>
                                                 <span style="font-size: 0.75rem; color: var(--color-accent-yellow); font-weight: 600;">${item.service}</span>
                                             </div>
-                                            <span style="font-size: 0.75rem; color: var(--color-text-muted);"><i class="fa fa-calendar"></i> ${item.date}</span>
+                                            <span style="font-size: 0.75rem; color: var(--color-text-muted);"><i class="fa fa-calendar"></i> ${formattedDate}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -509,14 +544,17 @@
                             data: testimonialData,
                             beforeSend: function() {
                                 $('#new-testimonial-form button[type="submit"]').prop('disabled', true).text('Enviando...');
+                            },
+                            success: function(data) {
+                                showSuccessFeedback();
+                            },
+                            error: function() {
+                                alert('Erro de conexão com o banco de dados. Tentando salvar localmente...');
+                                saveLocal(testimonialData);
+                            },
+                            complete: function() {
+                                $('#new-testimonial-form button[type="submit"]').prop('disabled', false).text('Publicar Avaliação');
                             }
-                        }).done(function() {
-                            showSuccessFeedback();
-                        }).fail(function() {
-                            alert('Erro de conexão com o banco de dados. Tentando salvar localmente...');
-                            saveLocal(testimonialData);
-                        }).always(function() {
-                            $('#new-testimonial-form button[type="submit"]').prop('disabled', false).text('Publicar Avaliação');
                         });
                     } else {
                         saveLocal(testimonialData);
@@ -548,6 +586,24 @@
                 
                 showSuccessFeedback();
             }
+
+            // Toggle Read More
+            $(document).on('click', '.read-more-btn', function(e) {
+                e.preventDefault();
+                var container = $(this).parent();
+                var shortSpan = container.find('.testimonial-short-text');
+                var fullSpan = container.find('.testimonial-full-text');
+                
+                if (fullSpan.is(':visible')) {
+                    fullSpan.hide();
+                    shortSpan.show();
+                    $(this).html('Leia mais <i class="fa fa-angle-down"></i>');
+                } else {
+                    shortSpan.hide();
+                    fullSpan.show();
+                    $(this).html('Leia menos <i class="fa fa-angle-up"></i>');
+                }
+            });
 
             // Initial load
             loadTestimonials();
