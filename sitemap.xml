@@ -2,68 +2,110 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://elyar.com.br/</loc>
-        <lastmod>2026-07-04</lastmod>
+        <lastmod>2026-07-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://elyar.com.br/index.html</loc>
-        <lastmod>2026-07-04</lastmod>
+        <lastmod>2026-07-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://elyar.com.br/sobre.html</loc>
+        <lastmod>2026-07-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://elyar.com.br/servicos.html</loc>
-        <lastmod>2026-07-04</lastmod>
+        <lastmod>2026-07-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://elyar.com.br/portfolio.html</loc>
-        <lastmod>2026-07-04</lastmod>
+        <lastmod>2026-07-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://elyar.com.br/blog.html</loc>
+        <lastmod>2026-07-05</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://elyar.com.br/depoimentos.html</loc>
+        <lastmod>2026-07-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://elyar.com.br/faq.html</loc>
+        <lastmod>2026-07-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://elyar.com.br/contato.html</loc>
-        <lastmod>2026-07-04</lastmod>
+        <lastmod>2026-07-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://elyar.com.br/servicos-powerbi.html</loc>
-        <lastmod>2026-07-04</lastmod>
+        <loc>https://elyar.com.br/servicos/powerbi.html</loc>
+        <lastmod>2026-07-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://elyar.com.br/servicos-manutencao.html</loc>
-        <lastmod>2026-07-04</lastmod>
+        <loc>https://elyar.com.br/servicos/manutencao.html</loc>
+        <lastmod>2026-07-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://elyar.com.br/servicos-zabbix.html</loc>
-        <lastmod>2026-07-04</lastmod>
+        <loc>https://elyar.com.br/servicos/zabbix.html</loc>
+        <lastmod>2026-07-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://elyar.com.br/servicos-wazuh.html</loc>
-        <lastmod>2026-07-04</lastmod>
+        <loc>https://elyar.com.br/servicos/wazuh.html</loc>
+        <lastmod>2026-07-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://elyar.com.br/servicos-glpi.html</loc>
-        <lastmod>2026-07-04</lastmod>
+        <loc>https://elyar.com.br/servicos/glpi.html</loc>
+        <lastmod>2026-07-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://elyar.com.br/servicos-consultoria.html</loc>
-        <lastmod>2026-07-04</lastmod>
+        <loc>https://elyar.com.br/servicos/consultoria.html</loc>
+        <lastmod>2026-07-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://elyar.com.br/blog/ia-impacto.html</loc>
+        <lastmod>2026-07-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://elyar.com.br/blog/monitoramento-ativo.html</loc>
+        <lastmod>2026-07-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://elyar.com.br/blog/manutencao-computadores.html</loc>
+        <lastmod>2026-07-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
     </url>
 </urlset>

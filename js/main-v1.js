@@ -397,10 +397,12 @@ jQuery(function($) {'use strict';
 						<h4>Navegação</h4>
 						<ul>
 							<li><a href="${prefix}index.html">Início</a></li>
+							<li><a href="${prefix}sobre.html">Sobre Nós</a></li>
 							<li><a href="${prefix}servicos.html">Serviços</a></li>
 							<li><a href="${prefix}portfolio.html">Portfólio BI</a></li>
 							<li><a href="${prefix}blog.html">Blog</a></li>
 							<li><a href="${prefix}depoimentos.html">Depoimentos</a></li>
+							<li><a href="${prefix}faq.html">Perguntas Frequentes</a></li>
 							<li><a href="${prefix}contato.html">Contato</a></li>
 						</ul>
 					</div>
@@ -427,6 +429,11 @@ jQuery(function($) {'use strict';
 				
 				<div class="footer-bottom-premium">
 					<p>&copy; 2026 Elyar Serviços. Todos os direitos reservados.</p>
+					<p>
+						<a href="${prefix}politica-privacidade.html" style="color: var(--color-text-muted);">Política de Privacidade</a>
+						&nbsp;·&nbsp;
+						<a href="${prefix}termos-uso.html" style="color: var(--color-text-muted);">Termos de Uso</a>
+					</p>
 					<p>Criado por <a href="${prefix}index.html" style="color: var(--color-accent-yellow); text-decoration: underline;">Elyar Serviços</a></p>
 				</div>
 			</div>
@@ -462,7 +469,11 @@ jQuery(function($) {'use strict';
 			{ title: "Blog & Insights", path: "blog.html", category: "Página", desc: "Artigos técnicos, tendências de mercado, IA, monitoramento, hardware e novidades do mundo da TI.", keywords: "blog artigos insights leituras novidades posts" },
 			{ title: "Depoimentos de Clientes", path: "depoimentos.html", category: "Página", desc: "Avaliações e depoimentos de empresas e profissionais atendidos pela Elyar Serviços.", keywords: "depoimentos feedback avaliacoes elogios clientes" },
 			{ title: "Contato", path: "contato.html", category: "Página", desc: "Entre em contato conosco. Fale por WhatsApp, envie e-mail ou localize nosso escritório em Guarulhos.", keywords: "contato telefone email falar suporte whatsapp localizacao guarulhos" },
-			
+			{ title: "Sobre Nós", path: "sobre.html", category: "Página", desc: "Conheça a história, a missão e os valores por trás da Elyar Serviços.", keywords: "sobre quem somos historia missao valores empresa" },
+			{ title: "Perguntas Frequentes", path: "faq.html", category: "Página", desc: "Tire suas dúvidas sobre Power BI, monitoramento, segurança, suporte e manutenção de hardware.", keywords: "faq perguntas frequentes duvidas ajuda" },
+			{ title: "Política de Privacidade", path: "politica-privacidade.html", category: "Página", desc: "Como a Elyar Serviços coleta, usa e protege os dados enviados pelo site.", keywords: "privacidade dados lgpd politica" },
+			{ title: "Termos de Uso", path: "termos-uso.html", category: "Página", desc: "Regras de uso do site, comentários, depoimentos e formulário de contato.", keywords: "termos uso regras condicoes" },
+
 			{ title: "Power BI & Dashboards", path: "servicos/powerbi.html", category: "Serviço", desc: "Desenvolvimento de dashboards de alta performance em Power BI, modelagem de dados, fórmulas DAX e segurança RLS.", keywords: "power bi dashboards kpi modelagem dax sql api dados governanca relatorios" },
 			{ title: "Monitoramento Ativo (Zabbix & Grafana)", path: "servicos/zabbix.html", category: "Serviço", desc: "Monitoramento ativo de servidores, redes e aplicações. Alertas preventivos via Telegram/WhatsApp para prevenir inatividades.", keywords: "zabbix grafana monitoramento ativo rede servidores alertas preventivos proativo" },
 			{ title: "Segurança Cibernética (Wazuh SIEM)", path: "servicos/wazuh.html", category: "Serviço", desc: "Segurança da informação baseada em SIEM com Wazuh. Proteção de dados, conformidade LGPD e detecção de ameaças.", keywords: "seguranca wazuh siem antivirus firewall lgpd invasao vulnerabilidades" },
