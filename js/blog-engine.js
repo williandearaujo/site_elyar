@@ -1,62 +1,12 @@
-// Motor compartilhado de comentarios/likes/views para as paginas do blog.
-// Cada pagina de post define no <body>: data-post-id, data-views-seed, data-likes-seed
+// Motor compartilhado de comentarios para as paginas do blog.
+// Cada pagina de post define no <body>: data-post-id
 $(document).ready(function () {
     var $body = $('body');
     var postId = $body.data('post-id');
     if (!postId) return;
 
-    var viewsKey = 'blog_views_' + postId;
     var commentsKey = 'blog_comments_' + postId;
-    var likesKey = 'blog_likes_' + postId;
-    var likedKey = 'blog_liked_' + postId;
-    var viewsSeed = parseInt($body.data('views-seed'), 10) || 0;
-    var likesSeed = parseInt($body.data('likes-seed'), 10) || 0;
     var COMMENTS_API_URL = 'https://script.google.com/macros/s/AKfycbxjIQEv4uWt8uEXWq3_9pR_-_bm4BIKzDChL8Vo1k9YTCY5r2DUVVOqkBl3zQpYnmfbhQ/exec';
-
-    // Increment visualizador (Local Storage)
-    var views = viewsSeed;
-    try {
-        views = parseInt(localStorage.getItem(viewsKey) || viewsSeed, 10);
-        views += 1;
-        localStorage.setItem(viewsKey, views);
-    } catch (e) {
-        views = viewsSeed + 1;
-    }
-    $('#article-views-detail').text(views);
-
-    // Likes Engine (Local Storage)
-    var likes = likesSeed;
-    try {
-        likes = parseInt(localStorage.getItem(likesKey) || likesSeed, 10);
-        if (!localStorage.getItem(likesKey)) localStorage.setItem(likesKey, likesSeed);
-    } catch (e) {}
-    $('#article-likes-detail').text(likes);
-
-    try {
-        if (localStorage.getItem(likedKey) === 'true') {
-            $('#like-btn').addClass('liked');
-        }
-    } catch (e) {}
-
-    $('#like-btn').click(function () {
-        try {
-            if (localStorage.getItem(likedKey) === 'true') {
-                likes -= 1;
-                localStorage.setItem(likesKey, likes);
-                localStorage.setItem(likedKey, 'false');
-                $(this).removeClass('liked');
-            } else {
-                likes += 1;
-                localStorage.setItem(likesKey, likes);
-                localStorage.setItem(likedKey, 'true');
-                $(this).addClass('liked');
-            }
-            $('#article-likes-detail').text(likes);
-        } catch (e) {
-            // Fallback visual in case storage is blocked
-            $(this).toggleClass('liked');
-        }
-    });
 
     function loadComments() {
         ElyarApi.request({

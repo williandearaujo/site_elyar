@@ -71,8 +71,6 @@
                             <div>
                                 <div style="display: flex; gap: 10px; font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 12px; flex-wrap: wrap;">
                                     <span><i class="fa fa-calendar"></i> 04/07/2026</span>
-                                    <span><i class="fa fa-eye"></i> <span id="ia-views-count">100</span></span>
-                                    <span><i class="fa fa-heart"></i> <span id="ia-likes-count">52</span></span>
                                 </div>
                                 <h3 style="font-size: 1.2rem; margin-top: 0; margin-bottom: 10px; line-height: 1.3; font-weight: 700; color: white;">
                                     Inteligência Artificial: O Impacto nas Empresas
@@ -104,8 +102,6 @@
                             <div>
                                 <div style="display: flex; gap: 10px; font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 12px; flex-wrap: wrap;">
                                     <span><i class="fa fa-calendar"></i> 04/07/2026</span>
-                                    <span><i class="fa fa-eye"></i> <span id="mon-views-count">100</span></span>
-                                    <span><i class="fa fa-heart"></i> <span id="mon-likes-count">30</span></span>
                                 </div>
                                 <h3 style="font-size: 1.2rem; margin-top: 0; margin-bottom: 10px; line-height: 1.3; font-weight: 700; color: white;">
                                     Monitoramento Ativo: O Escudo da TI
@@ -137,8 +133,6 @@
                             <div>
                                 <div style="display: flex; gap: 10px; font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 12px; flex-wrap: wrap;">
                                     <span><i class="fa fa-calendar"></i> 04/07/2026</span>
-                                    <span><i class="fa fa-eye"></i> <span id="man-views-count">0</span></span>
-                                    <span><i class="fa fa-heart"></i> <span id="man-likes-count">0</span></span>
                                 </div>
                                 <h3 style="font-size: 1.2rem; margin-top: 0; margin-bottom: 10px; line-height: 1.3; font-weight: 700; color: white;">
                                     Além do Limite: O Poder do Upgrade
@@ -194,25 +188,6 @@
     <script src="js/main-v1.js?v=4"></script>
     <script>
         $(document).ready(function() {
-            // Espelha os contadores do js/blog-engine.js (mesma convencao de chaves: blog_views_<postId>/blog_likes_<postId>)
-            var blogPosts = [
-                { postId: 'ia_impacto', viewsEl: '#ia-views-count', likesEl: '#ia-likes-count', baseViews: 100, baseLikes: 52 },
-                { postId: 'monitoramento_ativo', viewsEl: '#mon-views-count', likesEl: '#mon-likes-count', baseViews: 100, baseLikes: 30 },
-                { postId: 'manutencao_computadores', viewsEl: '#man-views-count', likesEl: '#man-likes-count', baseViews: 0, baseLikes: 0 }
-            ];
-
-            blogPosts.forEach(function(post) {
-                try {
-                    var views = parseInt(localStorage.getItem('blog_views_' + post.postId) || post.baseViews);
-                    var likes = parseInt(localStorage.getItem('blog_likes_' + post.postId) || post.baseLikes);
-                    $(post.viewsEl).text(views);
-                    $(post.likesEl).text(likes);
-                } catch(e) {
-                    $(post.viewsEl).text(post.baseViews);
-                    $(post.likesEl).text(post.baseLikes);
-                }
-            });
-
             // -------------------------------------------------------------
             // DYNAMIC CLIENT-SIDE PAGINATION LOGIC
             // -------------------------------------------------------------
