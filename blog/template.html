@@ -368,6 +368,7 @@ var viewsKey = 'blog_views_template';
                         url: COMMENTS_API_URL + '?pageId=' + commentsKey,
                         method: 'GET',
                         dataType: 'json',
+                        cache: false,
                         success: function(comments) {
                             renderComments(comments);
                         },

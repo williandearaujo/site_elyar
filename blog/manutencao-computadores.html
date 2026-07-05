@@ -366,6 +366,7 @@ var viewsKey = 'blog_views_manutencao_computadores';
                         url: COMMENTS_API_URL + '?pageId=' + commentsKey,
                         method: 'GET',
                         dataType: 'json',
+                        cache: false,
                         success: function(comments) {
                             renderComments(comments);
                         },
